@@ -1,0 +1,20 @@
+namespace GrupoAOX.Estagio.Data.Migrations
+{
+    using System.Data.Entity.Migrations;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<GrupoAOX.Estagio.Data.Contexto.ContextoEstagio>
+    {
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = true;
+        }
+
+        protected override void Seed(GrupoAOX.Estagio.Data.Contexto.ContextoEstagio context)
+        {
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data.
+        }
+    }
+}
