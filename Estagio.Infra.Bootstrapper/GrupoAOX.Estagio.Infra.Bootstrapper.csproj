@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{165074D3-5085-4109-A372-5985FFDDFC9D}</ProjectGuid>
+    <ProjectGuid>{FE0B53F9-7DC8-41BC-8287-576D2653DB12}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GrupoAOX.Estagio.Data</RootNamespace>
-    <AssemblyName>GrupoAOX.Estagio.Data</AssemblyName>
+    <RootNamespace>Estagio.Infra.Bootstrapper</RootNamespace>
+    <AssemblyName>Estagio.Infra.Bootstrapper</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="SimpleInjector, Version=4.6.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.6.0\lib\net45\SimpleInjector.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,37 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigEntidades\CategoriaConfig.cs" />
-    <Compile Include="ConfigEntidades\int_exp_Etiqueta_ProducaoConfig.cs" />
-    <Compile Include="ConfigEntidades\LogLotesConfig.cs" />
-    <Compile Include="ConfigEntidades\PermissaoConfig.cs" />
-    <Compile Include="ConfigEntidades\StatusConfig.cs" />
-    <Compile Include="ConfigEntidades\TransferenciaConfig.cs" />
-    <Compile Include="ConfigEntidades\UsuarioConfig.cs" />
-    <Compile Include="Contexto\ContextoEstagio.cs" />
-    <Compile Include="Migrations\201905102312426_Initial.cs" />
-    <Compile Include="Migrations\201905102312426_Initial.Designer.cs">
-      <DependentUpon>201905102312426_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositorios\Repositorio.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\GrupoAox.Estagio.Domain\GrupoAOX.Estagio.Dominio.csproj">
-      <Project>{09456fd5-abb2-4537-98c5-a14a4ef4a30d}</Project>
-      <Name>GrupoAOX.Estagio.Dominio</Name>
-    </ProjectReference>
+    <Compile Include="SimpleInjectorMapping.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905102312426_Initial.resx">
-      <DependentUpon>201905102312426_Initial.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\GrupoAOX.Estagio.Data\GrupoAOX.Estagio.Persistencia.csproj">
+      <Project>{165074D3-5085-4109-A372-5985FFDDFC9D}</Project>
+      <Name>GrupoAOX.Estagio.Persistencia</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

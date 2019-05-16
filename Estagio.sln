@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrupoAOX.Estagio.Dominio", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrupoAOX.Estagio.Persistencia", "GrupoAOX.Estagio.Data\GrupoAOX.Estagio.Persistencia.csproj", "{165074D3-5085-4109-A372-5985FFDDFC9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrupoAOX.Estagio.Infra.Bootstrapper", "Estagio.Infra.Bootstrapper\GrupoAOX.Estagio.Infra.Bootstrapper.csproj", "{FE0B53F9-7DC8-41BC-8287-576D2653DB12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{165074D3-5085-4109-A372-5985FFDDFC9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{165074D3-5085-4109-A372-5985FFDDFC9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{165074D3-5085-4109-A372-5985FFDDFC9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE0B53F9-7DC8-41BC-8287-576D2653DB12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0B53F9-7DC8-41BC-8287-576D2653DB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0B53F9-7DC8-41BC-8287-576D2653DB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0B53F9-7DC8-41BC-8287-576D2653DB12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{6D92EEEF-6174-415D-BA3B-2BCED91C3E86} = {170B4551-CF0C-474B-837D-C32344E2D841}
 		{09456FD5-ABB2-4537-98C5-A14A4EF4A30D} = {ADE957D8-A6AC-47E3-8ABD-390F0A5FA55C}
 		{165074D3-5085-4109-A372-5985FFDDFC9D} = {33353031-158A-469E-84C0-40F7031AAA0A}
+		{FE0B53F9-7DC8-41BC-8287-576D2653DB12} = {F969AF08-7047-45A8-AD45-E6C84441C7C4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CBE8D847-67B2-4464-8205-82657323E5A9}
