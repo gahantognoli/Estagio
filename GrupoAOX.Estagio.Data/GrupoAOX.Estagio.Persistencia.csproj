@@ -30,14 +30,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Slapper, Version=1.0.0.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Slapper.AutoMapper.1.0.0.9\lib\Slapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -60,14 +67,35 @@
       <DependentUpon>201905102312426_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Procedures\CategoriaProcedures.cs" />
+    <Compile Include="Procedures\ConexaoBancoDeDados.cs" />
+    <Compile Include="Procedures\LogLotesProcedures.cs" />
+    <Compile Include="Procedures\LoteProcedures.cs" />
+    <Compile Include="Procedures\PermissaoProcedures.cs" />
+    <Compile Include="Procedures\StatusProcedures.cs" />
+    <Compile Include="Procedures\TransferenciaProcedures.cs" />
+    <Compile Include="Procedures\UsuarioProcedures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\CategoriaRepositorio.cs" />
+    <Compile Include="Repositorios\LogLotesRepositorio.cs" />
+    <Compile Include="Repositorios\LoteRepositorio.cs" />
+    <Compile Include="Repositorios\PermissaoRepositorio.cs" />
     <Compile Include="Repositorios\Repositorio.cs" />
+    <Compile Include="Repositorios\StatusRepositorio.cs" />
+    <Compile Include="Repositorios\TransferenciaRepositorio.cs" />
+    <Compile Include="Repositorios\UsuarioRepositorio.cs" />
+    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\GrupoAox.Estagio.Domain\GrupoAOX.Estagio.Dominio.csproj">
       <Project>{09456fd5-abb2-4537-98c5-a14a4ef4a30d}</Project>
       <Name>GrupoAOX.Estagio.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GrupoAOX.Estagio.Infra.ExtensionMethods\GrupoAOX.Estagio.Infra.ExtensionMethods.csproj">
+      <Project>{CB3436F7-8CA1-4926-94D3-C6D865E2B113}</Project>
+      <Name>GrupoAOX.Estagio.Infra.ExtensionMethods</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

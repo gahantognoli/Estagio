@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DomainValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DomainValidation.1.0.0\lib\net453\DomainValidation.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -54,19 +57,32 @@
     <Compile Include="Entidades\Transferencia.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Interfaces\Repositorios\ICategoriaRepositorio.cs" />
-    <Compile Include="Interfaces\Repositorios\ILogLotes.cs" />
+    <Compile Include="Interfaces\Repositorios\ILogLotesRepositorio.cs" />
     <Compile Include="Interfaces\Repositorios\ILoteRepositorio.cs" />
     <Compile Include="Interfaces\Repositorios\IPermissaoRepositorio.cs" />
     <Compile Include="Interfaces\Repositorios\IRepositorio.cs" />
     <Compile Include="Interfaces\Repositorios\IStatusRepositorio.cs" />
     <Compile Include="Interfaces\Repositorios\ITransferenciaRepositorio.cs" />
     <Compile Include="Interfaces\Repositorios\IUsuarioRepositorio.cs" />
+    <Compile Include="Interfaces\ServicosProtheus\IArmazemServices.cs" />
+    <Compile Include="Interfaces\Servicos\ICategoriaServices.cs" />
+    <Compile Include="Interfaces\Servicos\ILogLotesServices.cs" />
+    <Compile Include="Interfaces\Servicos\ILoteServices.cs" />
+    <Compile Include="Interfaces\Servicos\IPermissaoServices.cs" />
+    <Compile Include="Interfaces\Servicos\IStatusServices.cs" />
+    <Compile Include="Interfaces\Servicos\ITransferenciaServices.cs" />
+    <Compile Include="Interfaces\Servicos\IUsuarioServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicos\ArmazemServices.cs" />
+    <Compile Include="Servicos\CategoriaServices.cs" />
+    <Compile Include="Servicos\LogLotesServices.cs" />
+    <Compile Include="Servicos\LoteServices.cs" />
+    <Compile Include="Servicos\PermissaoServices.cs" />
+    <Compile Include="Servicos\StatusServices.cs" />
+    <Compile Include="Servicos\TransferenciaServices.cs" />
+    <Compile Include="Servicos\UsuarioServices.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\Servicos\" />
-    <Folder Include="Servicos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

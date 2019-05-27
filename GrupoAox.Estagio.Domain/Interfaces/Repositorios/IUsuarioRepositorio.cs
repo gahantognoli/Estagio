@@ -5,6 +5,7 @@ namespace GrupoAox.Estagio.Domain.Interfaces.Repositorios
     public interface IUsuarioRepositorio : IRepositorio<Usuario>
     {
         Usuario ObterPorLogin(string login);
-        void ImportarActiveDirectory(Usuario usuario);
+        Usuario ObterPorEmail(string email);
+        void SalvarImagem(int id, string caminhoImagem);
     }
 }

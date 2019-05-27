@@ -6,7 +6,8 @@ namespace GrupoAox.Estagio.Domain.Interfaces.Repositorios
 {
     public interface ITransferenciaRepositorio : IRepositorio<Transferencia>
     {
-        int Transferir(Transferencia transferencia);
+        Transferencia Transferir(Transferencia transferencia);
         IEnumerable<Transferencia> ObterPorPeriodo(DateTime dataInicio, DateTime dataFim);
+        string ObterNumDocumento(Categoria categoria);
     }
 }

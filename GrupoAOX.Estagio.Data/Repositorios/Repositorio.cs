@@ -24,7 +24,7 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             return DbSet.Add(obj);
         }
 
-        public TEntity Atualizar(TEntity obj)
+        public virtual TEntity Atualizar(TEntity obj)
         {
             var entry = Db.Entry(obj);
             DbSet.Attach(obj);
@@ -32,17 +32,17 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             return obj;
         }
 
-        public TEntity ObterPorId(int id)
+        public virtual TEntity ObterPorId(int id)
         {
             return DbSet.Find(id);
         }
 
-        public IEnumerable<TEntity> ObterTodos()
+        public virtual IEnumerable<TEntity> ObterTodos()
         {
             return DbSet.ToList();
         }
 
-        public void Remover(int id)
+        public virtual void Remover(int id)
         {
             DbSet.Remove(DbSet.Find(id));
         }
