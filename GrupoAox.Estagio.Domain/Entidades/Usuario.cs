@@ -15,12 +15,5 @@ namespace GrupoAox.Estagio.Domain.Entidades
         public ICollection<Transferencia> Transferencias { get; set; }
 
         public ValidationResult ValidationResult { get; set; }
-
-        //TODO: Implementar
-        public bool EhValido()
-        {
-            return true;
-        }
-
     }
 }

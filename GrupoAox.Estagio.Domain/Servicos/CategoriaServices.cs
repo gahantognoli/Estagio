@@ -1,6 +1,7 @@
 ﻿using GrupoAox.Estagio.Domain.Entidades;
 using GrupoAox.Estagio.Domain.Interfaces.Repositorios;
 using GrupoAox.Estagio.Domain.Interfaces.Servicos;
+using GrupoAox.Estagio.Domain.Validations.Categorias;
 using System;
 using System.Collections.Generic;
 
@@ -17,18 +18,14 @@ namespace GrupoAox.Estagio.Domain.Servicos
 
         public Categoria Adicionar(Categoria categoria)
         {
-            //categoria.ValidationResult = new CategoriaEstaAptoParaCadastro(_categoriaRepositorio).Validate(categoria);
-
-            //return categoria.ValidationResult.IsValid ? categoria : _categoriaRepositorio.Adicionar(categoria);
-            return _categoriaRepositorio.Adicionar(categoria);
+            categoria.ValidationResult = new CategoriaAptaParaCadastroValidation(_categoriaRepositorio).Validate(categoria);
+            return categoria.ValidationResult.IsValid ? categoria : _categoriaRepositorio.Adicionar(categoria);
         }
 
         public Categoria Atualizar(Categoria categoria)
         {
-            //categoria.ValidationResult = new CategoriaEstaAptoParaCadastro(_categoriaRepositorio).Validate(categoria);
-
-            //return categoria.ValidationResult.IsValid ? categoria : _categoriaRepositorio.Atualizar(categoria);
-            return _categoriaRepositorio.Atualizar(categoria);
+            categoria.ValidationResult = new CategoriaAptaParaCadastroValidation(_categoriaRepositorio).Validate(categoria);
+            return categoria.ValidationResult.IsValid ? categoria : _categoriaRepositorio.Atualizar(categoria);
         }
 
         public void Dispose()

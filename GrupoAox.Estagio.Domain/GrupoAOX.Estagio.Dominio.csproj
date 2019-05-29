@@ -81,6 +81,19 @@
     <Compile Include="Servicos\StatusServices.cs" />
     <Compile Include="Servicos\TransferenciaServices.cs" />
     <Compile Include="Servicos\UsuarioServices.cs" />
+    <Compile Include="Specifications\Categorias\CategoriaDevePossuirDescricaoUnicaSpecification.cs" />
+    <Compile Include="Specifications\Transferencias\TransferenciaNaoDevePossuirEtiquetaDescartadaSpecification.cs" />
+    <Compile Include="Specifications\Permissoes\PermissaoDevePossuirDescricaoUnicaSpecification.cs" />
+    <Compile Include="Specifications\Permissoes\PermissaoDevePossuirSiglaUnicaSpecification.cs" />
+    <Compile Include="Specifications\Status\StatusDevePossuirIdUnicoSpecification.cs" />
+    <Compile Include="Specifications\Usuarios\UsuarioDevePossuirEmailUnicoSpecification.cs" />
+    <Compile Include="Specifications\Usuarios\UsuarioDevePossuirEmailValidoSpecification.cs" />
+    <Compile Include="Specifications\Usuarios\UsuarioDevePossuirLoginUnicoSpecification.cs" />
+    <Compile Include="Validations\Categorias\CategoriaAptaParaCadastroValidation.cs" />
+    <Compile Include="Validations\Permissoes\PermissaoAptoParaCadastroValidation.cs" />
+    <Compile Include="Validations\Status\StatusAptoParaCadastroValidation.cs" />
+    <Compile Include="Validations\Lotes\LoteAptoParaCadastroValidation.cs" />
+    <Compile Include="Validations\Usuarios\UsuarioAptoParaCadastroValidation.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

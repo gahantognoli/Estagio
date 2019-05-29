@@ -1,3 +1,4 @@
+using DomainValidation.Validation;
 using System;
 using System.Collections.Generic;
 
@@ -36,6 +37,8 @@ namespace GrupoAox.Estagio.Domain.Entidades
         public string Observacao { get; set; }
         public string LoteOrigem { get; set; }
         public bool UltimaBobina { get; set; }
+
+        public ValidationResult ValidationResult { get; set; }
 
         public Status Status { get; set; }
         public ICollection<LogLotes> LogLotes { get; set; }

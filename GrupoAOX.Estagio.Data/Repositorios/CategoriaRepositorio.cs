@@ -28,6 +28,19 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             return categoria;
         }
 
+        public Categoria ObterPorDescricao(string descricao)
+        {
+            Categoria categoria = null;
+            using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
+            {
+                categoria = dbConnection.Query<Categoria>(CategoriaProcedures.ObterPorDescricao.GetDescription(), new
+                {
+                    Descricao = descricao
+                }, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
+            }
+            return categoria;
+        }
+
         public override Categoria ObterPorId(int id)
         {
             Categoria categoria = null;

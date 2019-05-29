@@ -1,6 +1,7 @@
 ﻿using GrupoAox.Estagio.Domain.Entidades;
 using GrupoAox.Estagio.Domain.Interfaces.Repositorios;
 using GrupoAox.Estagio.Domain.Interfaces.Servicos;
+using GrupoAox.Estagio.Domain.Validations.Status;
 using System;
 using System.Collections.Generic;
 
@@ -17,20 +18,14 @@ namespace GrupoAox.Estagio.Domain.Servicos
 
         public Status Adicionar(Status status)
         {
-            //status.ValidationResult = new StatusAptoParaCadastro(_statusRepositorio).Validate(status);
-
-            //return !status.ValidationResult.IsValid ? status : _statusRepositorio.Adicionar(status);
-
-            return _statusRepositorio.Adicionar(status);
+            status.ValidationResult = new StatusAptoParaCadastroValidation(_statusRepositorio).Validate(status);
+            return !status.ValidationResult.IsValid ? status : _statusRepositorio.Adicionar(status);
         }
 
         public Status Atualizar(Status status)
         {
-            //status.ValidationResult = new StatusAptoParaCadastro(_statusRepositorio).Validate(status);
-
-            //return !status.ValidationResult.IsValid ? status : _statusRepositorio.Atualizar(status);
-
-            return _statusRepositorio.Atualizar(status);
+            status.ValidationResult = new StatusAptoParaCadastroValidation(_statusRepositorio).Validate(status);
+            return !status.ValidationResult.IsValid ? status : _statusRepositorio.Atualizar(status);
         }
 
         public void Dispose()

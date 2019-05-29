@@ -29,6 +29,20 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             return permissoes;
         }
 
+        public Permissao ObterPorDescricao(string descricao)
+        {
+            Permissao permissao = null;
+            using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
+            {
+                permissao = dbConnection.Query<Permissao>(PermissaoProcedures.ObterPorDescricao.GetDescription(), new
+                {
+                    Descricao = descricao
+                }, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
+            }
+
+            return permissao;
+        }
+
         public override Permissao ObterPorId(int id)
         {
             IEnumerable<dynamic> query = null;
@@ -44,6 +58,20 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             AutoMapper.Configuration.AddIdentifier(typeof(Usuario), "UsuarioId");
 
             Permissao permissao = (AutoMapper.MapDynamic<Permissao>(query, false) as IEnumerable<Permissao>).FirstOrDefault();
+
+            return permissao;
+        }
+
+        public Permissao ObterPorSigla(string sigla)
+        {
+            Permissao permissao = null;
+            using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
+            {
+                permissao = dbConnection.Query<Permissao>(PermissaoProcedures.ObterPorSigla.GetDescription(), new
+                {
+                    Sigla = sigla
+                }, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
+            }
 
             return permissao;
         }

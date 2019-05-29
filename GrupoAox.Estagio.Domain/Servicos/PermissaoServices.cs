@@ -1,6 +1,7 @@
 ﻿using GrupoAox.Estagio.Domain.Entidades;
 using GrupoAox.Estagio.Domain.Interfaces.Repositorios;
 using GrupoAox.Estagio.Domain.Interfaces.Servicos;
+using GrupoAox.Estagio.Domain.Validations.Permissoes;
 using System;
 using System.Collections.Generic;
 
@@ -17,20 +18,14 @@ namespace GrupoAox.Estagio.Domain.Servicos
 
         public Permissao Adicionar(Permissao permissao)
         {
-            //permissao.ValidationResult = new PermissaoEstaAptoParaCadastro(_permissaoRepositorio).Validate(permissao);
-
-            //return !permissao.ValidationResult.IsValid ? permissao : _permissaoRepositorio.Adicionar(permissao);
-
-            return _permissaoRepositorio.Adicionar(permissao);
+            permissao.ValidationResult = new PermissaoAptoParaCadastroValidation(_permissaoRepositorio).Validate(permissao);
+            return !permissao.ValidationResult.IsValid ? permissao : _permissaoRepositorio.Adicionar(permissao);
         }
 
         public Permissao Atualizar(Permissao permissao)
         {
-            //permissao.ValidationResult = new PermissaoEstaAptoParaCadastro(_permissaoRepositorio).Validate(permissao);
-
-            //return !permissao.ValidationResult.IsValid ? permissao : _permissaoRepositorio.Adicionar(permissao);
-
-            return _permissaoRepositorio.Atualizar(permissao);
+            permissao.ValidationResult = new PermissaoAptoParaCadastroValidation(_permissaoRepositorio).Validate(permissao);
+            return !permissao.ValidationResult.IsValid ? permissao : _permissaoRepositorio.Adicionar(permissao);
         }
 
         public void Dispose()

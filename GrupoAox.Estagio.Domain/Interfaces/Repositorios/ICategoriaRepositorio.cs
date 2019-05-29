@@ -4,5 +4,6 @@ namespace GrupoAox.Estagio.Domain.Interfaces.Repositorios
 {
     public interface ICategoriaRepositorio : IRepositorio<Categoria>
     {
+        Categoria ObterPorDescricao(string descricao);
     }
 }
