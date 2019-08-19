@@ -43,6 +43,8 @@ namespace GrupoAOX.Estagio.Data.ConfigEntidades
                     m.ToTable("TransferenciasLotes");
                 });
 
+            Ignore(c => c.ValidationResult);
+
             ToTable("Transferencias");
         }
     }

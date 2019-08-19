@@ -16,6 +16,11 @@ namespace GrupoAox.Estagio.Domain.Servicos
             _loteRepositorio = loteRepositorio;
         }
 
+        public int_exp_Etiqueta_Producao AtualizarArmazem(int id, string armazem)
+        {
+            return _loteRepositorio.AtualizarArmazem(id, armazem);
+        }
+
         public int_exp_Etiqueta_Producao AtualizarStatus(int id, Status status)
         {
             return _loteRepositorio.AtualizarStatus(id, status);

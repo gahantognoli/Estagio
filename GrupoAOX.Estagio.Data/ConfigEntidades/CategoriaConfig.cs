@@ -13,6 +13,11 @@ namespace GrupoAOX.Estagio.Data.ConfigEntidades
                 .IsRequired()
                 .HasMaxLength(50);
 
+            Property(c => c.TipoCategoria)
+                .IsRequired();
+
+            Ignore(c => c.ValidationResult);
+
             ToTable("Categorias");
         }
     }

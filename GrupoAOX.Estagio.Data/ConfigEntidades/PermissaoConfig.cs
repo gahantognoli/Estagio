@@ -17,6 +17,8 @@ namespace GrupoAOX.Estagio.Data.ConfigEntidades
                 .IsRequired()
                 .HasMaxLength(100);
 
+            Ignore(p => p.ValidationResult);
+
             ToTable("Permissoes");
         }
     }

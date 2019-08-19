@@ -6,7 +6,7 @@ using GrupoAox.Estagio.Domain.Interfaces.Servicos;
 
 namespace GrupoAox.Estagio.Domain.Servicos
 {
-    class LogLotesServices : ILogLotesServices
+    public class LogLotesServices : ILogLotesServices
     {
         private readonly ILogLotesRepositorio _logLotesRepositorio;
 

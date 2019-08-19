@@ -56,6 +56,7 @@
     <Compile Include="Entidades\Status.cs" />
     <Compile Include="Entidades\Transferencia.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Enums\TipoCategoria.cs" />
     <Compile Include="Interfaces\Repositorios\ICategoriaRepositorio.cs" />
     <Compile Include="Interfaces\Repositorios\ILogLotesRepositorio.cs" />
     <Compile Include="Interfaces\Repositorios\ILoteRepositorio.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Servicos\TransferenciaServices.cs" />
     <Compile Include="Servicos\UsuarioServices.cs" />
     <Compile Include="Specifications\Categorias\CategoriaDevePossuirDescricaoUnicaSpecification.cs" />
+    <Compile Include="Specifications\Transferencias\TransferenciaDevePossuirLotesSpecification.cs" />
     <Compile Include="Specifications\Transferencias\TransferenciaNaoDevePossuirEtiquetaDescartadaSpecification.cs" />
     <Compile Include="Specifications\Permissoes\PermissaoDevePossuirDescricaoUnicaSpecification.cs" />
     <Compile Include="Specifications\Permissoes\PermissaoDevePossuirSiglaUnicaSpecification.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Validations\Permissoes\PermissaoAptoParaCadastroValidation.cs" />
     <Compile Include="Validations\Status\StatusAptoParaCadastroValidation.cs" />
     <Compile Include="Validations\Lotes\LoteAptoParaCadastroValidation.cs" />
+    <Compile Include="Validations\Transferencias\TransferenciaAptaParaCadastro.cs" />
     <Compile Include="Validations\Usuarios\UsuarioAptoParaCadastroValidation.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -7,7 +7,7 @@ namespace GrupoAOX.Estagio.Data.Contexto
 {
     public class ContextoEstagio : DbContext
     {
-        public ContextoEstagio() : base("PWProlinhas")
+        public ContextoEstagio() : base("Pw1ProFsa")
         {
 
         }

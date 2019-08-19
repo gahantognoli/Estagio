@@ -25,6 +25,14 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             return lote;
         }
 
+        public int_exp_Etiqueta_Producao AtualizarArmazem(int id, string armazem)
+        {
+            int_exp_Etiqueta_Producao lote = ObterPorId(id);
+            lote.Armazem = armazem;
+            Atualizar(lote);
+            return lote;
+        }
+
         public override IEnumerable<int_exp_Etiqueta_Producao> ObterTodos()
         {
             IEnumerable<int_exp_Etiqueta_Producao> lotes = null;
@@ -76,5 +84,7 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             lote.TipoDocumento = tipoDocumento;
             return Atualizar(lote);
         }
+
+        
     }
 }

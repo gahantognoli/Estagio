@@ -33,6 +33,9 @@
     <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="DomainValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DomainValidation.1.0.0\lib\net453\DomainValidation.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -62,9 +65,9 @@
     <Compile Include="ConfigEntidades\TransferenciaConfig.cs" />
     <Compile Include="ConfigEntidades\UsuarioConfig.cs" />
     <Compile Include="Contexto\ContextoEstagio.cs" />
-    <Compile Include="Migrations\201905102312426_Initial.cs" />
-    <Compile Include="Migrations\201905102312426_Initial.Designer.cs">
-      <DependentUpon>201905102312426_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201908152028590_InitialCreate.cs" />
+    <Compile Include="Migrations\201908152028590_InitialCreate.Designer.cs">
+      <DependentUpon>201908152028590_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Procedures\CategoriaProcedures.cs" />
@@ -87,7 +90,6 @@
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\GrupoAox.Estagio.Domain\GrupoAOX.Estagio.Dominio.csproj">
       <Project>{09456fd5-abb2-4537-98c5-a14a4ef4a30d}</Project>
@@ -103,8 +105,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905102312426_Initial.resx">
-      <DependentUpon>201905102312426_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908152028590_InitialCreate.resx">
+      <DependentUpon>201908152028590_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

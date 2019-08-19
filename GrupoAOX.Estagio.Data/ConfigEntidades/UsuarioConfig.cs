@@ -37,6 +37,8 @@ namespace GrupoAOX.Estagio.Data.ConfigEntidades
                     m.ToTable("PermissoesUsuarios");
                 });
 
+            Ignore(u => u.ValidationResult);
+
             ToTable("Usuarios");
         }
     }

@@ -15,6 +15,8 @@ namespace GrupoAOX.Estagio.Data.ConfigEntidades
                 .IsRequired()
                 .HasMaxLength(50);
 
+            Ignore(s => s.ValidationResult);
+
             ToTable("Status");
         }
     }

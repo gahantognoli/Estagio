@@ -8,5 +8,6 @@ namespace GrupoAox.Estagio.Domain.Interfaces.Repositorios
         int_exp_Etiqueta_Producao AtualizarStatus(int id, Status status);
         int_exp_Etiqueta_Producao ObterPorDocumento(string numDocumento);
         int_exp_Etiqueta_Producao ObterPorLote(string numLote);
+        int_exp_Etiqueta_Producao AtualizarArmazem(int id, string armazem);
     }
 }

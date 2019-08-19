@@ -58,30 +58,30 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             return Buscar(u => u.Email == email).FirstOrDefault();
         }
 
-        public override Usuario Atualizar(Usuario obj)
-        {
-            Usuario usuarioExistente = Db.Usuarios.Include("Permissoes")
-                .Where(e => e.UsuarioId == obj.UsuarioId).FirstOrDefault();
+        //public override Usuario Atualizar(Usuario obj)
+        //{
+        //    Usuario usuarioExistente = Db.Usuarios.Include("Permissoes")
+        //        .Where(e => e.UsuarioId == obj.UsuarioId).FirstOrDefault();
 
-            List<Permissao> permissoesParaDeletar = usuarioExistente.Permissoes.Except(obj.Permissoes,
-                p => p.PermissaoId).ToList();
+        //    List<Permissao> permissoesParaDeletar = usuarioExistente.Permissoes.Except(obj.Permissoes,
+        //        p => p.PermissaoId).ToList();
 
-            List<Permissao> permissoesParaAdicionar = usuarioExistente.Permissoes.Except(usuarioExistente.Permissoes,
-                p => p.PermissaoId).ToList();
+        //    List<Permissao> permissoesParaAdicionar = usuarioExistente.Permissoes.Except(usuarioExistente.Permissoes,
+        //        p => p.PermissaoId).ToList();
 
-            permissoesParaDeletar.ForEach(p => usuarioExistente.Permissoes.Remove(p));
+        //    permissoesParaDeletar.ForEach(p => usuarioExistente.Permissoes.Remove(p));
 
-            foreach (Permissao p in permissoesParaAdicionar)
-            {
-                if (Db.Entry(p).State == System.Data.Entity.EntityState.Detached)
-                {
-                    Db.Permissoes.Attach(p);
-                }
-                usuarioExistente.Permissoes.Add(p);
-            }
+        //    foreach (Permissao p in permissoesParaAdicionar)
+        //    {
+        //        if (Db.Entry(p).State == System.Data.Entity.EntityState.Detached)
+        //        {
+        //            Db.Permissoes.Attach(p);
+        //        }
+        //        usuarioExistente.Permissoes.Add(p);
+        //    }
 
-            return usuarioExistente;
-        }
+        //    return usuarioExistente;
+        //}
 
         public override void Remover(int id)
         {

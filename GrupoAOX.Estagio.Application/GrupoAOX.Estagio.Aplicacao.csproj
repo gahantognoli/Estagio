@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DomainValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DomainValidation.1.0.0\lib\net453\DomainValidation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,11 +47,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="Interfaces\ICategoriaAppServices.cs" />
+    <Compile Include="Interfaces\ILogLotesAppServices.cs" />
+    <Compile Include="Interfaces\ILoteAppServices.cs" />
+    <Compile Include="Interfaces\IPermissaoAppServices.cs" />
+    <Compile Include="Interfaces\IStatusAppServices.cs" />
+    <Compile Include="Interfaces\ITransferenciaAppServices.cs" />
+    <Compile Include="Interfaces\IUsuarioAppServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RetornoWS\RetornoArmazem.cs" />
+    <Compile Include="Servicos\AppService.cs" />
+    <Compile Include="Servicos\CategoriaAppService.cs" />
+    <Compile Include="Servicos\LogLotesAppService.cs" />
+    <Compile Include="Servicos\LoteAppService.cs" />
+    <Compile Include="Servicos\PermissaoAppService.cs" />
+    <Compile Include="Servicos\StatusAppService.cs" />
+    <Compile Include="Servicos\TransferenciaAppService.cs" />
+    <Compile Include="Servicos\UsuarioAppService.cs" />
+    <Compile Include="ViewModel\CategoriaViewModel.cs" />
+    <Compile Include="ViewModel\int_exp_Etiqueta_ProducaoViewModel.cs" />
+    <Compile Include="ViewModel\LogLotesViewModel.cs" />
+    <Compile Include="ViewModel\PermissaoViewModel.cs" />
+    <Compile Include="ViewModel\StatusViewModel.cs" />
+    <Compile Include="ViewModel\TransferenciaViewModel.cs" />
+    <Compile Include="ViewModel\UsuarioPermissaoViewModel.cs" />
+    <Compile Include="ViewModel\UsuarioViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Servicos\" />
+    <ProjectReference Include="..\GrupoAOX.Estagio.Data\GrupoAOX.Estagio.Persistencia.csproj">
+      <Project>{165074D3-5085-4109-A372-5985FFDDFC9D}</Project>
+      <Name>GrupoAOX.Estagio.Persistencia</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GrupoAox.Estagio.Domain\GrupoAOX.Estagio.Dominio.csproj">
+      <Project>{09456FD5-ABB2-4537-98C5-A14A4EF4A30D}</Project>
+      <Name>GrupoAOX.Estagio.Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

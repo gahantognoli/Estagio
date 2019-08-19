@@ -12,6 +12,8 @@ namespace GrupoAOX.Estagio.Data.ConfigEntidades
             HasRequired(s => s.Status)
                .WithMany(l => l.Lotes)
                .HasForeignKey(s => s.StatusId);
+
+            Ignore(l => l.ValidationResult);
         }
     }
 }

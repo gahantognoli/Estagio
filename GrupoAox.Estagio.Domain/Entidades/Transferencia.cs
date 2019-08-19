@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainValidation.Validation;
+using System;
 using System.Collections.Generic;
 
 namespace GrupoAox.Estagio.Domain.Entidades
@@ -15,5 +16,7 @@ namespace GrupoAox.Estagio.Domain.Entidades
         public ICollection<int_exp_Etiqueta_Producao> Lotes { get; set; }
         public Usuario Usuario { get; set; }
         public Categoria Categoria { get; set; }
+
+        public ValidationResult ValidationResult { get; set; }
     }
 }
