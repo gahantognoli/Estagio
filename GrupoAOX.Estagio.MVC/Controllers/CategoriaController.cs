@@ -34,7 +34,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
             if (ModelState.IsValid)
             {
                 var categoriaRetorno = _categoriaAppServices.Adicionar(categoriaViewModel);
-                if (!categoriaViewModel.ValidationResult.IsValid)
+                if (!categoriaRetorno.ValidationResult.IsValid)
                 {
                     foreach (var erro in categoriaRetorno.ValidationResult.Erros)
                     {
@@ -69,15 +69,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var categoriaRetorno = _categoriaAppServices.Atualizar(categoriaViewModel);
-                if (!categoriaViewModel.ValidationResult.IsValid)
-                {
-                    foreach (var erro in categoriaRetorno.ValidationResult.Erros)
-                    {
-                        ModelState.AddModelError(string.Empty, erro.Message);
-                    }
-                    return View(categoriaViewModel);
-                }
+                _categoriaAppServices.Atualizar(categoriaViewModel);
                 return RedirectToAction("Index");
             }
             return View(categoriaViewModel);

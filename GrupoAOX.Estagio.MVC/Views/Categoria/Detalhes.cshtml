@@ -1,12 +1,13 @@
 ﻿@model GrupoAOX.Estagio.Application.ViewModel.CategoriaViewModel
 
 @{
-    ViewBag.Title = "Remover";
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="card mb-2 mt-4">
     <div class="card-header">
-        <p class="h2">Remover Categoria</p>
+        <p class="h2">Detalhes Categoria</p>
     </div>
 
     <div class="card-body">
@@ -38,7 +39,7 @@
                 @Html.LabelFor(model => model.TipoCategoria, htmlAttributes: new { @class = "col-form-label" })
             </div>
             <div class="col-md-4">
-                @Html.EditorFor(model => model.TipoCategoria, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                @Html.EditorFor(model => model.TipoCategoria,  new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
                 @Html.ValidationMessageFor(model => model.TipoCategoria, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -47,32 +48,4 @@
 
 <p>
     @Html.ActionLink("Voltar para Lista", "Index", null, new { @class = "btn btn-secondary" })
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmed">Remover</button>
 </p>
-
-<div class="modal fade" tabindex="-1" id="deleteConfirmed" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Remover</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p class="h4">Atenção</p><br />
-                <p class="lead">Você está prestes a remover a categoria <strong>@Model.Descricao</strong></p>
-                <p class="lead"><strong>Deseja realmente remove-la?</strong></p>
-                @using (Html.BeginForm("Remover", "Categoria", FormMethod.Post, new { @id = "form-delete" }))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.HiddenFor(model => model.CategoriaId)
-                }
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" onclick="$('#form-delete').submit()">Confirmar</button>
-            </div>
-        </div>
-    </div>
-</div>

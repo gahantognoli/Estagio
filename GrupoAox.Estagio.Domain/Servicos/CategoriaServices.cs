@@ -19,13 +19,21 @@ namespace GrupoAox.Estagio.Domain.Servicos
         public Categoria Adicionar(Categoria categoria)
         {
             categoria.ValidationResult = new CategoriaAptaParaCadastroValidation(_categoriaRepositorio).Validate(categoria);
-            return categoria.ValidationResult.IsValid ? categoria : _categoriaRepositorio.Adicionar(categoria);
+            if (categoria.ValidationResult.IsValid)
+            {
+                var categoriaRetorno = _categoriaRepositorio.Adicionar(categoria);
+                categoriaRetorno.ValidationResult = categoria.ValidationResult;
+                return categoriaRetorno;
+            }
+            else
+            {
+                return categoria;
+            }
         }
 
         public Categoria Atualizar(Categoria categoria)
         {
-            categoria.ValidationResult = new CategoriaAptaParaCadastroValidation(_categoriaRepositorio).Validate(categoria);
-            return categoria.ValidationResult.IsValid ? categoria : _categoriaRepositorio.Atualizar(categoria);
+            return _categoriaRepositorio.Atualizar(categoria);
         }
 
         public void Dispose()

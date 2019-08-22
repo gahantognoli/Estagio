@@ -13,7 +13,7 @@ namespace GrupoAOX.Estagio.Application.Servicos
     {
         private readonly ICategoriaServices _categoriaServices;
 
-        public CategoriaAppService(ICategoriaServices categoriaServices, IUnitOfWork uow) :base(uow)
+        public CategoriaAppService(ICategoriaServices categoriaServices, IUnitOfWork uow) : base(uow)
         {
             _categoriaServices = categoriaServices;
         }
@@ -35,12 +35,7 @@ namespace GrupoAOX.Estagio.Application.Servicos
         {
             var categoriaReturn = Mapper.Map<CategoriaViewModel>(_categoriaServices
                 .Atualizar(Mapper.Map<Categoria>(categoria)));
-
-            if (categoriaReturn.ValidationResult.IsValid)
-            {
-                Commit();
-            }
-            
+            Commit();
             return categoriaReturn;
         }
 
