@@ -6,7 +6,7 @@ namespace GrupoAOX.Estagio.Data.Procedures
     {
         public static string ObterStringConexao()
         {
-            return ConfigurationManager.ConnectionStrings["PWProlinhas"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["Pw1ProFsa"].ConnectionString;
         }
     }
 }

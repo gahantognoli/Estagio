@@ -59,6 +59,12 @@ namespace GrupoAOX.Estagio.Application.Servicos
             return Mapper.Map<UsuarioPermissaoViewModel>(usuarioRetorno);
         }
 
+        public void Dispose()
+        {
+            _usuarioServices.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
         public Task<UsuarioViewModel> ImportarAD(string usuarioAD)
         {
             throw new NotImplementedException();

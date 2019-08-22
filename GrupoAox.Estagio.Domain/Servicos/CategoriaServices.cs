@@ -34,6 +34,11 @@ namespace GrupoAox.Estagio.Domain.Servicos
             GC.SuppressFinalize(this);
         }
 
+        public IEnumerable<Categoria> ObterPorDescricao(string descricao)
+        {
+            return _categoriaRepositorio.ObterPorDescricao(descricao);
+        }
+
         public Categoria ObterPorId(int id)
         {
             return _categoriaRepositorio.ObterPorId(id);

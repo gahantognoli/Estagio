@@ -1,9 +1,10 @@
 ﻿using GrupoAOX.Estagio.Application.ViewModel;
+using System;
 using System.Collections.Generic;
 
 namespace GrupoAOX.Estagio.Application.Interfaces
 {
-    public interface IPermissaoAppServices
+    public interface IPermissaoAppServices : IDisposable
     {
         PermissaoViewModel Adicionar(PermissaoViewModel permissao);
         PermissaoViewModel Atualizar(PermissaoViewModel permissao);

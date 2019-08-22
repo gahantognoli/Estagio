@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201908152028590_InitialCreate.Designer.cs">
       <DependentUpon>201908152028590_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908212318274_Teste.cs" />
+    <Compile Include="Migrations\201908212318274_Teste.Designer.cs">
+      <DependentUpon>201908212318274_Teste.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Procedures\CategoriaProcedures.cs" />
     <Compile Include="Procedures\ConexaoBancoDeDados.cs" />
@@ -107,6 +111,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201908152028590_InitialCreate.resx">
       <DependentUpon>201908152028590_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908212318274_Teste.resx">
+      <DependentUpon>201908212318274_Teste.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

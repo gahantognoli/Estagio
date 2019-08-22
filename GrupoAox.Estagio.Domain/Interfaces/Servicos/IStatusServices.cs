@@ -11,5 +11,6 @@ namespace GrupoAox.Estagio.Domain.Interfaces.Servicos
         void Remover(int id);
         Status ObterPorId(int id);
         IEnumerable<Status> ObterTodos();
+        IEnumerable<Status> ObterPorDescricao(string descricao);
     }
 }

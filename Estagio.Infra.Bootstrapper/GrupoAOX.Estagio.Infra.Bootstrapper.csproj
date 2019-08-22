@@ -50,6 +50,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GrupoAOX.Estagio.Application\GrupoAOX.Estagio.Aplicacao.csproj">
+      <Project>{6D92EEEF-6174-415D-BA3B-2BCED91C3E86}</Project>
+      <Name>GrupoAOX.Estagio.Aplicacao</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GrupoAOX.Estagio.Data\GrupoAOX.Estagio.Persistencia.csproj">
       <Project>{165074D3-5085-4109-A372-5985FFDDFC9D}</Project>
       <Name>GrupoAOX.Estagio.Persistencia</Name>

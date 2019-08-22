@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GrupoAOX.Estagio.Application.Interfaces
 {
-    public interface ITransferenciaAppServices
+    public interface ITransferenciaAppServices : IDisposable
     {
         TransferenciaViewModel ObterPorId(int id);
         IEnumerable<TransferenciaViewModel> ObterPorPeriodo(DateTime dataInicio, DateTime dataFim);

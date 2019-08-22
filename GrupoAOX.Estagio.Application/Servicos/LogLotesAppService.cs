@@ -17,6 +17,12 @@ namespace GrupoAOX.Estagio.Application.Servicos
             _logLotesServices = logLotesServices;
         }
 
+        public void Dispose()
+        {
+            _logLotesServices.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
         public IEnumerable<LogLotesViewModel> ObterPorPeriodo(DateTime dataInicio, DateTime dataFim)
         {
             return Mapper.Map<IEnumerable<LogLotesViewModel>>(_logLotesServices.ObterPorPeriodo(dataInicio, dataFim));

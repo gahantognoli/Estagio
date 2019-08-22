@@ -4,6 +4,7 @@ using GrupoAox.Estagio.Domain.Interfaces.Servicos;
 using GrupoAOX.Estagio.Application.Interfaces;
 using GrupoAOX.Estagio.Application.ViewModel;
 using GrupoAOX.Estagio.Data.UnitOfWork;
+using System;
 using System.Collections.Generic;
 
 namespace GrupoAOX.Estagio.Application.Servicos
@@ -32,6 +33,12 @@ namespace GrupoAOX.Estagio.Application.Servicos
         public int_exp_Etiqueta_ProducaoViewModel BiparEtiqueta(string numLote)
         {
             return Mapper.Map<int_exp_Etiqueta_ProducaoViewModel>(_loteServices.BiparEtiqueta(numLote));
+        }
+
+        public void Dispose()
+        {
+            _loteServices.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public int_exp_Etiqueta_ProducaoViewModel ObterPorDocumento(string numDocumento)

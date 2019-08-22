@@ -19,19 +19,32 @@ namespace GrupoAox.Estagio.Domain.Servicos
         public Status Adicionar(Status status)
         {
             status.ValidationResult = new StatusAptoParaCadastroValidation(_statusRepositorio).Validate(status);
-            return !status.ValidationResult.IsValid ? status : _statusRepositorio.Adicionar(status);
+            if (status.ValidationResult.IsValid)
+            {
+                var statusRetorno = _statusRepositorio.Adicionar(status);
+                statusRetorno.ValidationResult = status.ValidationResult;
+                return statusRetorno;
+            }
+            else
+            {
+                return status;
+            }
         }
 
         public Status Atualizar(Status status)
         {
-            status.ValidationResult = new StatusAptoParaCadastroValidation(_statusRepositorio).Validate(status);
-            return !status.ValidationResult.IsValid ? status : _statusRepositorio.Atualizar(status);
+            return _statusRepositorio.Atualizar(status);
         }
 
         public void Dispose()
         {
             _statusRepositorio.Dispose();
             GC.SuppressFinalize(this);
+        }
+
+        public IEnumerable<Status> ObterPorDescricao(string descricao)
+        {
+            return _statusRepositorio.ObterPorDescricao(descricao);
         }
 
         public Status ObterPorId(int id)

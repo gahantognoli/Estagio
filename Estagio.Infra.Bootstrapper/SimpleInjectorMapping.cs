@@ -1,6 +1,8 @@
 ﻿using GrupoAox.Estagio.Domain.Interfaces.Repositorios;
 using GrupoAox.Estagio.Domain.Interfaces.Servicos;
 using GrupoAox.Estagio.Domain.Servicos;
+using GrupoAOX.Estagio.Application.Interfaces;
+using GrupoAOX.Estagio.Application.Servicos;
 using GrupoAOX.Estagio.Data.Contexto;
 using GrupoAOX.Estagio.Data.Repositorios;
 using GrupoAOX.Estagio.Data.UnitOfWork;
@@ -12,9 +14,6 @@ namespace Estagio.Infra.Bootstrapper
     {
         public static void Register(Container container)
         {
-            container.Register<ContextoEstagio>(Lifestyle.Scoped);
-            container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
-
             //Repository injections
             container.Register<IUsuarioRepositorio, UsuarioRepositorio>(Lifestyle.Scoped);
             container.Register<ICategoriaRepositorio, CategoriaRepositorio>(Lifestyle.Scoped);
@@ -24,6 +23,7 @@ namespace Estagio.Infra.Bootstrapper
             container.Register<IStatusRepositorio, StatusRepositorio>(Lifestyle.Scoped);
             container.Register<ITransferenciaRepositorio, TransferenciaRepositorio>(Lifestyle.Scoped);
 
+
             //Services injections
             container.Register<IUsuarioServices, UsuarioServices>(Lifestyle.Scoped);
             container.Register<ICategoriaServices, CategoriaServices>(Lifestyle.Scoped);
@@ -32,6 +32,18 @@ namespace Estagio.Infra.Bootstrapper
             container.Register<IPermissaoServices, PermissaoServices>(Lifestyle.Scoped);
             container.Register<IStatusServices, StatusServices>(Lifestyle.Scoped);
             container.Register<ITransferenciaServices, TransferenciaServices>(Lifestyle.Scoped);
+
+            //App Services 
+            container.Register<IUsuarioAppServices, UsuarioAppService>(Lifestyle.Scoped);
+            container.Register<ICategoriaAppServices, CategoriaAppService>(Lifestyle.Scoped);
+            container.Register<ILogLotesAppServices, LogLotesAppService>(Lifestyle.Scoped);
+            container.Register<ILoteAppServices, LoteAppService>(Lifestyle.Scoped);
+            container.Register<IPermissaoAppServices, PermissaoAppService>(Lifestyle.Scoped);
+            container.Register<IStatusAppServices, StatusAppService>(Lifestyle.Scoped);
+            container.Register<ITransferenciaAppServices, TransferenciaAppService>(Lifestyle.Scoped);
+
+            container.Register<ContextoEstagio>(Lifestyle.Scoped);
+            container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
         }
     }
 }

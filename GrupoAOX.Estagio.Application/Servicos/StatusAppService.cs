@@ -4,6 +4,7 @@ using GrupoAox.Estagio.Domain.Interfaces.Servicos;
 using GrupoAOX.Estagio.Application.Interfaces;
 using GrupoAOX.Estagio.Application.ViewModel;
 using GrupoAOX.Estagio.Data.UnitOfWork;
+using System;
 using System.Collections.Generic;
 
 namespace GrupoAOX.Estagio.Application.Servicos
@@ -30,11 +31,19 @@ namespace GrupoAOX.Estagio.Application.Servicos
         public StatusViewModel Atualizar(StatusViewModel status)
         {
             var retornoStatus = Mapper.Map<StatusViewModel>(_statusServices.Atualizar(Mapper.Map<Status>(status)));
-            if (retornoStatus.ValidationResult.IsValid)
-            {
-                Commit();
-            }
+            Commit();
             return retornoStatus;
+        }
+
+        public void Dispose()
+        {
+            _statusServices.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
+        public IEnumerable<StatusViewModel> ObterPorDescricao(string descricao)
+        {
+            return Mapper.Map<IEnumerable<StatusViewModel>>(_statusServices.ObterPorDescricao(descricao));
         }
 
         public StatusViewModel ObterPorId(int id)

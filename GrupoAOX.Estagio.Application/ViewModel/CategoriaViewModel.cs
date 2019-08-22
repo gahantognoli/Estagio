@@ -7,6 +7,7 @@ namespace GrupoAOX.Estagio.Application.ViewModel
     public class CategoriaViewModel
     {
         [Key]
+        [Display(Name = "Descrição")]
         public int CategoriaId { get; set; }
 
         [Required(ErrorMessage = "Preencha a descrição da categoria")]

@@ -11,10 +11,32 @@ namespace GrupoAOX.Estagio.Data.Migrations
 
         protected override void Seed(GrupoAOX.Estagio.Data.Contexto.ContextoEstagio context)
         {
-            //  This method will be called after migrating to the latest version.
+            //List<Status> status = new List<Status>();
+            //status.Add(new Status() { StatusId = 0, Descricao = "Aguardando integração" });
+            //status.Add(new Status() { StatusId = 1, Descricao = "Integrado" });
+            //status.Add(new Status() { StatusId = 3, Descricao = "Transferido" });
+            //status.Add(new Status() { StatusId = 4, Descricao = "Aguardando faturamento" });
+            //status.Add(new Status() { StatusId = 5, Descricao = "Faturado" });
+            //status.Add(new Status() { StatusId = 8, Descricao = "Falha na integração" });
+            //status.Add(new Status() { StatusId = 9, Descricao = "Descartada" });
+            //status.Add(new Status() { StatusId = 99, Descricao = "Bobina antiga" });
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            //List<Categoria> categorias = new List<Categoria>();
+            //categorias.Add(new Categoria()
+            //{
+            //    Descricao = "Romaneio",
+            //    TipoCategoria = GrupoAox.Estagio.Domain.Enums.TipoCategoria.Romaneio
+            //});
+            //categorias.Add(new Categoria()
+            //{
+            //    Descricao = "Ordem de Expedição",
+            //    TipoCategoria = GrupoAox.Estagio.Domain.Enums.TipoCategoria.OrdemExpedicao
+            //});
+
+            //context.Status.AddRange(status);
+            //context.Categorias.AddRange(categorias);
+
+            //context.SaveChanges();
         }
     }
 }

@@ -15,10 +15,15 @@ namespace GrupoAOX.Estagio.MVC.App_Start
         public static void Initialize()
         {
             var container = new Container();
-            container.Options.DefaultLifestyle = new WebRequestLifestyle();
+            container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
+
             InitializeContainer(container);
+
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+            //container.RegisterMvcIntegratedFilterProvider();
+
             container.Verify();
+
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
 

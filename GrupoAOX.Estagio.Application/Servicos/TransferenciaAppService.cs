@@ -77,5 +77,12 @@ namespace GrupoAOX.Estagio.Application.Servicos
             }
 
         }
+
+        public void Dispose()
+        {
+            _loteServices.Dispose();
+            _statusServices.Dispose();
+            _transferenciaServices.Dispose();
+        }
     }
 }

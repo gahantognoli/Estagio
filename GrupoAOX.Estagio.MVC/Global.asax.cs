@@ -1,4 +1,5 @@
-﻿using GrupoAOX.Estagio.MVC.App_Start;
+﻿using GrupoAOX.Estagio.Application.AutoMapper;
+using GrupoAOX.Estagio.MVC.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace GrupoAOX.Estagio.MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AutoMapperConfig.RegisterMappings();
             SimpleInjectorInitializer.Initialize();
         }
     }

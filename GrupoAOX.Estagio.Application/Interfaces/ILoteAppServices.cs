@@ -1,9 +1,10 @@
 ﻿using GrupoAOX.Estagio.Application.ViewModel;
+using System;
 using System.Collections.Generic;
 
 namespace GrupoAOX.Estagio.Application.Interfaces
 {
-    public interface ILoteAppServices
+    public interface ILoteAppServices : IDisposable
     {
         IEnumerable<int_exp_Etiqueta_ProducaoViewModel> ObterTodos();
         int_exp_Etiqueta_ProducaoViewModel ObterPorId(int id);

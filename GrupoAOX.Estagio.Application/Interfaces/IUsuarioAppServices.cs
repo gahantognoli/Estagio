@@ -1,10 +1,11 @@
 ﻿using GrupoAOX.Estagio.Application.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GrupoAOX.Estagio.Application.Interfaces
 {
-    public interface IUsuarioAppServices
+    public interface IUsuarioAppServices : IDisposable
     {
         UsuarioViewModel Adicionar(UsuarioViewModel usuario);
         UsuarioPermissaoViewModel AtribuirPermissoes(UsuarioPermissaoViewModel usuarioPermissaoViewModel);

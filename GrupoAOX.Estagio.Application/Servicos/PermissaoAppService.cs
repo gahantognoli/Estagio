@@ -4,6 +4,7 @@ using GrupoAox.Estagio.Domain.Interfaces.Servicos;
 using GrupoAOX.Estagio.Application.Interfaces;
 using GrupoAOX.Estagio.Application.ViewModel;
 using GrupoAOX.Estagio.Data.UnitOfWork;
+using System;
 using System.Collections.Generic;
 
 namespace GrupoAOX.Estagio.Application.Servicos
@@ -41,6 +42,12 @@ namespace GrupoAOX.Estagio.Application.Servicos
             }
 
             return permissaoReturn;
+        }
+
+        public void Dispose()
+        {
+            _permissaoServices.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public PermissaoViewModel ObterPorId(int id)

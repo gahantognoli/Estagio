@@ -28,15 +28,15 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             return categoria;
         }
 
-        public Categoria ObterPorDescricao(string descricao)
+        public IEnumerable<Categoria> ObterPorDescricao(string descricao)
         {
-            Categoria categoria = null;
+            IEnumerable<Categoria> categoria = null;
             using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
             {
                 categoria = dbConnection.Query<Categoria>(CategoriaProcedures.ObterPorDescricao.GetDescription(), new
                 {
-                    Descricao = descricao
-                }, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
+                    descricao = descricao
+                }, commandType: System.Data.CommandType.StoredProcedure);
             }
             return categoria;
         }

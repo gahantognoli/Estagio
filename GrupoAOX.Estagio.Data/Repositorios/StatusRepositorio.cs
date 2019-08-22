@@ -4,13 +4,10 @@ using GrupoAox.Estagio.Domain.Interfaces.Repositorios;
 using GrupoAOX.Estagio.Data.Contexto;
 using GrupoAOX.Estagio.Data.Procedures;
 using GrupoAOX.Estagio.Infra.ExtensionMethods;
-using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GrupoAOX.Estagio.Data.Repositorios
 {
@@ -41,6 +38,17 @@ namespace GrupoAOX.Estagio.Data.Repositorios
                     id = id
                 },
                 commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
+            }
+            return status;
+        }
+
+        public IEnumerable<Status> ObterPorDescricao(string descricao)
+        {
+            IEnumerable<Status> status = null;
+            using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
+            {
+                status = dbConnection.Query<Status>(StatusProcedures.ObterPorDescricao.GetDescription(), 
+                    new { descricao = descricao }, commandType: System.Data.CommandType.StoredProcedure);
             }
             return status;
         }
