@@ -35,12 +35,7 @@ namespace GrupoAOX.Estagio.Application.Servicos
         {
             var permissaoReturn = Mapper.Map<PermissaoViewModel>(_permissaoServices
                 .Atualizar(Mapper.Map<Permissao>(permissao)));
-
-            if (permissaoReturn.ValidationResult.IsValid)
-            {
-                Commit();
-            }
-
+            Commit();
             return permissaoReturn;
         }
 
@@ -50,9 +45,19 @@ namespace GrupoAOX.Estagio.Application.Servicos
             GC.SuppressFinalize(this);
         }
 
+        public IEnumerable<PermissaoViewModel> ObterPorDescricao(string descricao)
+        {
+            return Mapper.Map<IEnumerable<PermissaoViewModel>>(_permissaoServices.ObterPorDescricao(descricao));
+        }
+
         public PermissaoViewModel ObterPorId(int id)
         {
             return Mapper.Map<PermissaoViewModel>(_permissaoServices.ObterPorId(id));
+        }
+
+        public PermissaoViewModel ObterPorSigla(string sigla)
+        {
+            return Mapper.Map<PermissaoViewModel>(_permissaoServices.ObterPorSigla(sigla));
         }
 
         public IEnumerable<PermissaoViewModel> ObterTodos()

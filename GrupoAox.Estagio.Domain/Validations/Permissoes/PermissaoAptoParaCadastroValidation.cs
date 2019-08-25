@@ -10,8 +10,10 @@ namespace GrupoAox.Estagio.Domain.Validations.Permissoes
         public PermissaoAptoParaCadastroValidation(IPermissaoRepositorio permissaoRepositorio)
         {
             var descricaoDuplicada = new PermissaoDevePossuirDescricaoUnicaSpecification(permissaoRepositorio);
+            var siglaDuplicada = new PermissaoDevePossuirSiglaUnicaSpecification(permissaoRepositorio);
 
             base.Add("descricaoDuplicada", new Rule<Permissao>(descricaoDuplicada, "Descrição já cadastrada"));
+            base.Add("siglaDuplicada", new Rule<Permissao>(siglaDuplicada, "Sigla já cadastrada"));
         }
     }
 }

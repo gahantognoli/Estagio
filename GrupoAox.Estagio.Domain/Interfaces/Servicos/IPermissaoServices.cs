@@ -11,5 +11,7 @@ namespace GrupoAox.Estagio.Domain.Interfaces.Servicos
         void Remover(int id);
         Permissao ObterPorId(int id);
         IEnumerable<Permissao> ObterTodos();
+        IEnumerable<Permissao> ObterPorDescricao(string descricao);
+        Permissao ObterPorSigla(string sigla);
     }
 }

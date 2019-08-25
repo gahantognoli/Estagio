@@ -29,18 +29,17 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             return permissoes;
         }
 
-        public Permissao ObterPorDescricao(string descricao)
+        public IEnumerable<Permissao> ObterPorDescricao(string descricao)
         {
-            Permissao permissao = null;
+            IEnumerable<Permissao> permissoes = null;
             using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
             {
-                permissao = dbConnection.Query<Permissao>(PermissaoProcedures.ObterPorDescricao.GetDescription(), new
+                permissoes = dbConnection.Query<Permissao>(PermissaoProcedures.ObterPorDescricao.GetDescription(), new
                 {
-                    Descricao = descricao
-                }, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
+                    descricao = descricao
+                }, commandType: System.Data.CommandType.StoredProcedure);
             }
-
-            return permissao;
+            return permissoes;
         }
 
         public override Permissao ObterPorId(int id)
@@ -69,7 +68,7 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             {
                 permissao = dbConnection.Query<Permissao>(PermissaoProcedures.ObterPorSigla.GetDescription(), new
                 {
-                    Sigla = sigla
+                    sigla = sigla
                 }, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
             }
 

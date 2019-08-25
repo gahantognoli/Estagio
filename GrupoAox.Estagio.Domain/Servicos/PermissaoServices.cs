@@ -19,13 +19,21 @@ namespace GrupoAox.Estagio.Domain.Servicos
         public Permissao Adicionar(Permissao permissao)
         {
             permissao.ValidationResult = new PermissaoAptoParaCadastroValidation(_permissaoRepositorio).Validate(permissao);
-            return !permissao.ValidationResult.IsValid ? permissao : _permissaoRepositorio.Adicionar(permissao);
+            if (permissao.ValidationResult.IsValid)
+            {
+                var permissaoRetorno = _permissaoRepositorio.Adicionar(permissao);
+                permissaoRetorno.ValidationResult = permissao.ValidationResult;
+                return permissaoRetorno;
+            }
+            else
+            {
+                return permissao;
+            }
         }
 
         public Permissao Atualizar(Permissao permissao)
         {
-            permissao.ValidationResult = new PermissaoAptoParaCadastroValidation(_permissaoRepositorio).Validate(permissao);
-            return !permissao.ValidationResult.IsValid ? permissao : _permissaoRepositorio.Adicionar(permissao);
+            return _permissaoRepositorio.Atualizar(permissao);
         }
 
         public void Dispose()
@@ -34,9 +42,19 @@ namespace GrupoAox.Estagio.Domain.Servicos
             GC.SuppressFinalize(this);
         }
 
+        public IEnumerable<Permissao> ObterPorDescricao(string descricao)
+        {
+            return _permissaoRepositorio.ObterPorDescricao(descricao);
+        }
+
         public Permissao ObterPorId(int id)
         {
             return _permissaoRepositorio.ObterPorId(id);
+        }
+
+        public Permissao ObterPorSigla(string sigla)
+        {
+            return _permissaoRepositorio.ObterPorSigla(sigla);
         }
 
         public IEnumerable<Permissao> ObterTodos()

@@ -1,39 +1,91 @@
 ﻿@model IEnumerable<GrupoAOX.Estagio.Application.ViewModel.PermissaoViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Permissões";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-12">
+        <h3>Permissões</h3>
+        <hr />
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+    <div class="col-4">
+        @Html.ActionLink("Novo", "Novo", null, new { @class = "btn btn-success" })
+    </div>
+
+    <div class="col-12">
+        <div class="card" style="margin-bottom:15px;margin-top: 15px;">
+            <div class="card-header">
+                <h5>Opções de Pesquisa</h5>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    <div class="form-row">
+                        <div class="col-2">
+                            <select name="parametro" id="parametro" class="form-control" onchange="$('#busca').val('')" value="@(ViewBag.Busca == "" ? "" : ViewBag.Busca)">
+                                <option value="" @(ViewBag.Parametro == "" ? "selected" : "")>Pesquisar por...</option>
+                                <option value="descricao" @(ViewBag.Parametro == "descricao" ? "selected" : "")>Descrição</option>
+                                <option value="sigla" @(ViewBag.Parametro == "sigla" ? "selected" : "")>Sigla</option>
+                            </select>
+                        </div>
+                        <div class="col-10">
+                            <div class="form-row">
+                                <div class="col-10">
+                                    <div class="input-group mb-2">
+                                        <input type="text" class="form-control" name="busca" id="busca" placeholder="Pesquisa..." value="@(ViewBag.Parametro == "" ? "" : @ViewBag.Busca)">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <button type="submit" class="btn btn-primary mb-2">Pesquisar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped table-sm table-hover tabela">
+    <tr class="thead-dark">
         <th>
-            @Html.DisplayNameFor(model => model.Sigla)
+            @Html.DisplayNameFor(model => model.First().PermissaoId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descricao)
+            @Html.DisplayNameFor(model => model.First().Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Sigla)
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sigla)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PermissaoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PermissaoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PermissaoId })
-        </td>
-    </tr>
-}
-
+    @if (Model.Count() == 0)
+    {
+        <tr><td class="text-center" colspan="4"><span class="lead">Não há dados</span></td></tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PermissaoId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sigla)
+                </td>
+                <td>
+                    @Html.ActionLink("Detalhes", "Detalhes", new { id = item.PermissaoId }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Editar", "Editar", new { id = item.PermissaoId }, new { @class = "btn btn-primary btn-sm" })
+                    @Html.ActionLink("Remover", "Remover", new { id = item.PermissaoId }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    }
 </table>

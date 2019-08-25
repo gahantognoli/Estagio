@@ -11,5 +11,7 @@ namespace GrupoAOX.Estagio.Application.Interfaces
         void Remover(int id);
         PermissaoViewModel ObterPorId(int id);
         IEnumerable<PermissaoViewModel> ObterTodos();
+        IEnumerable<PermissaoViewModel> ObterPorDescricao(string descricao);
+        PermissaoViewModel ObterPorSigla(string sigla);
     }
 }

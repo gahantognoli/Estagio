@@ -1,6 +1,7 @@
 ﻿using DomainValidation.Interfaces.Specification;
 using GrupoAox.Estagio.Domain.Entidades;
 using GrupoAox.Estagio.Domain.Interfaces.Repositorios;
+using System.Linq;
 
 namespace GrupoAox.Estagio.Domain.Specifications.Permissoes
 {
@@ -15,7 +16,7 @@ namespace GrupoAox.Estagio.Domain.Specifications.Permissoes
 
         public bool IsSatisfiedBy(Permissao permissao)
         {
-            return _permissaoRepositorio.ObterPorDescricao(permissao.Descricao.Trim()) == null;
+            return _permissaoRepositorio.ObterPorDescricao(permissao.Descricao.Trim()).Count() == 0;
         }
     }
 }

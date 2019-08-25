@@ -272,6 +272,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Status\Detalhes.cshtml" />
     <Content Include="Views\Categoria\Detalhes.cshtml" />
+    <Content Include="Views\Permissao\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
