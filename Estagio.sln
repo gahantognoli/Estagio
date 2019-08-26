@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrupoAOX.Estagio.Infra.Seri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrupoAOX.Estagio.MVC", "GrupoAOX.Estagio.MVC\GrupoAOX.Estagio.MVC.csproj", "{61DF82E7-ABCB-46E0-8B63-BD03C0A8F658}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrupoAOX.Estagio.API", "GrupoAOX.Estagio.API\GrupoAOX.Estagio.API.csproj", "{DA58AA41-573B-4454-B78B-F41071EFEB0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{61DF82E7-ABCB-46E0-8B63-BD03C0A8F658}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61DF82E7-ABCB-46E0-8B63-BD03C0A8F658}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61DF82E7-ABCB-46E0-8B63-BD03C0A8F658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA58AA41-573B-4454-B78B-F41071EFEB0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA58AA41-573B-4454-B78B-F41071EFEB0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA58AA41-573B-4454-B78B-F41071EFEB0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA58AA41-573B-4454-B78B-F41071EFEB0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{9D6FD985-42B3-4ADF-9D09-9C76B1F7F7D8} = {E866A9E9-EE97-4A15-9546-F4C66B9CA441}
 		{7B23ABF6-7386-4169-B146-454982FE06EF} = {9D6FD985-42B3-4ADF-9D09-9C76B1F7F7D8}
 		{61DF82E7-ABCB-46E0-8B63-BD03C0A8F658} = {0FE31644-E93A-4BA5-BF49-027D5D4E739C}
+		{DA58AA41-573B-4454-B78B-F41071EFEB0F} = {59E860CB-3DC3-49B4-ADE1-F926E226E10A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CBE8D847-67B2-4464-8205-82657323E5A9}

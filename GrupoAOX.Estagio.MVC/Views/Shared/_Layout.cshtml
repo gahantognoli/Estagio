@@ -38,10 +38,13 @@
                     <a href="#transferenciasSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <div>
                             <i class="fas fa-retweet icone-menu"></i>
-                            Transferências
+                            Almoxarifado PA
                         </div>
                     </a>
                     <ul class="collapse list-unstyled" id="transferenciasSubmenu">
+                        <li>
+                            <a href="@Url.Action("DescartarEtiqueta", "Lote")">Descartar Etiqueta</a>
+                        </li>
                         <li>
                             <a href="@Url.Action("Novo", "Romaneio")">Romaneio</a>
                         </li>
@@ -57,13 +60,16 @@
                     </a>
                     <ul class="collapse list-unstyled" id="relatoriosSubmenu">
                         <li>
-                            <a href="@Url.Action("Index", "XXX")">Relatório 1</a>
+                            <a href="@Url.Action("EtiquetasGeradas", "Relatorios")">Relatorio Etiquetas Geradas</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index", "XXX")">Relatório 2</a>
+                            <a href="@Url.Action("PrevisaoConsumo", "Relatorios")">Previsão de Consumo por Etiquetasa</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index", "XXX")">Relatório 3</a>
+                            <a href="@Url.Action("ReimpressaoRomaneio", "Relatorios")">Reimpressão de Romaneio</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ReimpressaoOrdemExpedicao", "Relatorios")">Reimpressão de Ordem de Expedição</a>
                         </li>
                     </ul>
                 </li>
