@@ -13,5 +13,6 @@ namespace GrupoAox.Estagio.Domain.Interfaces.Servicos
         IEnumerable<Usuario> ObterTodos();
         Usuario ObterPorLogin(string login);
         Usuario ObterPorEmail(string email);
+        IEnumerable<Usuario> ObterPorNome(string nome);
     }
 }

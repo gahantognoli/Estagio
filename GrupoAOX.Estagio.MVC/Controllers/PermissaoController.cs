@@ -30,6 +30,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Novo(PermissaoViewModel permissaoViewModel)
         {
             if (ModelState.IsValid)
@@ -83,6 +84,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Editar(PermissaoViewModel permissaoViewModel)
         {
             if (ModelState.IsValid)
@@ -111,6 +113,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Remover(int id)
         {
             _permissaoAppServices.Remover(id);

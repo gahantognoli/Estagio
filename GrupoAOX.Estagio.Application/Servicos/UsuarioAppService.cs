@@ -85,6 +85,11 @@ namespace GrupoAOX.Estagio.Application.Servicos
             return Mapper.Map<UsuarioViewModel>(_usuarioServices.ObterPorLogin(login));
         }
 
+        public IEnumerable<UsuarioViewModel> ObterPorNome(string nome)
+        {
+            return Mapper.Map<IEnumerable<UsuarioViewModel>>(_usuarioServices.ObterPorNome(nome));
+        }
+
         public IEnumerable<UsuarioViewModel> ObterTodos()
         {
             return Mapper.Map<IEnumerable<UsuarioViewModel>>(_usuarioServices.ObterTodos());

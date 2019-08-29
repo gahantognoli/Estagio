@@ -96,5 +96,10 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             usuario.CaminhoImg = caminhoImagem;
             Atualizar(usuario);
         }
+
+        public IEnumerable<Usuario> ObterPorNome(string nome)
+        {
+            return Buscar(u => u.Nome.Contains(nome));
+        }
     }
 }

@@ -58,5 +58,10 @@ namespace GrupoAox.Estagio.Domain.Servicos
             _usuarioRepositorio.Dispose();
             GC.SuppressFinalize(this);
         }
+
+        public IEnumerable<Usuario> ObterPorNome(string nome)
+        {
+            return _usuarioRepositorio.ObterPorNome(nome);
+        }
     }
 }

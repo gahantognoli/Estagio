@@ -9,9 +9,12 @@ namespace GrupoAox.Estagio.Domain.Validations.Status
         public StatusAptoParaCadastroValidation(IStatusRepositorio statusRepositorio)
         {
             var statusIdDuplicado = new StatusDevePossuirIdUnicoSpecification(statusRepositorio);
+            var descricaoDuplicada = new StatusDevePossuirDescricaoUnicaSpecification(statusRepositorio);
 
             base.Add("statusIdDuplicado", new Rule<GrupoAox.Estagio.Domain.Entidades.Status>(statusIdDuplicado,
                 "O Id já foi cadastrado!"));
+            base.Add("statusDuplucado", new Rule<GrupoAox.Estagio.Domain.Entidades.Status>(descricaoDuplicada,
+                "Descrição já foi cadastrado!"));
         }
     }
 }

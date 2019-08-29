@@ -29,6 +29,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Novo(CategoriaViewModel categoriaViewModel)
         {
             if (ModelState.IsValid)
@@ -65,6 +66,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Editar(CategoriaViewModel categoriaViewModel)
         {
             if (ModelState.IsValid)
@@ -110,6 +112,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Remover(int id)
         {
             _categoriaAppServices.Remover(id);

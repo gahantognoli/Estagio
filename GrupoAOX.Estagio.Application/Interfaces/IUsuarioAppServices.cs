@@ -16,5 +16,6 @@ namespace GrupoAOX.Estagio.Application.Interfaces
         IEnumerable<UsuarioViewModel> ObterTodos();
         UsuarioViewModel ObterPorLogin(string login);
         UsuarioViewModel ObterPorEmail(string email);
+        IEnumerable<UsuarioViewModel> ObterPorNome(string nome);
     }
 }

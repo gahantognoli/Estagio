@@ -29,6 +29,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Novo(StatusViewModel statusViewModel)
         {
             if (ModelState.IsValid)
@@ -82,6 +83,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Editar(StatusViewModel statusViewModel)
         {
             if (ModelState.IsValid)
@@ -110,6 +112,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Remover(int id)
         {
             _statusAppServices.Remover(id);

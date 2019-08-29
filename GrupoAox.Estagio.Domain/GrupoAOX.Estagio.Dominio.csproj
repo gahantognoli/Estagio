@@ -77,6 +77,7 @@
     <Compile Include="Servicos\TransferenciaServices.cs" />
     <Compile Include="Servicos\UsuarioServices.cs" />
     <Compile Include="Specifications\Categorias\CategoriaDevePossuirDescricaoUnicaSpecification.cs" />
+    <Compile Include="Specifications\Status\StatusDevePossuirDescricaoUnicaSpecification.cs" />
     <Compile Include="Specifications\Transferencias\TransferenciaDevePossuirLotesSpecification.cs" />
     <Compile Include="Specifications\Transferencias\TransferenciaNaoDevePossuirEtiquetaDescartadaSpecification.cs" />
     <Compile Include="Specifications\Permissoes\PermissaoDevePossuirDescricaoUnicaSpecification.cs" />
