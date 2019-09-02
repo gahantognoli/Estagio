@@ -1,10 +1,12 @@
 ﻿using GrupoAOX.Estagio.Application.Interfaces;
 using GrupoAOX.Estagio.Application.ViewModel;
+using GrupoAOX.Estagio.MVC.ActiveDirectory;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -32,7 +34,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         public async Task<ActionResult> Novo(string usuario)
         {
             var retorno = await _usuarioAppServices.ImportarAD(usuario);
-            //Thread.Sleep(2000);
+            Thread.Sleep(1000);
             TempData["UsuarioCadastrado"] = $"Usuário<strong> {retorno.Nome} <strong>importado com sucesso";
             return RedirectToAction("Index", "Usuarios");
         }
@@ -42,18 +44,18 @@ namespace GrupoAOX.Estagio.MVC.Controllers
             return View(usuario);
         }
 
-        public ActionResult GetUsuarioAD(string parametro, string busca = null)
+        [HttpPost]
+        public ActionResult PesquisarUsuarioAD(string parametro, string busca = null)
         {
-            //if (parametro == "login")
-            //{
-            //    UsuarioViewModel usuarioViewModel = ActiveDirectory.ActiveDirectoryServices.SearchUser(busca);
-            //    return ImportarAD(usuarioViewModel);
-            //}
-            //else
-            //{
-            //    return RedirectToAction("ImportarAD");
-            //}
-            throw new NotImplementedException();
+            if (parametro == "login")
+            {
+                UsuarioViewModel usuarioViewModel = ActiveDirectorySearch.SearchUser(busca);
+                return ImportarAD(usuarioViewModel);
+            }
+            else
+            {
+                return RedirectToAction("ImportarAD");
+            }
         }
 
         public ActionResult Editar(int? id)
@@ -102,7 +104,6 @@ namespace GrupoAOX.Estagio.MVC.Controllers
 
                 //ClaimsExtensionMethod.AddUpdateClaim(User, model, _usuarioAppService);
                 _usuarioAppServices.Alterar(usuario);
-
 
                 return RedirectToAction("Index");
             }

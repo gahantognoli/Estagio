@@ -24,8 +24,7 @@ namespace GrupoAox.Estagio.Domain.Servicos
 
         public Usuario Alterar(Usuario usuario)
         {
-            usuario.ValidationResult = new UsuarioAptoParaCadastroValidation(_usuarioRepositorio).Validate(usuario);
-            return !usuario.ValidationResult.IsValid ? usuario : _usuarioRepositorio.Adicionar(usuario);
+            return _usuarioRepositorio.Atualizar(usuario);
         }
 
         public IEnumerable<Usuario> ObterTodos()

@@ -8,7 +8,7 @@ namespace GrupoAox.Estagio.Domain.Entidades
         public int PermissaoId { get; set; }
         public string Sigla { get; set; }
         public string Descricao { get; set; }
-        public ICollection<Usuario> Usuarios { get; set; }
+        public virtual ICollection<Usuario> Usuarios { get; set; }
 
         public ValidationResult ValidationResult { get; set; }
     }

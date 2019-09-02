@@ -32,10 +32,7 @@ namespace GrupoAOX.Estagio.Application.Servicos
         public UsuarioViewModel Alterar(UsuarioViewModel usuario)
         {
             var usuarioRetorno = Mapper.Map<UsuarioViewModel>(_usuarioServices.Alterar(Mapper.Map<Usuario>(usuario)));
-            if (usuarioRetorno.ValidationResult.IsValid)
-            {
-                Commit();
-            }
+            Commit();
             return usuarioRetorno;
         }
 

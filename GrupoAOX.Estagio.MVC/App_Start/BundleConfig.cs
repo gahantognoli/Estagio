@@ -29,6 +29,15 @@ namespace GrupoAOX.Estagio.MVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/icheck").Include(
+                      "~/Content/icheck-bootstrap.min.css"));
+
+            #region Meus bundles
+            bundles.Add(new ScriptBundle("~/bundles/Usuarios").Include(
+                     "~/Scripts/Usuarios/script.js"));
+            #endregion
+
         }
     }
 }

@@ -7,6 +7,7 @@ using GrupoAOX.Estagio.Infra.ExtensionMethods;
 using Slapper;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 
@@ -31,21 +32,22 @@ namespace GrupoAOX.Estagio.Data.Repositorios
 
         public override Usuario ObterPorId(int id)
         {
-            IEnumerable<dynamic> query = null;
+            //IEnumerable<dynamic> query = null;
 
-            using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
-            {
-                query = dbConnection.Query<Usuario>(UsuarioProcedures.ObterPorId.GetDescription(), new {
-                    id = id
-                }, commandType: System.Data.CommandType.StoredProcedure);
-            }
+            //using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
+            //{
+            //    query = dbConnection.Query<Usuario>(UsuarioProcedures.ObterPorId.GetDescription(), new {
+            //        Id = id
+            //    }, commandType: System.Data.CommandType.StoredProcedure);
+            //}
 
-            AutoMapper.Configuration.AddIdentifier(typeof(Usuario), "UsuarioId");
-            AutoMapper.Configuration.AddIdentifier(typeof(Permissao), "PermissaoId");
+            //AutoMapper.Configuration.AddIdentifier(typeof(Usuario), "UsuarioId");
+            //AutoMapper.Configuration.AddIdentifier(typeof(Permissao), "PermissaoId");
 
-            Usuario usuario = (AutoMapper.MapDynamic<Usuario>(query, false) as IEnumerable<Usuario>).FirstOrDefault();
+            //List<Usuario> usuario = (AutoMapper.MapDynamic<Usuario>(query, false) as IEnumerable<Usuario>).ToList();
 
-            return usuario;
+            //return usuario.FirstOrDefault();
+            return Db.Usuarios.Where(u => u.UsuarioId == id).Include("Permissoes").FirstOrDefault();
         }
 
         public Usuario ObterPorLogin(string login)
@@ -55,33 +57,33 @@ namespace GrupoAOX.Estagio.Data.Repositorios
 
         public Usuario ObterPorEmail(string email)
         {
-            return Buscar(u => u.Email == email).FirstOrDefault();
+            return Buscar(u => u.Email == email && u.Ativo == true).FirstOrDefault();
         }
 
-        //public override Usuario Atualizar(Usuario obj)
-        //{
-        //    Usuario usuarioExistente = Db.Usuarios.Include("Permissoes")
-        //        .Where(e => e.UsuarioId == obj.UsuarioId).FirstOrDefault();
+        public override Usuario Atualizar(Usuario obj)
+        {
+            Usuario usuarioExistente = Db.Usuarios.Include("Permissoes")
+                .Where(e => e.UsuarioId == obj.UsuarioId).FirstOrDefault();
 
-        //    List<Permissao> permissoesParaDeletar = usuarioExistente.Permissoes.Except(obj.Permissoes,
-        //        p => p.PermissaoId).ToList();
+            List<Permissao> permissoesParaDeletar = usuarioExistente.Permissoes.Except(obj.Permissoes,
+                p => p.PermissaoId).ToList();
 
-        //    List<Permissao> permissoesParaAdicionar = usuarioExistente.Permissoes.Except(usuarioExistente.Permissoes,
-        //        p => p.PermissaoId).ToList();
+            List<Permissao> permissoesParaAdicionar = obj.Permissoes.Except(usuarioExistente.Permissoes,
+                p => p.PermissaoId).ToList();
 
-        //    permissoesParaDeletar.ForEach(p => usuarioExistente.Permissoes.Remove(p));
+            permissoesParaDeletar.ForEach(p => usuarioExistente.Permissoes.Remove(p));
 
-        //    foreach (Permissao p in permissoesParaAdicionar)
-        //    {
-        //        if (Db.Entry(p).State == System.Data.Entity.EntityState.Detached)
-        //        {
-        //            Db.Permissoes.Attach(p);
-        //        }
-        //        usuarioExistente.Permissoes.Add(p);
-        //    }
+            foreach (Permissao p in permissoesParaAdicionar)
+            {
+                if (Db.Entry(p).State == System.Data.Entity.EntityState.Detached)
+                {
+                    Db.Permissoes.Attach(p);
+                }
+                usuarioExistente.Permissoes.Add(p);
+            }
 
-        //    return usuarioExistente;
-        //}
+            return usuarioExistente;
+        }
 
         public override void Remover(int id)
         {
@@ -99,7 +101,7 @@ namespace GrupoAOX.Estagio.Data.Repositorios
 
         public IEnumerable<Usuario> ObterPorNome(string nome)
         {
-            return Buscar(u => u.Nome.Contains(nome));
+            return Buscar(u => u.Nome.Contains(nome) && u.Ativo == true);
         }
     }
 }

@@ -11,8 +11,8 @@ namespace GrupoAox.Estagio.Domain.Entidades
         public bool Ativo { get; set; }
         public string Email { get; set; }
         public string CaminhoImg { get; set; }
-        public ICollection<Permissao> Permissoes { get; set; }
-        public ICollection<Transferencia> Transferencias { get; set; }
+        public virtual ICollection<Permissao> Permissoes { get; set; }
+        public virtual ICollection<Transferencia> Transferencias { get; set; }
 
         public ValidationResult ValidationResult { get; set; }
     }
