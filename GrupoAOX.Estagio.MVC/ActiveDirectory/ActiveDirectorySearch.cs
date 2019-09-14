@@ -9,6 +9,7 @@ namespace GrupoAOX.Estagio.MVC.ActiveDirectory
         public static UsuarioViewModel SearchUser(string busca = null)
         {
             ContextType authenticationType = ContextType.Domain;
+            //ContextType authenticationType = ContextType.Machine;
 
             PrincipalContext principalContext = new PrincipalContext(authenticationType);
             UserPrincipal userPrincipal = new UserPrincipal(principalContext);

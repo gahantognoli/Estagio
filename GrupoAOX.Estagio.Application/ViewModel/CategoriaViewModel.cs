@@ -1,5 +1,4 @@
-﻿using GrupoAox.Estagio.Domain.Enums;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace GrupoAOX.Estagio.Application.ViewModel
@@ -15,8 +14,6 @@ namespace GrupoAOX.Estagio.Application.ViewModel
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
         [Display(Name = "Tipo Categoria")]
-        public TipoCategoria TipoCategoria { get; set; }
-
         public ICollection<TransferenciaViewModel> Transferencias { get; set; }
 
         [ScaffoldColumn(false)]

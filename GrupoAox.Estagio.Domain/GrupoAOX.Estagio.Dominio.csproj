@@ -50,7 +50,6 @@
     <Compile Include="Entidades\Status.cs" />
     <Compile Include="Entidades\Transferencia.cs" />
     <Compile Include="Entidades\Usuario.cs" />
-    <Compile Include="Enums\TipoCategoria.cs" />
     <Compile Include="Interfaces\Repositorios\ICategoriaRepositorio.cs" />
     <Compile Include="Interfaces\Repositorios\ILogLotesRepositorio.cs" />
     <Compile Include="Interfaces\Repositorios\ILoteRepositorio.cs" />
@@ -61,6 +60,7 @@
     <Compile Include="Interfaces\Repositorios\IUsuarioRepositorio.cs" />
     <Compile Include="Interfaces\ServicosProtheus\IArmazemServices.cs" />
     <Compile Include="Interfaces\Servicos\ICategoriaServices.cs" />
+    <Compile Include="Interfaces\Servicos\IEntitySerializarionServices.cs" />
     <Compile Include="Interfaces\Servicos\ILogLotesServices.cs" />
     <Compile Include="Interfaces\Servicos\ILoteServices.cs" />
     <Compile Include="Interfaces\Servicos\IPermissaoServices.cs" />

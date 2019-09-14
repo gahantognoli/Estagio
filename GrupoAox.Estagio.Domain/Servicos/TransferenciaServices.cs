@@ -44,9 +44,9 @@ namespace GrupoAox.Estagio.Domain.Servicos
             GC.SuppressFinalize(this);
         }
 
-        public string ObterNumDocumento(Categoria categoria)
+        public string ObterNumDocumento()
         {
-            return _transferenciaRepositorio.ObterNumDocumento(categoria);
+            return _transferenciaRepositorio.ObterNumDocumento();
         }
     }
 }

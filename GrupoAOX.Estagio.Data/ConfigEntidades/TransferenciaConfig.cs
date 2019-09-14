@@ -13,7 +13,6 @@ namespace GrupoAOX.Estagio.Data.ConfigEntidades
                 .IsRequired();
 
             Property(t => t.ArmazemOrigem)
-                .IsRequired()
                 .HasMaxLength(2)
                 .IsFixedLength();
 

@@ -32,5 +32,17 @@
         } catch (e) {
             console.log("Erro ao enviar requisição AJAX! Detalhes: " + e.message);
         }
+    },
+    IsNotEmpty: function (pValue) {
+        return pValue !== undefined && pValue !== null && pValue !== "" ? true : false;
+    },
+    IsEmpty: function (pValue) {
+        return pValue === undefined || pValue === null || pValue === "" ? true : false;
+    },
+    EsconderModal: function (id) {
+        $(id).modal('hide');
+    },
+    MostrarModal: function (id) {
+        $(id).modal('show');
     }
 };

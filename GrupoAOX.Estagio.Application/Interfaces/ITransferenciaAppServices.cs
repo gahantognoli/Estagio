@@ -10,5 +10,6 @@ namespace GrupoAOX.Estagio.Application.Interfaces
         IEnumerable<TransferenciaViewModel> ObterPorPeriodo(DateTime dataInicio, DateTime dataFim);
         IEnumerable<TransferenciaViewModel> ObterTodos();
         TransferenciaViewModel Transferir(TransferenciaViewModel transferencia);
+        string ObterNumDocumento();
     }
 }

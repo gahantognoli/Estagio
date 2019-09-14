@@ -18,21 +18,17 @@ namespace GrupoAOX.Estagio.Application.Servicos
             _loteServices = loteServices;
         }
 
-        public int_exp_Etiqueta_ProducaoViewModel AtualizarArmazem(int id, string armazem)
+        public int_exp_Etiqueta_ProducaoViewModel Atualizar(int id, string armazem, int statusId, string romaneio, string tipoDocumento)
         {
-            var loteRetorno = Mapper.Map<int_exp_Etiqueta_ProducaoViewModel>(_loteServices.AtualizarArmazem(id, armazem));
-            return loteRetorno;
+            var loteRetorno = _loteServices.Atualizar(id, armazem, statusId, romaneio, tipoDocumento);
+            return Mapper.Map<int_exp_Etiqueta_ProducaoViewModel>(loteRetorno);
         }
 
-        public int_exp_Etiqueta_ProducaoViewModel AtualizarStatus(int id, StatusViewModel status)
+        public int_exp_Etiqueta_ProducaoViewModel AtualizarStatus(int id, int statusId)
         {
-            var loteRetorno = Mapper.Map<int_exp_Etiqueta_ProducaoViewModel>(_loteServices.AtualizarStatus(id, Mapper.Map<Status>(status)));
+            var loteRetorno = Mapper.Map<int_exp_Etiqueta_ProducaoViewModel>(_loteServices.AtualizarStatus(id, statusId));
+            Commit();
             return loteRetorno;
-        }
-
-        public int_exp_Etiqueta_ProducaoViewModel BiparEtiqueta(string numLote)
-        {
-            return Mapper.Map<int_exp_Etiqueta_ProducaoViewModel>(_loteServices.BiparEtiqueta(numLote));
         }
 
         public void Dispose()
@@ -61,14 +57,7 @@ namespace GrupoAOX.Estagio.Application.Servicos
             return Mapper.Map<IEnumerable<int_exp_Etiqueta_ProducaoViewModel>>(_loteServices.ObterTodos());
         }
 
-        public int_exp_Etiqueta_ProducaoViewModel RegistrarRomaneio(int id, string romaneio, string tipoDocumento)
-        {
-            var loteRetorno = Mapper.Map<int_exp_Etiqueta_ProducaoViewModel>(_loteServices.RegistrarRomaneio(id, romaneio, tipoDocumento));
-            if (loteRetorno.ValidationResult.IsValid)
-            {
-                Commit();
-            }
-            return loteRetorno;
-        }
+
+        
     }
 }

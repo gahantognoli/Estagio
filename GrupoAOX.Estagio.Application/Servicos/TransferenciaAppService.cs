@@ -14,13 +14,16 @@ namespace GrupoAOX.Estagio.Application.Servicos
         private readonly ITransferenciaServices _transferenciaServices;
         private readonly ILoteServices _loteServices;
         private readonly IStatusServices _statusServices;
+        private readonly ICategoriaAppServices _categoriaAppServices;
 
         public TransferenciaAppService(ITransferenciaServices transferenciaServices,
-            ILoteServices loteServices, IStatusServices statusServices, IUnitOfWork uow) : base(uow)
+            ILoteServices loteServices, IStatusServices statusServices,
+            ICategoriaAppServices categoriaAppServices, IUnitOfWork uow) : base(uow)
         {
             _transferenciaServices = transferenciaServices;
             _loteServices = loteServices;
             _statusServices = statusServices;
+            _categoriaAppServices = categoriaAppServices;
         }
 
         public TransferenciaViewModel ObterPorId(int id)
@@ -53,29 +56,32 @@ namespace GrupoAOX.Estagio.Application.Servicos
 
         private void TransferirLotes(TransferenciaViewModel transferencia)
         {
-            if (transferencia.Categoria.TipoCategoria == GrupoAox.Estagio.Domain.Enums.TipoCategoria.Romaneio) 
+            var categoria = _categoriaAppServices.ObterPorId(transferencia.CategoriaId);
+            if (categoria.Descricao == "Romaneio") 
             {
-                transferencia.NumeroDocumento = _transferenciaServices.ObterNumDocumento(Mapper.Map<Categoria>
-                    (transferencia.Categoria));
-                AtualizarLotes(transferencia.Lotes, transferencia.ArmazemDestino, 3, transferencia.NumeroDocumento, "R");
+                transferencia.Lotes = AtualizarLotes(transferencia.Lotes, transferencia.ArmazemDestino, 3, transferencia.NumeroDocumento, "R");
             }
-            else if (transferencia.Categoria.TipoCategoria == GrupoAox.Estagio.Domain.Enums.TipoCategoria.OrdemExpedicao)
+            else if (categoria.Descricao == "Ordem de Expedição")
             {
-                _transferenciaServices.ObterNumDocumento(Mapper.Map<Categoria>(transferencia.Categoria));
-                AtualizarLotes(transferencia.Lotes, transferencia.ArmazemDestino, 4, transferencia.NumeroDocumento, "O");
+                transferencia.Lotes = AtualizarLotes(transferencia.Lotes, transferencia.ArmazemDestino, 4, transferencia.NumeroDocumento, "O");
             }
         }
 
-        private void AtualizarLotes(ICollection<int_exp_Etiqueta_ProducaoViewModel> lotes,
+        private ICollection<int_exp_Etiqueta_ProducaoViewModel> AtualizarLotes(ICollection<int_exp_Etiqueta_ProducaoViewModel> lotes,
             string armazem, int status, string romaneio, string tipoDocumento)
         {
+            List<int_exp_Etiqueta_Producao> lotesRetorno = new List<int_exp_Etiqueta_Producao>();
             foreach (var item in lotes)
             {
-                _loteServices.AtualizarStatus(item.ApontamentoProducaoId, _statusServices.ObterPorId(status));
-                _loteServices.AtualizarArmazem(item.ApontamentoProducaoId, armazem);
-                _loteServices.RegistrarRomaneio(item.ApontamentoProducaoId, romaneio, tipoDocumento);
+                var lote = _loteServices.ObterPorId(item.ApontamentoProducaoId);
+                lote.Armazem = armazem;
+                lote.StatusId = status;
+                lote.Romaneio = romaneio;
+                lote.TipoDocumento = tipoDocumento;
+                lotesRetorno.Add(lote);
             }
-
+            lotes = Mapper.Map<ICollection<int_exp_Etiqueta_ProducaoViewModel>>(lotesRetorno);
+            return lotes;
         }
 
         public void Dispose()
@@ -83,6 +89,11 @@ namespace GrupoAOX.Estagio.Application.Servicos
             _loteServices.Dispose();
             _statusServices.Dispose();
             _transferenciaServices.Dispose();
+        }
+
+        public string ObterNumDocumento()
+        {
+            return _transferenciaServices.ObterNumDocumento();
         }
     }
 }

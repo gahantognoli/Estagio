@@ -1,7 +1,9 @@
 ﻿using GrupoAox.Estagio.Domain.Entidades;
 using GrupoAOX.Estagio.Data.ConfigEntidades;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
 
 namespace GrupoAOX.Estagio.Data.Contexto
 {
@@ -38,6 +40,25 @@ namespace GrupoAOX.Estagio.Data.Contexto
             modelBuilder.Configurations.Add(new CategoriaConfig());
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public override int SaveChanges()
+        {
+            foreach (var entry in ChangeTracker.Entries().
+                Where(entry => entry.Entity.GetType().GetProperty("DataMovimento") != null))
+            {
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Property("DataMovimento").CurrentValue = DateTime.Now;
+                }
+
+                if (entry.State == EntityState.Modified)
+                {
+                    entry.Property("DataMovimento").IsModified = false;
+                }
+            }
+
+            return base.SaveChanges();
         }
     }
 }

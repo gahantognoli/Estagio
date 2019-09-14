@@ -31,17 +31,19 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Novo(string usuario)
+        public JsonResult Novo(string usuario)
         {
-            var retorno = await _usuarioAppServices.ImportarAD(usuario);
-            Thread.Sleep(1000);
-            TempData["UsuarioCadastrado"] = $"Usuário<strong> {retorno.Nome} <strong>importado com sucesso";
-            return RedirectToAction("Index", "Usuarios");
+            var retorno = _usuarioAppServices.ImportarAD(usuario);
+            if (retorno.ValidationResult.IsValid == true)
+            {
+                TempData["UsuarioCadastrado"] = $"Usuário<strong> {retorno.Nome} </strong>importado com sucesso!";
+            }
+            return Json(retorno.ValidationResult, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ImportarAD(UsuarioViewModel usuario)
         {
-            return View(usuario);
+            return View("ImportarAD", usuario);
         }
 
         [HttpPost]
@@ -49,7 +51,13 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         {
             if (parametro == "login")
             {
-                UsuarioViewModel usuarioViewModel = ActiveDirectorySearch.SearchUser(busca);
+                //UsuarioViewModel usuarioViewModel = ActiveDirectorySearch.SearchUser(busca);
+                UsuarioViewModel usuarioViewModel = new UsuarioViewModel()
+                {
+                    Nome = "Gabriel Antognoli",
+                    Email = "gabriel_antognoli@hotmail.com",
+                    Login = "gantognoli"
+                };
                 return ImportarAD(usuarioViewModel);
             }
             else

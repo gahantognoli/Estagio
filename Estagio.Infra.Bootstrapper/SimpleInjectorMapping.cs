@@ -3,10 +3,13 @@ using GrupoAox.Estagio.Domain.Interfaces.Servicos;
 using GrupoAox.Estagio.Domain.Servicos;
 using GrupoAOX.Estagio.Application.Interfaces;
 using GrupoAOX.Estagio.Application.Servicos;
+using GrupoAOX.Estagio.Application.ViewModel;
 using GrupoAOX.Estagio.Data.Contexto;
 using GrupoAOX.Estagio.Data.Repositorios;
 using GrupoAOX.Estagio.Data.UnitOfWork;
+using GrupoAOX.Estagio.Infra.Serializacao.Servicos;
 using SimpleInjector;
+using System.Collections.Generic;
 
 namespace Estagio.Infra.Bootstrapper
 {
@@ -41,6 +44,13 @@ namespace Estagio.Infra.Bootstrapper
             container.Register<IPermissaoAppServices, PermissaoAppService>(Lifestyle.Scoped);
             container.Register<IStatusAppServices, StatusAppService>(Lifestyle.Scoped);
             container.Register<ITransferenciaAppServices, TransferenciaAppService>(Lifestyle.Scoped);
+
+            container.Register<IEntitySerializationServices<UsuarioViewModel>, 
+                JSONSerializationServices<UsuarioViewModel>>(Lifestyle.Scoped);
+            container.Register<IEntitySerializationServices<TransferenciaViewModel>,
+                JSONSerializationServices<TransferenciaViewModel>>(Lifestyle.Scoped);
+            container.Register<IEntitySerializationServices<IEnumerable<int_exp_Etiqueta_ProducaoViewModel>>,
+                JSONSerializationServices<IEnumerable<int_exp_Etiqueta_ProducaoViewModel>>>(Lifestyle.Scoped);
 
             container.Register<ContextoEstagio>(Lifestyle.Scoped);
             container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);

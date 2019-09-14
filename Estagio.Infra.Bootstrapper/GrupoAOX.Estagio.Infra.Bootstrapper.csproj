@@ -62,6 +62,10 @@
       <Project>{09456FD5-ABB2-4537-98C5-A14A4EF4A30D}</Project>
       <Name>GrupoAOX.Estagio.Dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GrupoAOX.Estagio.Infra.Serializacao\GrupoAOX.Estagio.Infra.Serializacao.csproj">
+      <Project>{7B23ABF6-7386-4169-B146-454982FE06EF}</Project>
+      <Name>GrupoAOX.Estagio.Infra.Serializacao</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

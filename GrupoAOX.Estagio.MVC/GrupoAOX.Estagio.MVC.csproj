@@ -168,7 +168,10 @@
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoteController.cs" />
+    <Compile Include="Controllers\OrdemExpedicaoController.cs" />
     <Compile Include="Controllers\PermissaoController.cs" />
+    <Compile Include="Controllers\RomaneioController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -191,16 +194,18 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\ajax-loader-200px.gif" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\collapse-sidebar.js" />
+    <Content Include="Scripts\DescartarEtiqueta\script.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\Golbal.js" />
+    <Content Include="Scripts\Global.js" />
     <Content Include="Scripts\esm\popper.min.js.map" />
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
@@ -228,12 +233,14 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\OrdemExpedicao\script.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Romaneio\script.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -284,6 +291,9 @@
     <Content Include="Views\Usuario\Editar.cshtml" />
     <Content Include="Views\Usuario\Detalhes.cshtml" />
     <Content Include="Views\Usuario\Remover.cshtml" />
+    <Content Include="Views\Romaneio\Novo.cshtml" />
+    <Content Include="Views\OrdemExpedicao\Novo.cshtml" />
+    <Content Include="Views\Lote\Descartar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -302,6 +312,10 @@
     <ProjectReference Include="..\GrupoAOX.Estagio.Application\GrupoAOX.Estagio.Aplicacao.csproj">
       <Project>{6D92EEEF-6174-415D-BA3B-2BCED91C3E86}</Project>
       <Name>GrupoAOX.Estagio.Aplicacao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GrupoAox.Estagio.Domain\GrupoAOX.Estagio.Dominio.csproj">
+      <Project>{09456FD5-ABB2-4537-98C5-A14A4EF4A30D}</Project>
+      <Name>GrupoAOX.Estagio.Dominio</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

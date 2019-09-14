@@ -36,6 +36,15 @@ namespace GrupoAOX.Estagio.MVC
             #region Meus bundles
             bundles.Add(new ScriptBundle("~/bundles/Usuarios").Include(
                      "~/Scripts/Usuarios/script.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Romaneio").Include(
+                     "~/Scripts/Romaneio/script.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/OrdemExpedicao").Include(
+                     "~/Scripts/OrdemExpedicao/script.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/DescartarEtiqueta").Include(
+                     "~/Scripts/DescartarEtiqueta/script.js"));
             #endregion
 
         }

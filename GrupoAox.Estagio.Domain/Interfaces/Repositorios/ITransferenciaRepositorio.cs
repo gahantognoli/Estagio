@@ -8,6 +8,6 @@ namespace GrupoAox.Estagio.Domain.Interfaces.Repositorios
     {
         Transferencia Transferir(Transferencia transferencia);
         IEnumerable<Transferencia> ObterPorPeriodo(DateTime dataInicio, DateTime dataFim);
-        string ObterNumDocumento(Categoria categoria);
+        string ObterNumDocumento();
     }
 }

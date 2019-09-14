@@ -1,7 +1,6 @@
 ﻿using GrupoAox.Estagio.Domain.Entidades;
 using GrupoAox.Estagio.Domain.Interfaces.Repositorios;
 using GrupoAox.Estagio.Domain.Interfaces.Servicos;
-using GrupoAox.Estagio.Domain.Validations.Lotes;
 using System;
 using System.Collections.Generic;
 
@@ -16,21 +15,14 @@ namespace GrupoAox.Estagio.Domain.Servicos
             _loteRepositorio = loteRepositorio;
         }
 
-        public int_exp_Etiqueta_Producao AtualizarArmazem(int id, string armazem)
+        public int_exp_Etiqueta_Producao Atualizar(int id, string armazem, int statusId, string romaneio, string tipoDocumento)
         {
-            return _loteRepositorio.AtualizarArmazem(id, armazem);
+            return _loteRepositorio.Atualizar(id, armazem, statusId, romaneio, tipoDocumento);
         }
 
-        public int_exp_Etiqueta_Producao AtualizarStatus(int id, Status status)
+        public int_exp_Etiqueta_Producao AtualizarStatus(int id, int statusId)
         {
-            return _loteRepositorio.AtualizarStatus(id, status);
-        }
-
-        public int_exp_Etiqueta_Producao BiparEtiqueta(string numLote)
-        {
-            int_exp_Etiqueta_Producao lote = ObterPorLote(numLote);
-            lote.ValidationResult = new LoteAptoParaCadastroValidation().Validate(lote);
-            return lote;
+            return _loteRepositorio.AtualizarStatus(id, statusId);
         }
 
         public void Dispose()
@@ -57,11 +49,6 @@ namespace GrupoAox.Estagio.Domain.Servicos
         public IEnumerable<int_exp_Etiqueta_Producao> ObterTodos()
         {
             return _loteRepositorio.ObterTodos();
-        }
-
-        public int_exp_Etiqueta_Producao RegistrarRomaneio(int id, string romaneio, string tipoDocumento)
-        {
-            return _loteRepositorio.RegistrarRomaneio(id, romaneio, tipoDocumento);
         }
     }
 }

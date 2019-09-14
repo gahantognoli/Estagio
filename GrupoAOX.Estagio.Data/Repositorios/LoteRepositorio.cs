@@ -17,18 +17,10 @@ namespace GrupoAOX.Estagio.Data.Repositorios
         {
         }
 
-        public int_exp_Etiqueta_Producao AtualizarStatus(int id, Status status)
+        public int_exp_Etiqueta_Producao AtualizarStatus(int id, int statusId)
         {
             int_exp_Etiqueta_Producao lote = ObterPorId(id);
-            lote.Status = status;
-            Atualizar(lote);
-            return lote;
-        }
-
-        public int_exp_Etiqueta_Producao AtualizarArmazem(int id, string armazem)
-        {
-            int_exp_Etiqueta_Producao lote = ObterPorId(id);
-            lote.Armazem = armazem;
+            lote.StatusId = statusId;
             Atualizar(lote);
             return lote;
         }
@@ -50,6 +42,7 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
             {
                 lotes = dbConnection.Query<int_exp_Etiqueta_Producao>(LoteProcedures.ObterPorId.GetDescription(),
+                    new { @Id = id },
                     commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
             }
             return lotes;
@@ -72,19 +65,21 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
             {
                 lote = dbConnection.Query<int_exp_Etiqueta_Producao>(LoteProcedures.ObterPorLote.GetDescription(),
+                    new { @numLote = numLote },
                     commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
             }
             return lote;
         }
 
-        public int_exp_Etiqueta_Producao RegistrarRomaneio(int id, string numRomaneio, string tipoDocumento)
+        public int_exp_Etiqueta_Producao Atualizar(int id, string armazem, int statusId, string romaneio, string tipoDocumento)
         {
             int_exp_Etiqueta_Producao lote = ObterPorId(id);
-            lote.Romaneio = numRomaneio;
+            lote.Armazem = armazem;
+            lote.StatusId = statusId;
+            lote.Romaneio = romaneio;
             lote.TipoDocumento = tipoDocumento;
-            return Atualizar(lote);
+            Atualizar(lote);
+            return lote;
         }
-
-        
     }
 }

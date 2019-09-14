@@ -9,7 +9,7 @@ namespace GrupoAOX.Estagio.Application.Interfaces
     {
         UsuarioViewModel Adicionar(UsuarioViewModel usuario);
         UsuarioPermissaoViewModel AtribuirPermissoes(UsuarioPermissaoViewModel usuarioPermissaoViewModel);
-        Task<UsuarioViewModel> ImportarAD(string usuarioAD);
+        UsuarioViewModel ImportarAD(string usuarioAD);
         UsuarioViewModel Alterar(UsuarioViewModel usuario);
         void Remover(int id);
         UsuarioViewModel ObterPorId(int id);

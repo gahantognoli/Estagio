@@ -13,10 +13,13 @@ namespace GrupoAOX.Estagio.Application.Servicos
     public class UsuarioAppService : AppService, IUsuarioAppServices
     {
         private readonly IUsuarioServices _usuarioServices;
+        private readonly IEntitySerializationServices<UsuarioViewModel> _entitySerializationServices;
 
-        public UsuarioAppService(IUsuarioServices usuarioServices, IUnitOfWork uow) : base(uow)
+        public UsuarioAppService(IUsuarioServices usuarioServices,
+            IEntitySerializationServices<UsuarioViewModel> entitySerializationServices, IUnitOfWork uow) : base(uow)
         {
             _usuarioServices = usuarioServices;
+            _entitySerializationServices = entitySerializationServices;
         }
 
         public UsuarioViewModel Adicionar(UsuarioViewModel usuario)
@@ -62,9 +65,11 @@ namespace GrupoAOX.Estagio.Application.Servicos
             GC.SuppressFinalize(this);
         }
 
-        public Task<UsuarioViewModel> ImportarAD(string usuarioAD)
+        public UsuarioViewModel ImportarAD(string usuarioAD)
         {
-            throw new NotImplementedException();
+            var usuarioADReturn = _usuarioServices.Adicionar(Mapper.Map<Usuario>(_entitySerializationServices.Deserialize(usuarioAD)));
+            Commit();
+            return Mapper.Map<UsuarioViewModel>(usuarioADReturn);
         }
 
         public UsuarioViewModel ObterPorEmail(string email)

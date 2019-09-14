@@ -87,17 +87,21 @@ namespace GrupoAOX.Estagio.Data.Repositorios
         
         public Transferencia Transferir(Transferencia transferencia)
         {
+            foreach (var lote in transferencia.Lotes)
+            {
+                Db.Entry(lote).State = System.Data.Entity.EntityState.Modified;
+            }
             Adicionar(transferencia);
             return transferencia;
         }
 
-        public string ObterNumDocumento(Categoria categoria)
+        public string ObterNumDocumento()
         {
             string numeroDocumento = "";
             using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
             {
                 numeroDocumento = dbConnection.Query<string>(TransferenciaProcedures.ObterNumeroDocumento.GetDescription(),
-                    new { CategoriaId = categoria.CategoriaId }, commandType: System.Data.CommandType.StoredProcedure)
+                     commandType: System.Data.CommandType.StoredProcedure)
                     .FirstOrDefault();
             }
             return numeroDocumento;
