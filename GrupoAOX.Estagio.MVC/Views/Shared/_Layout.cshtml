@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using GrupoAOX.Estagio.MVC.Helpers
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -14,9 +16,9 @@
     <div class="wrapper">
         <nav id="sidebar">
             <div class="sidebar-header">
-                <div style="background-image:url('/images/profile/default.png'); background-size:cover;"
+                <div style="background-image:url(@Url.Content(User.Identity.GetUserImage() == null ? string.Empty : User.Identity.GetUserImage())); background-size:cover;"
                      class="img-user" onclick="document.getElementById('file').click();">
-                    @using (Html.BeginForm("SaveImage", "Usuarios", FormMethod.Post, new { enctype = "multipart/form-data", @id = "formImage" }))
+                    @using (Html.BeginForm("SaveImage", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data", @id = "formImage" }))
                     {
                         <input type="file" id="file" name="postedImage" style="display:none;" onchange="$('#formImage').submit()" ; />
                     }
@@ -63,13 +65,13 @@
                             <a href="@Url.Action("EtiquetasGeradas", "Relatorios")">Relatorio Etiquetas Geradas</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("PrevisaoConsumo", "Relatorios")">Previsão de Consumo por Etiquetasa</a>
+                            <a href="@Url.Action("MovimentosGerados", "Relatorios")">Movimentos Gerados</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("ImprimirRomaneio", "Relatorios")">Impressão de Romaneio</a>
+                            <a href="@Url.Action("Imprimir", "Romaneio")">Impressão de Romaneio</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("ImprimirOrdemExpedicao", "Relatorios")">Impressão de Ordem de Expedição</a>
+                            <a href="@Url.Action("Imprimir", "OrdemExpedicao")">Impressão de Ordem de Expedição</a>
                         </li>
                     </ul>
                 </li>
@@ -95,8 +97,8 @@
                 </li>
 
                 @*<li>
-                    <a href="@Url.Action("Descarte", "Etiqueta")"><i class="fas fa-chart-line icone-menu"></i>Descarte Etiqueta</a>
-                </li>*@
+                        <a href="@Url.Action("Descarte", "Etiqueta")"><i class="fas fa-chart-line icone-menu"></i>Descarte Etiqueta</a>
+                    </li>*@
 
             </ul>
         </nav>

@@ -30,6 +30,11 @@ namespace GrupoAOX.Estagio.MVC
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/Login").Include(
+                "~/Content/bootstrap.css",
+                "~/Content/login.css"
+            ));
+
             bundles.Add(new StyleBundle("~/Content/icheck").Include(
                       "~/Content/icheck-bootstrap.min.css"));
 
@@ -45,6 +50,21 @@ namespace GrupoAOX.Estagio.MVC
 
             bundles.Add(new ScriptBundle("~/bundles/DescartarEtiqueta").Include(
                      "~/Scripts/DescartarEtiqueta/script.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/RelatorioRomaneio").Include(
+                     "~/Scripts/ImpressaoRomaneio/script.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ImpressaoOrdemExpedicao").Include(
+                     "~/Scripts/ImpressaoOrdemExpedicao/script.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/EtiquetasGeradas").Include(
+                     "~/Scripts/EtiquetasGeradas/script.js",
+                     "~/Scripts/jquery.mask.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/MovimentosGerados").Include(
+                     "~/Scripts/MovimentosGerados/script.js",
+                     "~/Scripts/jquery.mask.min.js"));
+
             #endregion
 
         }

@@ -57,7 +57,7 @@
         var retorno = data.retorno;
         if (retorno.ValidationResult.IsValid === true) {
             $('#btnVisualizarOrdemExpdicao').removeAttr('style', 'display:none');
-            $('#btnVisualizarOrdemExpdicao').attr('href', gHostProjeto + 'OrdemExpedicao/Visualizar?numRomaneio=' + retorno.NumeroDocumento);
+            $('#btnVisualizarOrdemExpdicao').attr('href', gHostProjeto + 'OrdemExpedicao/VisualizarPDF?ordemExpedicao=' + retorno.NumeroDocumento);
             $('#btnNovoOrdemExpedicao').removeAttr('style', 'display:none');
             $('#btnTransferir').attr('style', 'display:none');
             $('#Etiqueta').attr('disabled', 'disabled');

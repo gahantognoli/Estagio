@@ -71,7 +71,7 @@
         var retorno = data.retorno;
         if (retorno.ValidationResult.IsValid === true) {
             $('#btnVisualizarRomaneio').removeAttr('style', 'display:none');
-            $('#btnVisualizarRomaneio').attr('href', gHostProjeto + 'Romaneio/Visualizar?numRomaneio=' + retorno.NumeroDocumento);
+            $('#btnVisualizarRomaneio').attr('href', gHostProjeto + 'Romaneio/VisualizarPDF?numRomaneio=' + retorno.NumeroDocumento);
             $('#btnNovoRomaneio').removeAttr('style', 'display:none');
             $('#btnTransferir').attr('style', 'display:none');
             $('#Etiqueta').attr('disabled', 'disabled');

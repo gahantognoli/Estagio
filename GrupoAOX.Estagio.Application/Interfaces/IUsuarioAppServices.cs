@@ -17,5 +17,6 @@ namespace GrupoAOX.Estagio.Application.Interfaces
         UsuarioViewModel ObterPorLogin(string login);
         UsuarioViewModel ObterPorEmail(string email);
         IEnumerable<UsuarioViewModel> ObterPorNome(string nome);
+        void SalvarImagem(int id, string caminhoImagem);
     }
 }

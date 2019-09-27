@@ -14,5 +14,6 @@ namespace GrupoAox.Estagio.Domain.Interfaces.Servicos
         Usuario ObterPorLogin(string login);
         Usuario ObterPorEmail(string email);
         IEnumerable<Usuario> ObterPorNome(string nome);
+        void SalvarImagem(int id, string caminhoImagem);
     }
 }

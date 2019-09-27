@@ -1,6 +1,7 @@
 ﻿using GrupoAOX.Estagio.Application.Interfaces;
 using GrupoAOX.Estagio.Application.ViewModel;
 using GrupoAOX.Estagio.MVC.ActiveDirectory;
+using GrupoAOX.Estagio.MVC.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -180,29 +181,28 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         [HttpPost]
         public ActionResult SaveImage(HttpPostedFileBase postedImage)
         {
-            //string fileExtension = postedImage.ContentType;
-            //string login = User.Identity.GetUserLogin();
-            //int id = User.Identity.GetUserId();
+            string fileExtension = postedImage.ContentType;
+            string login = User.Identity.GetUserLogin();
+            int id = User.Identity.GetUserId();
 
-            //if (VerifyAllowExtensions(fileExtension))
-            //{
-            //    string path = "~/Images/ProfileImages/" +
-            //        login + "." + fileExtension.Split('/')[1];
+            if (VerifyAllowExtensions(fileExtension))
+            {
+                string path = "~/images/profile/" +
+                    login + "." + fileExtension.Split('/')[1];
 
-            //    DeleteExistingUserImage(login);
+                DeleteExistingUserImage(login);
 
-            //    postedImage.SaveAs(Server.MapPath(path));
-            //    _usuarioAppServices.SaveImageUser(id, path);
-            //    ClaimsExtensionMethod.UpdateImageClaim(User, id, _usuarioAppService);
+                postedImage.SaveAs(Server.MapPath(path));
+                _usuarioAppServices.SalvarImagem(id, path);
+                ClaimsExtensionMethod.UpdateImageClaim(User, id, _usuarioAppServices);
 
-            //    return RedirectToAction("Index", "Home");
-            //}
-            //else
-            //{
-            //    TempData["ExtensionError"] = "Selecione uma imagem em um formato válido(.jpg, .png, .gif)";
-            //    return RedirectToAction("Index", "Home");
-            //}
-            throw new NotImplementedException();
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                TempData["ExtensionError"] = "Selecione uma imagem em um formato válido(.jpg, .png, .gif)";
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         private bool VerifyAllowExtensions(string fileExtension)
@@ -219,7 +219,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
 
         private void DeleteExistingUserImage(string login)
         {
-            DirectoryInfo di = new DirectoryInfo(Server.MapPath("~/Images/ProfileImages/"));
+            DirectoryInfo di = new DirectoryInfo(Server.MapPath("~/images/profile/"));
 
             foreach (FileInfo f in di.GetFiles())
             {

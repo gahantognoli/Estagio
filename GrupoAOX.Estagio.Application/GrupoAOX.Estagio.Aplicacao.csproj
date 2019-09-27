@@ -62,12 +62,18 @@
     <Compile Include="Interfaces\ITransferenciaAppServices.cs" />
     <Compile Include="Interfaces\IUsuarioAppServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relatorios\Interfaces\IDocumentoTransferenciaAppService.cs" />
+    <Compile Include="Relatorios\Interfaces\IEtiquetasGeradasAppService.cs" />
+    <Compile Include="Relatorios\Interfaces\IMovimentosGeradosAppService.cs" />
     <Compile Include="RetornoWS\RetornoArmazem.cs" />
     <Compile Include="Servicos\AppService.cs" />
     <Compile Include="Servicos\CategoriaAppService.cs" />
     <Compile Include="Servicos\LogLotesAppService.cs" />
     <Compile Include="Servicos\LoteAppService.cs" />
     <Compile Include="Servicos\PermissaoAppService.cs" />
+    <Compile Include="Servicos\Relatorios\DocumentoTransferenciaAppService.cs" />
+    <Compile Include="Servicos\Relatorios\EtiquetasGeradasAppService.cs" />
+    <Compile Include="Servicos\Relatorios\MovimentosGeradosAppService.cs" />
     <Compile Include="Servicos\StatusAppService.cs" />
     <Compile Include="Servicos\TransferenciaAppService.cs" />
     <Compile Include="Servicos\UsuarioAppService.cs" />
@@ -80,7 +86,6 @@
     <Compile Include="ViewModel\UsuarioPermissaoViewModel.cs" />
     <Compile Include="ViewModel\UsuarioViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
@@ -94,5 +99,6 @@
       <Name>GrupoAOX.Estagio.Dominio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

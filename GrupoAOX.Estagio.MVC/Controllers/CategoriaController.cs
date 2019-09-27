@@ -15,7 +15,6 @@ namespace GrupoAOX.Estagio.MVC.Controllers
             _categoriaAppServices = categoriaAppServices;
         }
 
-        // GET: CategoriaController
         public ActionResult Index(string parametro = "", string busca = "")
         {
             ViewBag.Parametro = parametro;

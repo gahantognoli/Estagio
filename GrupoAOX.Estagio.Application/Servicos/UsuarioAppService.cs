@@ -102,5 +102,10 @@ namespace GrupoAOX.Estagio.Application.Servicos
             _usuarioServices.Remover(id);
             Commit();
         }
+
+        public void SalvarImagem(int id, string caminhoImagem)
+        {
+            _usuarioServices.SalvarImagem(id, caminhoImagem);
+        }
     }
 }

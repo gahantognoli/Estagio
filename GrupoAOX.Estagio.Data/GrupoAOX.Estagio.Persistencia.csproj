@@ -103,6 +103,9 @@
     <Compile Include="Procedures\LogLotesProcedures.cs" />
     <Compile Include="Procedures\LoteProcedures.cs" />
     <Compile Include="Procedures\PermissaoProcedures.cs" />
+    <Compile Include="Procedures\Relatorios\DocumentoTransferenciaProcedures.cs" />
+    <Compile Include="Procedures\Relatorios\EtiquetasGeradasProcedures.cs" />
+    <Compile Include="Procedures\Relatorios\MovimentosGeradosProcedures.cs" />
     <Compile Include="Procedures\StatusProcedures.cs" />
     <Compile Include="Procedures\TransferenciaProcedures.cs" />
     <Compile Include="Procedures\UsuarioProcedures.cs" />
@@ -111,6 +114,9 @@
     <Compile Include="Repositorios\LogLotesRepositorio.cs" />
     <Compile Include="Repositorios\LoteRepositorio.cs" />
     <Compile Include="Repositorios\PermissaoRepositorio.cs" />
+    <Compile Include="Repositorios\Relatorios\DocumentoTransferenciaRepositorio.cs" />
+    <Compile Include="Repositorios\Relatorios\EtiquetasGeradasRepository.cs" />
+    <Compile Include="Repositorios\Relatorios\MovimentosGeradosRepositorio.cs" />
     <Compile Include="Repositorios\Repositorio.cs" />
     <Compile Include="Repositorios\StatusRepositorio.cs" />
     <Compile Include="Repositorios\TransferenciaRepositorio.cs" />

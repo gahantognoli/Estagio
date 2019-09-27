@@ -62,5 +62,10 @@ namespace GrupoAox.Estagio.Domain.Servicos
         {
             return _usuarioRepositorio.ObterPorNome(nome);
         }
+
+        public void SalvarImagem(int id, string caminhoImagem)
+        {
+            _usuarioRepositorio.SalvarImagem(id, caminhoImagem);
+        }
     }
 }

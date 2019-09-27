@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DatasetRelatorioEtiquetasGeradas" targetNamespace="http://tempuri.org/DatasetRelatorioEtiquetasGeradas.xsd" xmlns:mstns="http://tempuri.org/DatasetRelatorioEtiquetasGeradas.xsd" xmlns="http://tempuri.org/DatasetRelatorioEtiquetasGeradas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DatasetRelatorioEtiquetasGeradas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DatasetRelatorioEtiquetasGeradas" msprop:Generator_UserDSName="DatasetRelatorioEtiquetasGeradas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Etiquetas" msprop:Generator_TableClassName="EtiquetasDataTable" msprop:Generator_TableVarName="tableEtiquetas" msprop:Generator_RowChangedName="EtiquetasRowChanged" msprop:Generator_TablePropName="Etiquetas" msprop:Generator_RowDeletingName="EtiquetasRowDeleting" msprop:Generator_RowChangingName="EtiquetasRowChanging" msprop:Generator_RowEvHandlerName="EtiquetasRowChangeEventHandler" msprop:Generator_RowDeletedName="EtiquetasRowDeleted" msprop:Generator_RowClassName="EtiquetasRow" msprop:Generator_UserTableName="Etiquetas" msprop:Generator_RowEvArgName="EtiquetasRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OP" msprop:Generator_ColumnVarNameInTable="columnOP" msprop:Generator_ColumnPropNameInRow="OP" msprop:Generator_ColumnPropNameInTable="OPColumn" msprop:Generator_UserColumnName="OP" type="xs:string" minOccurs="0" />
+              <xs:element name="NumEtiqueta" msprop:Generator_ColumnVarNameInTable="columnNumEtiqueta" msprop:Generator_ColumnPropNameInRow="NumEtiqueta" msprop:Generator_ColumnPropNameInTable="NumEtiquetaColumn" msprop:Generator_UserColumnName="NumEtiqueta" type="xs:string" minOccurs="0" />
+              <xs:element name="Produto" msprop:Generator_ColumnVarNameInTable="columnProduto" msprop:Generator_ColumnPropNameInRow="Produto" msprop:Generator_ColumnPropNameInTable="ProdutoColumn" msprop:Generator_UserColumnName="Produto" type="xs:string" minOccurs="0" />
+              <xs:element name="QtdProducao" msprop:Generator_ColumnVarNameInTable="columnQtdProducao" msprop:Generator_ColumnPropNameInRow="QtdProducao" msprop:Generator_ColumnPropNameInTable="QtdProducaoColumn" msprop:Generator_UserColumnName="QtdProducao" type="xs:decimal" minOccurs="0" />
+              <xs:element name="QtdMetrosLineares" msprop:Generator_ColumnVarNameInTable="columnQtdMetrosLineares" msprop:Generator_ColumnPropNameInRow="QtdMetrosLineares" msprop:Generator_ColumnPropNameInTable="QtdMetrosLinearesColumn" msprop:Generator_UserColumnName="QtdMetrosLineares" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PesoBruto" msprop:Generator_ColumnVarNameInTable="columnPesoBruto" msprop:Generator_ColumnPropNameInRow="PesoBruto" msprop:Generator_ColumnPropNameInTable="PesoBrutoColumn" msprop:Generator_UserColumnName="PesoBruto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PesoLiquido" msprop:Generator_ColumnVarNameInTable="columnPesoLiquido" msprop:Generator_ColumnPropNameInRow="PesoLiquido" msprop:Generator_ColumnPropNameInTable="PesoLiquidoColumn" msprop:Generator_UserColumnName="PesoLiquido" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DataLancamento" msprop:Generator_ColumnVarNameInTable="columnDataLancamento" msprop:Generator_ColumnPropNameInRow="DataLancamento" msprop:Generator_ColumnPropNameInTable="DataLancamentoColumn" msprop:Generator_UserColumnName="DataLancamento" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Situacao" msprop:Generator_ColumnVarNameInTable="columnSituacao" msprop:Generator_ColumnPropNameInRow="Situacao" msprop:Generator_ColumnPropNameInTable="SituacaoColumn" msprop:Generator_UserColumnName="Situacao" type="xs:string" minOccurs="0" />
+              <xs:element name="Descartada" msprop:Generator_ColumnVarNameInTable="columnDescartada" msprop:Generator_ColumnPropNameInRow="Descartada" msprop:Generator_ColumnPropNameInTable="DescartadaColumn" msprop:Generator_UserColumnName="Descartada" type="xs:string" minOccurs="0" />
+              <xs:element name="IlhaImpressao" msprop:Generator_ColumnVarNameInTable="columnIlhaImpressao" msprop:Generator_ColumnPropNameInRow="IlhaImpressao" msprop:Generator_ColumnPropNameInTable="IlhaImpressaoColumn" msprop:Generator_UserColumnName="IlhaImpressao" type="xs:string" minOccurs="0" />
+              <xs:element name="LogIntegracao" msprop:Generator_ColumnVarNameInTable="columnLogIntegracao" msprop:Generator_ColumnPropNameInRow="LogIntegracao" msprop:Generator_ColumnPropNameInTable="LogIntegracaoColumn" msprop:Generator_UserColumnName="LogIntegracao" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -10,10 +10,15 @@ namespace GrupoAox.Estagio.Domain.Servicos
     public class TransferenciaServices : ITransferenciaServices
     {
         private readonly ITransferenciaRepositorio _transferenciaRepositorio;
+        private readonly ILogLotesRepositorio _logLotesRepositorio;
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
 
-        public TransferenciaServices(ITransferenciaRepositorio transferenciaRepositorio)
+        public TransferenciaServices(ITransferenciaRepositorio transferenciaRepositorio, 
+            ILogLotesRepositorio logLotesRepositorio, IUsuarioRepositorio usuarioRepositorio)
         {
             _transferenciaRepositorio = transferenciaRepositorio;
+            _logLotesRepositorio = logLotesRepositorio;
+            _usuarioRepositorio = usuarioRepositorio;
         }
 
         public Transferencia ObterPorId(int id)
@@ -34,8 +39,25 @@ namespace GrupoAox.Estagio.Domain.Servicos
         public Transferencia Transferir(Transferencia transferencia)
         {
             transferencia.ValidationResult = new TransferenciaAptaParaCadastro().Validate(transferencia);
-            return !transferencia.ValidationResult.IsValid ? transferencia :
-                _transferenciaRepositorio.Transferir(transferencia);
+            if (!transferencia.ValidationResult.IsValid)
+            {
+                return transferencia;
+            }
+            else
+            {
+                var transferenciaRetorno = _transferenciaRepositorio.Transferir(transferencia);
+                foreach (var lote in transferencia.Lotes)
+                {
+                    var log = new LogLotes()
+                    {
+                        ApontamentoProducaoId = lote.ApontamentoProducaoId,
+                        Data = DateTime.Now,
+                        Usuario = transferencia.UsuarioId.ToString()
+                    };
+                    _logLotesRepositorio.Adicionar(log);
+                }
+                return transferencia;
+            }
         }
 
         public void Dispose()
