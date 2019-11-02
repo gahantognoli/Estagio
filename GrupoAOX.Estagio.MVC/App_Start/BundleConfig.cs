@@ -32,7 +32,7 @@ namespace GrupoAOX.Estagio.MVC
 
             bundles.Add(new StyleBundle("~/Content/Login").Include(
                 "~/Content/bootstrap.css",
-                "~/Content/login.css"
+                "~/Content/Login.css"
             ));
 
             bundles.Add(new StyleBundle("~/Content/icheck").Include(

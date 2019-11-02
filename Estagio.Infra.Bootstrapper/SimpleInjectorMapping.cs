@@ -34,6 +34,7 @@ namespace Estagio.Infra.Bootstrapper
             container.Register<IDocumentoTransferenciaRepositorio, DocumentoTransferenciaRepositorio>(Lifestyle.Scoped);
             container.Register<IEtiquetasGeradasRepository, EtiquetasGeradasRepository>(Lifestyle.Scoped);
             container.Register<IMovimentosGeradosRepositorio, MovimentosGeradosRepositorio>(Lifestyle.Scoped);
+            container.Register<IAcompanhamentoIntegracoesRepositorio, AcompanhamentoIntegracoesRepositorio>(Lifestyle.Scoped);
 
 
             //Services injections
@@ -47,6 +48,7 @@ namespace Estagio.Infra.Bootstrapper
             container.Register<IDocumentoTransferenciaService, DocumentoTransferenciaService>(Lifestyle.Scoped);
             container.Register<IEtiquetasGeradasService, EtiquetasGeradasService>(Lifestyle.Scoped);
             container.Register<IMovimentosGeradosService, MovimentosGeradosService>(Lifestyle.Scoped);
+            container.Register<IAcompanhamentoIntegracoesServices, AcompanhamentoIntegracoesServices>(Lifestyle.Scoped);
 
             //App Services 
             container.Register<IUsuarioAppServices, UsuarioAppService>(Lifestyle.Scoped);
@@ -59,6 +61,7 @@ namespace Estagio.Infra.Bootstrapper
             container.Register<IDocumentoTransferenciaAppService, DocumentoTransferenciaAppService>(Lifestyle.Scoped);
             container.Register<IEtiquetasGeradasAppService, EtiquetasGeradasAppService>(Lifestyle.Scoped);
             container.Register<IMovimentosGeradosAppService, MovimentosGeradosAppService>(Lifestyle.Scoped);
+            container.Register<IAcompanhamentoIntegracoesAppServices, AcompanhamentoIntegracoesAppServices>(Lifestyle.Scoped);
 
             container.Register<IEntitySerializationServices<UsuarioViewModel>, 
                 JSONSerializationServices<UsuarioViewModel>>(Lifestyle.Scoped);

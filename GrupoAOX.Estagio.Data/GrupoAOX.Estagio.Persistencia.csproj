@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="ConfigEntidades\CategoriaConfig.cs" />
     <Compile Include="ConfigEntidades\int_exp_Etiqueta_ProducaoConfig.cs" />
+    <Compile Include="ConfigEntidades\LembreteConfig.cs" />
     <Compile Include="ConfigEntidades\LogLotesConfig.cs" />
     <Compile Include="ConfigEntidades\PermissaoConfig.cs" />
     <Compile Include="ConfigEntidades\StatusConfig.cs" />
@@ -98,8 +99,10 @@
       <DependentUpon>201908152028590_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Procedures\AcompanhamentoIntegracoesProcedures.cs" />
     <Compile Include="Procedures\CategoriaProcedures.cs" />
     <Compile Include="Procedures\ConexaoBancoDeDados.cs" />
+    <Compile Include="Procedures\LembretesProcedures.cs" />
     <Compile Include="Procedures\LogLotesProcedures.cs" />
     <Compile Include="Procedures\LoteProcedures.cs" />
     <Compile Include="Procedures\PermissaoProcedures.cs" />
@@ -110,7 +113,9 @@
     <Compile Include="Procedures\TransferenciaProcedures.cs" />
     <Compile Include="Procedures\UsuarioProcedures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\AcompanhamentoIntegracoesRepositorio.cs" />
     <Compile Include="Repositorios\CategoriaRepositorio.cs" />
+    <Compile Include="Repositorios\LembreteRepositorio.cs" />
     <Compile Include="Repositorios\LogLotesRepositorio.cs" />
     <Compile Include="Repositorios\LoteRepositorio.cs" />
     <Compile Include="Repositorios\PermissaoRepositorio.cs" />

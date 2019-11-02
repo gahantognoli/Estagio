@@ -17,7 +17,15 @@
                 </div>
                 <div class="col-md-12">
                     <div class="input-group mb-3">
-                        <input type="number" id="ordemExpedicao" name="ordemExpedicao" class="form-control" placeholder="Informe o número documento" />
+                        @if (ViewBag.NumDocumento != null)
+                        {
+                            <input type="number" id="ordemExpedicao" name="ordemExpedicao" class="form-control" value="@ViewBag.NumDocumento" readonly="readonly" />
+                        }
+                        else
+                        {
+                            <input type="number" id="ordemExpedicao" name="ordemExpedicao" class="form-control" />
+                        }
+
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-search"></i></span>
                         </div>
@@ -42,6 +50,7 @@
 <div class="row">
     <div class="col-md-12">
         <button type="button" class="btn btn-primary mt-2 mb-3" id="btnGerarRelatorio">Gerar relatório</button>
+        @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-warning mt-2 mb-3" })
     </div>
 </div>
 

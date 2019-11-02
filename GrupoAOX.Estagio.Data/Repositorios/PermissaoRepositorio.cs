@@ -74,5 +74,12 @@ namespace GrupoAOX.Estagio.Data.Repositorios
 
             return permissao;
         }
+
+        public override void Remover(int id)
+        {
+            var permissao = ObterPorId(id);
+            permissao.Deletado = true;
+            Atualizar(permissao);
+        }
     }
 }

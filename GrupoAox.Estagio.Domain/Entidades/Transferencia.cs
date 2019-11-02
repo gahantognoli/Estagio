@@ -14,6 +14,7 @@ namespace GrupoAox.Estagio.Domain.Entidades
         public int CategoriaId { get; set; }
         public int UsuarioId { get; set; }
         public ICollection<int_exp_Etiqueta_Producao> Lotes { get; set; }
+        public ICollection<Lembrete> Lembretes { get; set; }
         public Usuario Usuario { get; set; }
         public Categoria Categoria { get; set; }
 

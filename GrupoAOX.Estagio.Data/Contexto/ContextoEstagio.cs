@@ -21,6 +21,7 @@ namespace GrupoAOX.Estagio.Data.Contexto
         public DbSet<Permissao> Permissoes { get; set; }
         public DbSet<LogLotes> LogLotes { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Lembrete> Lembretes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -38,6 +39,7 @@ namespace GrupoAOX.Estagio.Data.Contexto
             modelBuilder.Configurations.Add(new PermissaoConfig());
             modelBuilder.Configurations.Add(new LogLotesConfig());
             modelBuilder.Configurations.Add(new CategoriaConfig());
+            modelBuilder.Configurations.Add(new LembreteConfig());
 
             base.OnModelCreating(modelBuilder);
         }

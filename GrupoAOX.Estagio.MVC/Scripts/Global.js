@@ -46,3 +46,10 @@
         $(id).modal('show');
     }
 };
+
+$(function () {
+    $('#btnLogout').on('click', function () {
+        sessionStorage.clear();
+        $('#logoutForm').submit();
+    });
+});

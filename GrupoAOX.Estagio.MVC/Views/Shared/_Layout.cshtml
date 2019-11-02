@@ -28,8 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <p class="nome-user mt-2">Gabriel Antognoli@*@User.Identity.GetUserName()*@</p>
-                @*<p class="nome-user mt-2">@User.Identity.GetBranchName()</p>*@
+                <p class="nome-user mt-2">@User.Identity.GetUserName()</p>
             </div>
             <ul class="list-unstyled components">
                 <li>
@@ -48,10 +47,13 @@
                             <a href="@Url.Action("Descartar", "Lote")">Descartar Etiqueta</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Novo", "Romaneio")">Romaneio</a>
+                            <a href="@Url.Action("Index", "Romaneio")">Romaneio</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Novo", "OrdemExpedicao")">Ordem de Expedição</a>
+                            <a href="@Url.Action("Index", "OrdemExpedicao")">Ordem de Expedição</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "AcompanhamentoIntegracoes")">Acompanhamento Integrações</a>
                         </li>
                     </ul>
                 </li>
@@ -95,11 +97,6 @@
                         </li>
                     </ul>
                 </li>
-
-                @*<li>
-                        <a href="@Url.Action("Descarte", "Etiqueta")"><i class="fas fa-chart-line icone-menu"></i>Descarte Etiqueta</a>
-                    </li>*@
-
             </ul>
         </nav>
 

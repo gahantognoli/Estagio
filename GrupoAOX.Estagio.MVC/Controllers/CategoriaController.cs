@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace GrupoAOX.Estagio.MVC.Controllers
 {
+    [Authorize]
     public class CategoriaController : Controller
     {
         private readonly ICategoriaAppServices _categoriaAppServices;

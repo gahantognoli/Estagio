@@ -37,6 +37,62 @@ namespace GrupoAOX.Estagio.API.DAL
             }
         }
 
+        public IEnumerable<Armazem> ObterPorDescricao(string filial, string descricao)
+        {
+            using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Protheus12"]
+                .ConnectionString))
+            {
+                conexao.Open();
+
+                string sql = "";
+
+                if (filial == "5202")
+                {
+                    sql = "SELECT NNR_FILIAL AS 'Filial', NNR_CODIGO AS 'Codigo', NNR_DESCRI AS 'Descricao', NNR_MSBLQL AS 'Bloqueado'" +
+                    "FROM NNR030 WHERE D_E_L_E_T_='' AND NNR_FILIAL = @filial AND NNR_MSBLQL <> '1' " +
+                    "AND NNR_CODIGO NOT IN('98','99','DE','EM') AND NNR_DESCRI LIKE '%' + @descricao + '%'";
+                }
+                else if (filial == "5101")
+                {
+                    sql = "SELECT NNR_FILIAL AS 'Filial', NNR_CODIGO AS 'Codigo', NNR_DESCRI AS 'Descricao', NNR_MSBLQL AS 'Bloqueado'" +
+                    "FROM NNR020 WHERE D_E_L_E_T_='' AND NNR_FILIAL = @filial AND NNR_MSBLQL <> '1' " +
+                    "AND NNR_CODIGO NOT IN('98','99','DE','EM') AND NNR_DESCRI LIKE '%' + @descricao + '%'";
+                }
+
+                var armazens = conexao.Query<Armazem>(sql, new { @filial = filial, @descricao = descricao});
+
+                return armazens;
+            }
+        }
+
+        public IEnumerable<Armazem> ObterPorCodigo(string filial, string codigo)
+        {
+            using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Protheus12"]
+                .ConnectionString))
+            {
+                conexao.Open();
+
+                string sql = "";
+
+                if (filial == "5202")
+                {
+                    sql = "SELECT NNR_FILIAL AS 'Filial', NNR_CODIGO AS 'Codigo', NNR_DESCRI AS 'Descricao', NNR_MSBLQL AS 'Bloqueado'" +
+                    "FROM NNR030 WHERE D_E_L_E_T_='' AND NNR_FILIAL = @filial AND NNR_MSBLQL <> '1' " +
+                    "AND NNR_CODIGO NOT IN('98','99','DE','EM') AND NNR_CODIGO = @codigo";
+                }
+                else if (filial == "5101")
+                {
+                    sql = "SELECT NNR_FILIAL AS 'Filial', NNR_CODIGO AS 'Codigo', NNR_DESCRI AS 'Descricao', NNR_MSBLQL AS 'Bloqueado'" +
+                    "FROM NNR020 WHERE D_E_L_E_T_='' AND NNR_FILIAL = @filial AND NNR_MSBLQL <> '1' " +
+                    "AND NNR_CODIGO NOT IN('98','99','DE','EM') AND NNR_CODIGO = @codigo";
+                }
+
+                var armazens = conexao.Query<Armazem>(sql, new { @filial = filial, @codigo = codigo });
+
+                return armazens;
+            }
+        }
+
         public void Dispose()
         {
             GC.SuppressFinalize(this);

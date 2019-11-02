@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace GrupoAOX.Estagio.MVC.Controllers
 {
+    [Authorize]
     public class LoteController : Controller
     {
         private readonly ILoteAppServices _loteAppServices;

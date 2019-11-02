@@ -53,5 +53,12 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             }
             return categoria;
         }
+
+        public override void Remover(int id)
+        {
+            var categoria = ObterPorId(id);
+            categoria.Deletado = true;
+            Atualizar(categoria);
+        }
     }
 }

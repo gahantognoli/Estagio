@@ -10,6 +10,7 @@ namespace GrupoAOX.Estagio.Application.ViewModel
     public class TransferenciaViewModel
     {
         [Key]
+        [Display(Name = "Id")]
         public int TransferenciaId { get; set; }
 
         [Display(Name = "Data Movimento")]

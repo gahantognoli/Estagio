@@ -45,7 +45,24 @@
         </div>
     </div>
     <div class="card-footer">
-        <button type="button" id="btnDescartar" class="btn btn-lg btn-primary btn-block">Descartar</button>
+        <button type="button" id="btnDescartar" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#modal-confirmar">Descartar</button>
+    </div>
+</div>
+
+<div class="modal" id="modal-confirmar" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmação Descarte</h5>
+            </div>
+            <div class="modal-body">
+                <p>Deseja realmente realizar o descarte desssas etiquetas?</p>
+            </div>
+            <div class="modal-footer d-flex justify-content-end">
+                <button class="btn btn-primary" id="btnConfimarDescarte">Confirmar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
     </div>
 </div>
 

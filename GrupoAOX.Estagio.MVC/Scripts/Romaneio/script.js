@@ -1,17 +1,23 @@
 ﻿var functions = {
-    ObterArmazens: function (filial) {
-        fGlobal.Ajax(gHostProjeto + 'Romaneio/ObterArmazens?filial=' + filial, "GET", null, functions.HtmlArmazem, null,
+    ObterArmazens: function (filial, parametro, pesquisa) {
+        fGlobal.Ajax(gHostProjeto + 'Romaneio/ObterArmazens?filial=' + filial + "&parametro=" + parametro +
+            "&pesquisa=" + pesquisa, "GET", null, functions.HtmlArmazem, null,
             null, null);
     },
     HtmlArmazem: function (data) {
         functions.PreencherArmazens(JSON.parse(data));
     },
     PreencherArmazens: function (armazens) {
-        var option = "";
+        $('#armazens').html('');
+        var tr = "";
         $.each(armazens, function (i, item) {
-            option += "<option value=" + item.Codigo + ">" + item.Descricao + "</option>";
+            tr += "<tr>";
+            tr += "<td><input type='radio' name='checkArmazem' class='checkArmazem' /></td>";
+            tr += "<td class='codigo'>" + item.Codigo + "</td>";
+            tr += "<td class='descricao'>" + item.Descricao + "</td>"; 
+            tr += "</tr>";
         });
-        $('#ArmazemDestino').append(option);
+        $('#armazens').append(tr);
     },
     ObterLote: function (numLote) {
         fGlobal.Ajax(gHostProjeto + 'Lote/ObterLote?numLote=' + numLote, "GET", null, functions.CriaLinhaTabela, null,
@@ -51,10 +57,9 @@
             });
 
             var romaneio = {
-                ArmazemDestino: $('#ArmazemDestino').val(),
+                ArmazemDestino: $('#ArmazemDestino').val().split('-')[0].trim(),
                 NumeroDocumento: $('#NumeroDocumento').val(),
                 CategoriaId: Number($('#categoriaId').val()),
-                UsuarioId: 5,
                 Lotes: lotes
             };
             this.Transferir(JSON.stringify(romaneio));
@@ -111,7 +116,12 @@
 };
 
 $(function () {
-    functions.ObterArmazens('5202');
+    $('#btnPesquisaArmazem').on('click', function () {
+        $('#modal-armazens').modal('show');
+        $('#pesquisa').val('');
+        functions.ObterArmazens('5202', "", "");
+    });
+
     $('#Etiqueta').on('keypress', function (e) {
         if (e.keyCode === 13) {
             e.preventDefault();
@@ -124,8 +134,35 @@ $(function () {
         }
     });
 
+    $('#btnPesquisa').on('click', function () {
+        var pesquisa = $('#pesquisa').val();
+        if (fGlobal.IsNotEmpty(pesquisa)) {
+            functions.ObterArmazens('5202', $('#armazem').val(), pesquisa.toUpperCase());
+        } else {
+            alert('Informa a pesquisa!');
+            $('#pesquisa').focus();
+        }
+    });
+
+    $('#btnConfirmacaoArmazem').on('click', function () {
+        var codigoArmazemSelecionado = $("input[name='checkArmazem']:checked").closest('tr').find('.codigo').text().trim();
+        var descricaoArmazemSelecionado = $("input[name='checkArmazem']:checked").closest('tr').find('.descricao').text().trim();
+        if (fGlobal.IsNotEmpty(codigoArmazemSelecionado)) {
+            $('#ArmazemDestino').val(codigoArmazemSelecionado + ' - ' + descricaoArmazemSelecionado);
+            $('#modal-armazens').modal('hide');
+        }
+        else {
+            alert('Selecione um armazém!');
+        }
+    });
+
     $('#btnTransferir').on('click', function () {
-        functions.GerarRequisicaoRomaneio();
+        if (fGlobal.IsNotEmpty($('#ArmazemDestino').val())) {
+            functions.GerarRequisicaoRomaneio();
+        } else {
+            alert("Informe o armazém");
+        }
+        
     });
 
     $(document).on('click', '.remover', function () {

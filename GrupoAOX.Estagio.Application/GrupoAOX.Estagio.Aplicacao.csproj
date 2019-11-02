@@ -54,7 +54,9 @@
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="Interfaces\IAcompanhamentoIntegracoesAppServices.cs" />
     <Compile Include="Interfaces\ICategoriaAppServices.cs" />
+    <Compile Include="Interfaces\ILembreteAppService.cs" />
     <Compile Include="Interfaces\ILogLotesAppServices.cs" />
     <Compile Include="Interfaces\ILoteAppServices.cs" />
     <Compile Include="Interfaces\IPermissaoAppServices.cs" />
@@ -66,8 +68,10 @@
     <Compile Include="Relatorios\Interfaces\IEtiquetasGeradasAppService.cs" />
     <Compile Include="Relatorios\Interfaces\IMovimentosGeradosAppService.cs" />
     <Compile Include="RetornoWS\RetornoArmazem.cs" />
+    <Compile Include="Servicos\AcompanhamentoIntegracoesAppServices.cs" />
     <Compile Include="Servicos\AppService.cs" />
     <Compile Include="Servicos\CategoriaAppService.cs" />
+    <Compile Include="Servicos\LembreteAppService.cs" />
     <Compile Include="Servicos\LogLotesAppService.cs" />
     <Compile Include="Servicos\LoteAppService.cs" />
     <Compile Include="Servicos\PermissaoAppService.cs" />
@@ -77,8 +81,10 @@
     <Compile Include="Servicos\StatusAppService.cs" />
     <Compile Include="Servicos\TransferenciaAppService.cs" />
     <Compile Include="Servicos\UsuarioAppService.cs" />
+    <Compile Include="ViewModel\AcompanhamentoIntegracoesViewModel.cs" />
     <Compile Include="ViewModel\CategoriaViewModel.cs" />
     <Compile Include="ViewModel\int_exp_Etiqueta_ProducaoViewModel.cs" />
+    <Compile Include="ViewModel\LembreteViewModel.cs" />
     <Compile Include="ViewModel\LogLotesViewModel.cs" />
     <Compile Include="ViewModel\PermissaoViewModel.cs" />
     <Compile Include="ViewModel\StatusViewModel.cs" />

@@ -379,7 +379,7 @@ footer {
 }
 
 @media (max-width: 990px) {
-    .tabela {
+    /*.tabela {
         display: none;
-    }
+    }*/
 }

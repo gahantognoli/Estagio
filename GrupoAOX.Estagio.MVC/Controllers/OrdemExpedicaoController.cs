@@ -3,17 +3,21 @@ using GrupoAox.Estagio.Domain.Relatorios.Entidades;
 using GrupoAOX.Estagio.Application.Interfaces;
 using GrupoAOX.Estagio.Application.Relatorios.Interfaces;
 using GrupoAOX.Estagio.Application.ViewModel;
+using GrupoAOX.Estagio.MVC.Helpers;
 using GrupoAOX.Estagio.MVC.Relatorios;
 using Microsoft.Reporting.WebForms;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using X.PagedList;
 
 namespace GrupoAOX.Estagio.MVC.Controllers
 {
+    [Authorize]
     public class OrdemExpedicaoController : Controller
     {
         private readonly ITransferenciaAppServices _transferenciaAppServices;
@@ -32,6 +36,32 @@ namespace GrupoAOX.Estagio.MVC.Controllers
 
         }
 
+        public ActionResult Index(string parametro = "", string busca = "", int pagina = 1, int tamanhoPagina = 50)
+        {
+            ViewBag.Busca = busca;
+            ViewBag.Parametro = parametro;
+            ViewBag.TamanhoPagina = tamanhoPagina;
+            return View(SearchByParameter(parametro, busca).ToPagedList(pagina, tamanhoPagina));
+        }
+
+        private IEnumerable<TransferenciaViewModel> SearchByParameter(string parametro = "", string busca = "")
+        {
+            if (parametro == "data")
+            {
+                var data = Convert.ToDateTime(busca);
+                return _transferenciaAppServices.ObterPorData(data, "Ordem de Expedição");
+            }
+            else if (parametro == "numDocumento")
+            {
+                return _transferenciaAppServices.ObterPorNumDocumento(busca, "Ordem de Expedição");
+            }
+            else if (parametro == "usuario")
+            {
+                return _transferenciaAppServices.ObterPorUsuario(busca, "Ordem de Expedição");
+            }
+            return _transferenciaAppServices.ObterTodos("Ordem de Expedição");
+        }
+
         public ActionResult Novo()
         {
             ViewBag.CategoriaId = _categoriaAppServices.ObterPorDescricao("Ordem de Expedição")
@@ -44,13 +74,15 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         public JsonResult Novo(string requisicao)
         {
             var ordemExpedicao = _entitySerializationServices.Deserialize(requisicao);
+            ordemExpedicao.UsuarioId = User.Identity.GetUserId();
             var ordemExpedicaoRetorno = _transferenciaAppServices.Transferir(ordemExpedicao);
             return Json(new { retorno = new { ordemExpedicaoRetorno.ValidationResult, ordemExpedicaoRetorno.NumeroDocumento } }, JsonRequestBehavior.AllowGet);
 
         }
 
-        public ActionResult Imprimir()
+        public ActionResult Imprimir(string numDocumento = null)
         {
+            ViewBag.NumDocumento = numDocumento;
             return View();
         }
 

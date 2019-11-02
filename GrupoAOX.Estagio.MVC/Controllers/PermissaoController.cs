@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace GrupoAOX.Estagio.MVC.Controllers
 {
+    [Authorize]
     public class PermissaoController : Controller
     {
         private readonly IPermissaoAppServices _permissaoAppServices;

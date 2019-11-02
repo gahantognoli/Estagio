@@ -15,6 +15,8 @@ namespace GrupoAOX.Estagio.Application.AutoMapper
             CreateMap<Transferencia, TransferenciaViewModel>();
             CreateMap<LogLotes, LogLotesViewModel>();
             CreateMap<int_exp_Etiqueta_Producao, int_exp_Etiqueta_ProducaoViewModel>();
+            CreateMap<AcompanhamentoIntegracoes, AcompanhamentoIntegracoesViewModel>();
+            CreateMap<Lembrete, LembreteViewModel>();
         }
     }
 }

@@ -95,5 +95,25 @@ namespace GrupoAOX.Estagio.Application.Servicos
         {
             return _transferenciaServices.ObterNumDocumento();
         }
+
+        public IEnumerable<TransferenciaViewModel> ObterTodos(string categoria)
+        {
+            return Mapper.Map<IEnumerable<TransferenciaViewModel>>(_transferenciaServices.ObterTodos(categoria));
+        }
+
+        public IEnumerable<TransferenciaViewModel> ObterPorNumDocumento(string numDocumento, string categoria)
+        {
+            return Mapper.Map<IEnumerable<TransferenciaViewModel>>(_transferenciaServices.ObterPorNumDocumento(numDocumento, categoria));
+        }
+
+        public IEnumerable<TransferenciaViewModel> ObterPorData(DateTime data, string categoria)
+        {
+            return Mapper.Map<IEnumerable<TransferenciaViewModel>>(_transferenciaServices.ObterPorData(data, categoria));
+        }
+
+        public IEnumerable<TransferenciaViewModel> ObterPorUsuario(string usuario, string categoria)
+        {
+            return Mapper.Map<IEnumerable<TransferenciaViewModel>>(_transferenciaServices.ObterPorUsuario(usuario, categoria));
+        }
     }
 }

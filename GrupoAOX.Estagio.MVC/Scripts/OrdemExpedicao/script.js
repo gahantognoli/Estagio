@@ -40,7 +40,6 @@
                 ArmazemDestino: "FT",
                 NumeroDocumento: $('#NumeroDocumento').val(),
                 CategoriaId: Number($('#categoriaId').val()),
-                UsuarioId: 5,
                 Lotes: lotes
             };
             this.Transferir(JSON.stringify(ordemExpedicao));
@@ -59,6 +58,7 @@
             $('#btnVisualizarOrdemExpdicao').removeAttr('style', 'display:none');
             $('#btnVisualizarOrdemExpdicao').attr('href', gHostProjeto + 'OrdemExpedicao/VisualizarPDF?ordemExpedicao=' + retorno.NumeroDocumento);
             $('#btnNovoOrdemExpedicao').removeAttr('style', 'display:none');
+            $('#btnVoltar').removeAttr('style', 'display:none');
             $('#btnTransferir').attr('style', 'display:none');
             $('#Etiqueta').attr('disabled', 'disabled');
         } else {

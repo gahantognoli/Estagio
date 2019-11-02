@@ -60,6 +60,7 @@
     <div class="card-footer">
         <a id="btnVisualizarOrdemExpdicao" target="_blank" class="btn btn-lg btn-primary btnTransferencias" style="display:none;">Visualizar Ordem de Expedição</a>
         @Html.ActionLink("Novo", "Novo", "OrdemExpedicao", null, new { @class = "btn btn-lg btn-warning btnTransferencias mt-1", @style = "display:none;", id = "btnNovoOrdemExpedicao" })
+        @Html.ActionLink("Voltar", "Index", "OrdemExpedicao", null, new { @class = "btn btn-lg btn-success btnTransferencias mt-1", @style = "display:none;", id = "btnVoltar" })
         <a class="btn btn-lg btn-success btnTransferencias" id="btnTransferir">Transferir</a>
     </div>
 </div>

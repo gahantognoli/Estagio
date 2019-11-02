@@ -13,6 +13,7 @@ namespace GrupoAox.Estagio.Domain.Entidades
         public string CaminhoImg { get; set; }
         public virtual ICollection<Permissao> Permissoes { get; set; }
         public virtual ICollection<Transferencia> Transferencias { get; set; }
+        public virtual ICollection<Lembrete> Lembretes { get; set; }
 
         public ValidationResult ValidationResult { get; set; }
     }

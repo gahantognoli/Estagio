@@ -40,6 +40,7 @@
         }
         else {
             alert('Nenhuma etiqueta foi bipada!');
+            $('#modal-confirmar').modal('hide');
         }
     },
     Descartar: function (pLotes) {
@@ -68,6 +69,7 @@
     },
     MostrarModal: function () {
         fGlobal.MostrarModal('#modal-descarte');
+        $('#modal-confirmar').modal('hide');
     }
 };
 
@@ -84,7 +86,7 @@ $(function () {
         }
     });
 
-    $('#btnDescartar').on('click', function () {
+    $('#btnConfimarDescarte').on('click', function () {
         functions.GerarRequisicao();
     });
 

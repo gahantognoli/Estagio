@@ -106,5 +106,85 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             }
             return numeroDocumento;
         }
+
+        public IEnumerable<Transferencia> ObterTodos(string categoria)
+        {
+            IEnumerable<dynamic> query = null;
+            using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
+            {
+                query = dbConnection.Query<dynamic>(TransferenciaProcedures.ObterTodosPorCategoria.GetDescription(),
+                    new { @categoria = categoria },
+                    commandType: System.Data.CommandType.StoredProcedure);
+            }
+
+            AutoMapper.Configuration.AddIdentifier(typeof(Transferencia), "TransferenciaId");
+            AutoMapper.Configuration.AddIdentifier(typeof(int_exp_Etiqueta_Producao), "ApontamentoProducaoId");
+            AutoMapper.Configuration.AddIdentifier(typeof(Usuario), "UsuarioId");
+            AutoMapper.Configuration.AddIdentifier(typeof(Categoria), "CategoriaId");
+
+            IEnumerable<Transferencia> transferencias = (AutoMapper.MapDynamic<Transferencia>(query, false) as IEnumerable<Transferencia>);
+
+            return transferencias;
+        }
+
+        public IEnumerable<Transferencia> ObterPorNumDocumento(string numDocumento, string categoria)
+        {
+            IEnumerable<dynamic> query = null;
+            using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
+            {
+                query = dbConnection.Query<dynamic>(TransferenciaProcedures.ObterPorNumDocumento.GetDescription(),
+                    new { @NumDocumento = numDocumento, @categoria = categoria },
+                    commandType: System.Data.CommandType.StoredProcedure);
+            }
+
+            AutoMapper.Configuration.AddIdentifier(typeof(Transferencia), "TransferenciaId");
+            AutoMapper.Configuration.AddIdentifier(typeof(int_exp_Etiqueta_Producao), "ApontamentoProducaoId");
+            AutoMapper.Configuration.AddIdentifier(typeof(Usuario), "UsuarioId");
+            AutoMapper.Configuration.AddIdentifier(typeof(Categoria), "CategoriaId");
+
+            IEnumerable<Transferencia> transferencias = (AutoMapper.MapDynamic<Transferencia>(query, false) as IEnumerable<Transferencia>);
+
+            return transferencias;
+        }
+
+        public IEnumerable<Transferencia> ObterPorData(DateTime data, string categoria)
+        {
+            IEnumerable<dynamic> query = null;
+            using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
+            {
+                query = dbConnection.Query<dynamic>(TransferenciaProcedures.ObterPorData.GetDescription(),
+                    new { @Data = data, @categoria = categoria },
+                    commandType: System.Data.CommandType.StoredProcedure);
+            }
+
+            AutoMapper.Configuration.AddIdentifier(typeof(Transferencia), "TransferenciaId");
+            AutoMapper.Configuration.AddIdentifier(typeof(int_exp_Etiqueta_Producao), "ApontamentoProducaoId");
+            AutoMapper.Configuration.AddIdentifier(typeof(Usuario), "UsuarioId");
+            AutoMapper.Configuration.AddIdentifier(typeof(Categoria), "CategoriaId");
+
+            IEnumerable<Transferencia> transferencias = (AutoMapper.MapDynamic<Transferencia>(query, false) as IEnumerable<Transferencia>);
+
+            return transferencias;
+        }
+
+        public IEnumerable<Transferencia> ObterPorUsuario(string usuario, string categoria)
+        {
+            IEnumerable<dynamic> query = null;
+            using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
+            {
+                query = dbConnection.Query<dynamic>(TransferenciaProcedures.ObterPorUsuario.GetDescription(),
+                    new { @usuario = usuario, @categoria = categoria },
+                    commandType: System.Data.CommandType.StoredProcedure);
+            }
+
+            AutoMapper.Configuration.AddIdentifier(typeof(Transferencia), "TransferenciaId");
+            AutoMapper.Configuration.AddIdentifier(typeof(int_exp_Etiqueta_Producao), "ApontamentoProducaoId");
+            AutoMapper.Configuration.AddIdentifier(typeof(Usuario), "UsuarioId");
+            AutoMapper.Configuration.AddIdentifier(typeof(Categoria), "CategoriaId");
+
+            IEnumerable<Transferencia> transferencias = (AutoMapper.MapDynamic<Transferencia>(query, false) as IEnumerable<Transferencia>);
+
+            return transferencias;
+        }
     }
 }

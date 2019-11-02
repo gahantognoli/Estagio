@@ -12,13 +12,16 @@ namespace GrupoAox.Estagio.Domain.Servicos
         private readonly ITransferenciaRepositorio _transferenciaRepositorio;
         private readonly ILogLotesRepositorio _logLotesRepositorio;
         private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly ICategoriaRepositorio _categoriaRepositorio;
 
         public TransferenciaServices(ITransferenciaRepositorio transferenciaRepositorio, 
-            ILogLotesRepositorio logLotesRepositorio, IUsuarioRepositorio usuarioRepositorio)
+            ILogLotesRepositorio logLotesRepositorio, IUsuarioRepositorio usuarioRepositorio,
+            ICategoriaRepositorio categoriaRepositorio)
         {
             _transferenciaRepositorio = transferenciaRepositorio;
             _logLotesRepositorio = logLotesRepositorio;
             _usuarioRepositorio = usuarioRepositorio;
+            _categoriaRepositorio = categoriaRepositorio;
         }
 
         public Transferencia ObterPorId(int id)
@@ -52,7 +55,12 @@ namespace GrupoAox.Estagio.Domain.Servicos
                     {
                         ApontamentoProducaoId = lote.ApontamentoProducaoId,
                         Data = DateTime.Now,
-                        Usuario = transferencia.UsuarioId.ToString()
+                        Usuario = transferencia.UsuarioId.ToString(),
+                        OrdemProducao = lote.OrderProducao,
+                        Etiqueta = lote.Etiqueta,
+                        Armazem = transferencia.ArmazemDestino,
+                        NumDocumento = transferencia.NumeroDocumento,
+                        Acao = _categoriaRepositorio.ObterPorId(transferencia.CategoriaId).Descricao
                     };
                     _logLotesRepositorio.Adicionar(log);
                 }
@@ -69,6 +77,26 @@ namespace GrupoAox.Estagio.Domain.Servicos
         public string ObterNumDocumento()
         {
             return _transferenciaRepositorio.ObterNumDocumento();
+        }
+
+        public IEnumerable<Transferencia> ObterTodos(string categoria)
+        {
+            return _transferenciaRepositorio.ObterTodos(categoria);
+        }
+
+        public IEnumerable<Transferencia> ObterPorNumDocumento(string numDocumento, string categoria)
+        {
+            return _transferenciaRepositorio.ObterPorNumDocumento(numDocumento, categoria);
+        }
+
+        public IEnumerable<Transferencia> ObterPorData(DateTime data, string categoria)
+        {
+            return _transferenciaRepositorio.ObterPorData(data, categoria);
+        }
+
+        public IEnumerable<Transferencia> ObterPorUsuario(string usuario, string categoria)
+        {
+            return _transferenciaRepositorio.ObterPorUsuario(usuario, categoria);
         }
     }
 }

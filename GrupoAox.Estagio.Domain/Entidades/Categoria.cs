@@ -8,6 +8,7 @@ namespace GrupoAox.Estagio.Domain.Entidades
         public int CategoriaId { get; set; }
         public string Descricao { get; set; }
         public ICollection<Transferencia> Transferencias { get; set; }
+        public bool Deletado { get; set; } = false;
 
         public ValidationResult ValidationResult { get; set; }
     }

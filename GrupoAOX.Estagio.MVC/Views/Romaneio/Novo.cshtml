@@ -30,8 +30,13 @@
             <div class="col-lg-4">
                 @Html.LabelFor(model => model.ArmazemDestino, htmlAttributes: new { @class = "col-form-label" })
             </div>
-            <div class="col-lg-4">
-                <select id="ArmazemDestino" name="ArmazemDestino" class="form-control"></select>
+            <div class="col-lg-5">
+                <div class="input-group mb-3">
+                    <input type="text" id="ArmazemDestino" name="ArmazemDestino" class="form-control" readonly="readonly">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" id="btnPesquisaArmazem"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -81,6 +86,50 @@
             </div>
             <div class="modal-body d-flex justify-content-center" style="height: 230px">
                 <img src="~/images/ajax-loader-200px.gif" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modal-armazens" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Selecione o Armazém</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="col-lg-3">
+                        <select id="armazem" class="form-control">
+                            <option value="codigo">Código</option>
+                            <option value="descricao">Descrição</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-7">
+                        <input type="text" id="pesquisa" class="form-control" placeholder="Informe o código ou descrição do armazém" />
+                    </div>
+                    <div class="col-lg-2">
+                        <button id="btnPesquisa" class="btn btn-primary">Pesquisar</button>
+                    </div>
+                </div>
+                <table class="table table-sm table-hover mt-3">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <td></td>
+                            <td>Código</td>
+                            <td>Descrição</td>
+                        </tr>
+                    </thead>
+                    <tbody id="armazens">
+
+                    </tbody>
+                </table>
+                
+            </div>
+            <div class="modal-footer">
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary" id="btnConfirmacaoArmazem">Confirmar</button>
+                </div>
             </div>
         </div>
     </div>

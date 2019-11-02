@@ -29,8 +29,7 @@ namespace GrupoAOX.Estagio.MVC.Helpers
             }
         }
 
-        public static void UpdateImageClaim(this IPrincipal currentPrincipal,
-            int id,
+        public static void UpdateImageClaim(this IPrincipal currentPrincipal, int id,
             IUsuarioAppServices usuarioAppService)
         {
             var identity = currentPrincipal.Identity as ClaimsIdentity;
