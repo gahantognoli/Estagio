@@ -1,12 +1,16 @@
 ﻿using GrupoAOX.Estagio.Application.Interfaces;
 using GrupoAOX.Estagio.Application.ViewModel;
+using GrupoAOX.Estagio.MVC.Filters;
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Web.Mvc;
 using X.PagedList;
 
 namespace GrupoAOX.Estagio.MVC.Controllers
 {
+    [Authorize]
+    [ClaimsAutorize(ClaimType = ClaimTypes.Role, ClaimValue = "ADM,ACINT")]
     public class AcompanhamentoIntegracoesController : Controller
     {
         private readonly IAcompanhamentoIntegracoesAppServices _acompanhamentoIntegracoesAppServices;

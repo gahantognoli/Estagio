@@ -32,6 +32,12 @@ namespace GrupoAOX.Estagio.Application.Servicos
             return lembreteAt;
         }
 
+        public void MarcarConclusao(int lembreteId, bool concluido)
+        {
+            _lembreteService.MarcarConclusao(lembreteId, concluido);
+            Commit();
+        }
+
         public IEnumerable<LembreteViewModel> ObterPorDataLancamento(DateTime dataLancamento, int usuarioId)
         {
             return Mapper.Map<IEnumerable<LembreteViewModel>>(_lembreteService.ObterPorDataLancamento(dataLancamento, usuarioId));

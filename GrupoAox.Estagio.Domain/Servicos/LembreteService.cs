@@ -31,6 +31,11 @@ namespace GrupoAox.Estagio.Domain.Servicos
             GC.SuppressFinalize(this);
         }
 
+        public void MarcarConclusao(int lembreteId, bool concluido)
+        {
+            _lembreteRepositorio.MarcarConclusao(lembreteId, concluido);
+        }
+
         public IEnumerable<Lembrete> ObterPorDataLancamento(DateTime dataLancamento, int usuarioId)
         {
             return _lembreteRepositorio.ObterPorDataLancamento(dataLancamento, usuarioId);

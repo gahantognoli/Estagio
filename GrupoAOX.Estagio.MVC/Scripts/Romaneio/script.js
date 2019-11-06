@@ -2,10 +2,12 @@
     ObterArmazens: function (filial, parametro, pesquisa) {
         fGlobal.Ajax(gHostProjeto + 'Romaneio/ObterArmazens?filial=' + filial + "&parametro=" + parametro +
             "&pesquisa=" + pesquisa, "GET", null, functions.HtmlArmazem, null,
-            null, null);
+            null, function () { $('#carregando').removeAttr('display', 'none'); });
     },
     HtmlArmazem: function (data) {
+        $('#carregando').css('display', 'none');
         functions.PreencherArmazens(JSON.parse(data));
+        
     },
     PreencherArmazens: function (armazens) {
         $('#armazens').html('');
@@ -26,7 +28,7 @@
     CriaLinhaTabela: function (data) {
         var lote = data.retorno;
         if (fGlobal.IsEmpty(lote)) {
-            alert("Etiqueta não encontrada!\nPor favor, verifique se essa etiqueta não foi descartada");
+            fGlobal.EmitirNotificacao('Não encontrado', "Etiqueta não encontrada!\nPor favor, verifique se essa etiqueta não foi descartada", "danger");
             $('#Etiqueta').val('');
         } else {
             if (functions.VerificaEtiquetaJaBipada(lote.Etiqueta) === false) {
@@ -65,7 +67,7 @@
             this.Transferir(JSON.stringify(romaneio));
         }
         else {
-            alert('Nenhuma etiqueta foi bipada!');
+            fGlobal.EmitirNotificacao('Validação', "Nenhuma etiqueta foi bipada!", "danger");
         }
     },
     Transferir: function (pRomaneio) {
@@ -79,8 +81,10 @@
             $('#btnVisualizarRomaneio').attr('href', gHostProjeto + 'Romaneio/VisualizarPDF?numRomaneio=' + retorno.NumeroDocumento);
             $('#btnNovoRomaneio').removeAttr('style', 'display:none');
             $('#btnTransferir').attr('style', 'display:none');
+            $('#btnVoltar').removeAttr('style', 'display:none');
             $('#Etiqueta').attr('disabled', 'disabled');
             $('#ArmazemDestino').attr('disabled', 'disabled');
+            fGlobal.EmitirNotificacao('Sucesso', 'Transferência realiza com sucesso', 'info');
         } else {
             this.ExibirErros(data.ValidationResult);
         }
@@ -89,7 +93,7 @@
         var etiquetaJaBipada = false;
         $('#lotes tr td.etiqueta').each(function (i, item) {
             if ($(item).text().trim() === etiqueta) {
-                alert("Etiqueta já bipada!");
+                fGlobal.EmitirNotificacao('Validação',  "Etiqueta já bipada!", 'danger');
                 etiquetaJaBipada = true;
                 $('#Etiqueta').val('');
                 return;
@@ -128,7 +132,7 @@ $(function () {
             if ($(this).val().length > 6) {
                 functions.ObterLote($(this).val().trim());
             } else {
-                alert("Etiqueta inválida!");
+                fGlobal.EmitirNotificacao('Validação', "Etiqueta inválida!", "danger");
                 $(this).val('');
             }
         }
@@ -139,7 +143,7 @@ $(function () {
         if (fGlobal.IsNotEmpty(pesquisa)) {
             functions.ObterArmazens('5202', $('#armazem').val(), pesquisa.toUpperCase());
         } else {
-            alert('Informa a pesquisa!');
+            fGlobal.EmitirNotificacao('Validação', 'Informa a pesquisa!', "danger");
             $('#pesquisa').focus();
         }
     });
@@ -150,9 +154,10 @@ $(function () {
         if (fGlobal.IsNotEmpty(codigoArmazemSelecionado)) {
             $('#ArmazemDestino').val(codigoArmazemSelecionado + ' - ' + descricaoArmazemSelecionado);
             $('#modal-armazens').modal('hide');
+            $('#Etiqueta').focus();
         }
         else {
-            alert('Selecione um armazém!');
+            fGlobal.EmitirNotificacao('Validação', 'Selecione um armazém!', 'danger');
         }
     });
 
@@ -160,7 +165,7 @@ $(function () {
         if (fGlobal.IsNotEmpty($('#ArmazemDestino').val())) {
             functions.GerarRequisicaoRomaneio();
         } else {
-            alert("Informe o armazém");
+            fGlobal.EmitirNotificacao("Validação", "Informe o armazém", "danger");
         }
         
     });

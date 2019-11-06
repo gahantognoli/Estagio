@@ -21,14 +21,16 @@ namespace GrupoAOX.Estagio.MVC
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/bootstrap-notify.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/global").Include(
                       "~/Scripts/Global.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/notification.css"));
 
             bundles.Add(new StyleBundle("~/Content/Login").Include(
                 "~/Content/bootstrap.css",

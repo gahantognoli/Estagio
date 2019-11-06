@@ -3,7 +3,7 @@
         if ($('#ordemExpedicao').val().trim() !== "") {
             gerarRelatorio();
         } else {
-            alert("Informe o numero do romaneio!");
+            fGlobal.EmitirNotificacao('Validação', "Informe o numero da ordem de expedição!", 'danger');
         }
 
     });
@@ -15,7 +15,7 @@
                 gerarRelatorio();
             }
             else {
-                alert("Informe o numero da ordem de expedição!");
+                fGlobal.EmitirNotificacao('Validação', "Informe o numero da ordem de expedição!", 'danger');
             }
         }
     });

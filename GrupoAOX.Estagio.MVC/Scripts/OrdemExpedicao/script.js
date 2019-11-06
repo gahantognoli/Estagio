@@ -6,7 +6,7 @@
     CriaLinhaTabela: function (data) {
         var lote = data.retorno;
         if (fGlobal.IsEmpty(lote)) {
-            alert("Etiqueta não encontrada!\nPor favor, verifique se essa etiqueta não foi descartada");
+            fGlobal.EmitirNotificacao('Validação', "Etiqueta não encontrada!\nPor favor, verifique se essa etiqueta não foi descartada", 'danger');
             $('#Etiqueta').val('');
         } else {
             if (functions.VerificaEtiquetaJaBipada(lote.Etiqueta) === false) {
@@ -45,7 +45,7 @@
             this.Transferir(JSON.stringify(ordemExpedicao));
         }
         else {
-            alert('Nenhuma etiqueta foi bipada!');
+            fGlobal.EmitirNotificacao('Validação', 'Nenhuma etiqueta foi bipada!', 'danger');
         }
     },
     Transferir: function (pOrdemExpedicao) {
@@ -61,6 +61,7 @@
             $('#btnVoltar').removeAttr('style', 'display:none');
             $('#btnTransferir').attr('style', 'display:none');
             $('#Etiqueta').attr('disabled', 'disabled');
+            fGlobal.EmitirNotificacao('Sucesso', 'Transferência realizada com sucesso!', 'info');
         } else {
             this.ExibirErros(data.ValidationResult);
         }
@@ -69,7 +70,7 @@
         var etiquetaJaBipada = false;
         $('#lotes tr td.etiqueta').each(function (i, item) {
             if ($(item).text().trim() === etiqueta) {
-                alert("Etiqueta já bipada!");
+                fGlobal.EmitirNotificacao('Validação', "Etiqueta já bipada!", 'danger');
                 etiquetaJaBipada = true;
                 $('#Etiqueta').val('');
                 return;
@@ -96,13 +97,15 @@
 };
 
 $(function () {
+    $('#Etiqueta').focus();
+
     $('#Etiqueta').on('keypress', function (e) {
         if (e.keyCode === 13) {
             e.preventDefault();
             if ($(this).val().length > 6) {
                 functions.ObterLote($(this).val().trim());
             } else {
-                alert("Etiqueta inválida!");
+                fGlobal.EmitirNotificacao('Validação', "Etiqueta inválida!", 'danger');
                 $(this).val('');
             }
         }

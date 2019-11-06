@@ -20,6 +20,9 @@ namespace GrupoAOX.Estagio.Data.ConfigEntidades
             Property(c => c.DataLancamento)
                 .IsRequired();
 
+            Property(c => c.Deletado)
+                .IsRequired();
+
             HasRequired(c => c.Transferencia)
                 .WithMany(c => c.Lembretes)
                 .HasForeignKey(c => c.TransferenciaId);

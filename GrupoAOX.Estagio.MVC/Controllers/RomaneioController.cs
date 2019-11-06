@@ -3,6 +3,7 @@ using GrupoAox.Estagio.Domain.Relatorios.Entidades;
 using GrupoAOX.Estagio.Application.Interfaces;
 using GrupoAOX.Estagio.Application.Relatorios.Interfaces;
 using GrupoAOX.Estagio.Application.ViewModel;
+using GrupoAOX.Estagio.MVC.Filters;
 using GrupoAOX.Estagio.MVC.Helpers;
 using GrupoAOX.Estagio.MVC.Relatorios;
 using Microsoft.Reporting.WebForms;
@@ -12,12 +13,14 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Web.Mvc;
 using X.PagedList;
 
 namespace GrupoAOX.Estagio.MVC.Controllers
 {
     [Authorize]
+    [ClaimsAutorize(ClaimType = ClaimTypes.Role, ClaimValue = "ADM,ROM")]
     public class RomaneioController : Controller
     {
         private readonly ITransferenciaAppServices _transferenciaAppServices;

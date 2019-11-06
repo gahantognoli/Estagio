@@ -1,13 +1,16 @@
 ﻿using GrupoAOX.Estagio.Application.Interfaces;
 using GrupoAOX.Estagio.Application.ViewModel;
+using GrupoAOX.Estagio.MVC.Filters;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Web.Mvc;
 
 namespace GrupoAOX.Estagio.MVC.Controllers
 {
     [Authorize]
+    [ClaimsAutorize(ClaimType = ClaimTypes.Role, ClaimValue = "ADM")]
     public class PermissaoController : Controller
     {
         private readonly IPermissaoAppServices _permissaoAppServices;

@@ -61,5 +61,24 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             }
             return lembretes;
         }
+
+        public override Lembrete Atualizar(Lembrete obj)
+        {
+            var lembrete = Db.Lembretes.Find(obj.LembreteId);
+            lembrete.Descricao = obj.Descricao;
+            return obj;
+        }
+
+        public override void Remover(int id)
+        {
+            var lembrete = Db.Lembretes.Find(id);
+            lembrete.Deletado = true;
+        }
+
+        public void MarcarConclusao(int lembreteId, bool concluido)
+        {
+            var lembrete = Db.Lembretes.Find(lembreteId);
+            lembrete.Concluido = concluido;
+        }
     }
 }

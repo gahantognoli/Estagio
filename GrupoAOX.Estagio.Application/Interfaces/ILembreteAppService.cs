@@ -12,5 +12,6 @@ namespace GrupoAOX.Estagio.Application.Interfaces
         LembreteViewModel ObterPorId(int id);
         IEnumerable<LembreteViewModel> ObterTodos(int usuarioId);
         IEnumerable<LembreteViewModel> ObterPorDataLancamento(DateTime dataLancamento, int usuarioId);
+        void MarcarConclusao(int lembreteId, bool concluido);
     }
 }

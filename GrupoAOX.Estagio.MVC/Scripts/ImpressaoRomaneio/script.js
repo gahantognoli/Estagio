@@ -3,7 +3,7 @@
         if ($('#numRomaneio').val().trim() !== "") {
             gerarRelatorio();
         } else {
-            alert("Informe o numero do romaneio!");
+            fGlobal.EmitirNotificacao('Validação', "Informe o numero do romaneio!", 'danger');
         }
 
     });
@@ -15,7 +15,7 @@
                 gerarRelatorio();
             }
             else {
-                alert("Informe o numero do romaneio!");
+                fGlobal.EmitirNotificacao('Validação', "Informe o numero do romaneio!", 'danger');
             }
         }
     });

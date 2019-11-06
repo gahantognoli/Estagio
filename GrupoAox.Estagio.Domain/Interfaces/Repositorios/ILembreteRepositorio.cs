@@ -8,5 +8,6 @@ namespace GrupoAox.Estagio.Domain.Interfaces.Repositorios
     {
         IEnumerable<Lembrete> ObterTodos(int usuarioId);
         IEnumerable<Lembrete> ObterPorDataLancamento(DateTime dataLancamento, int usuarioId);
+        void MarcarConclusao(int lembreteId, bool concluido);
     }
 }

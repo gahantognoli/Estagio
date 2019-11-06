@@ -43,7 +43,7 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             IEnumerable<dynamic> query = null;
             using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
             {
-                query = dbConnection.Query<dynamic>(TransferenciaProcedures.ObterTodos.GetDescription(),
+                query = dbConnection.Query<dynamic>(TransferenciaProcedures.ObterPorId.GetDescription(),
                new
                {
                    id = id

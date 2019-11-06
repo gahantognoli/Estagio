@@ -44,6 +44,25 @@
     },
     MostrarModal: function (id) {
         $(id).modal('show');
+    },
+    EmitirNotificacao: function (titulo, mensagem, tipo) {
+        $.notify({
+            title: titulo,
+            message: mensagem
+        },
+            {
+                type: 'pastel-' + tipo,
+                delay: 5000,
+                offset: {
+                    x: 23,
+                    y: 80
+                },
+                template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+                    '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+                    '<span data-notify="title">{1}</span>' +
+                    '<span data-notify="message">{2}</span>' +
+                    '</div>'
+            });
     }
 };
 

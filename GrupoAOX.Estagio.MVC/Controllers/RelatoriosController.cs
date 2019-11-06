@@ -1,10 +1,12 @@
 ﻿using GrupoAox.Estagio.Domain.Relatorios.Entidades;
 using GrupoAOX.Estagio.Application.Relatorios.Interfaces;
+using GrupoAOX.Estagio.MVC.Filters;
 using GrupoAOX.Estagio.MVC.Relatorios;
 using Microsoft.Reporting.WebForms;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Security.Claims;
 using System.Web.Mvc;
 
 namespace GrupoAOX.Estagio.MVC.Controllers
@@ -22,6 +24,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
         }
 
         // GET: Relatorios
+        [ClaimsAutorize(ClaimType = ClaimTypes.Role, ClaimValue = "ADM,RELEG")]
         public ActionResult EtiquetasGeradas()
         {
             return View();
@@ -74,6 +77,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
             return dataset;
         }
 
+        [ClaimsAutorize(ClaimType = ClaimTypes.Role, ClaimValue = "ADM,MOVIG")]
         public ActionResult MovimentosGerados()
         {
             return View();

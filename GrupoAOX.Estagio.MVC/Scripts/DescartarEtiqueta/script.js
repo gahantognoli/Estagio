@@ -39,7 +39,7 @@
             this.Descartar(JSON.stringify(lotes));
         }
         else {
-            alert('Nenhuma etiqueta foi bipada!');
+            fGlobal.EmitirNotificacao('Validação', 'Nenhuma etiqueta foi bipada!', 'danger');
             $('#modal-confirmar').modal('hide');
         }
     },
@@ -49,14 +49,14 @@
     },
     HtmlDescarte: function (data) {
         var retorno = data.retorno;
-        alert("Etiquetas Descartadas com sucesso!");
+        fGlobal.EmitirNotificacao('Sucesso', "Etiquetas Descartadas com sucesso!", 'info');
         window.location = gHostProjeto + "Lote/Descartar";
     },
     VerificaEtiquetaJaBipada: function (etiqueta) {
         var etiquetaJaBipada = false;
         $('#lotes tr td.etiqueta').each(function (i, item) {
             if ($(item).text().trim() === etiqueta) {
-                alert("Etiqueta já bipada!");
+                fGlobal.EmitirNotificacao('Validação', "Etiqueta já bipada!", 'danger');
                 etiquetaJaBipada = true;
                 $('#Etiqueta').val('');
                 return;
@@ -80,7 +80,7 @@ $(function () {
             if ($(this).val().length > 6) {
                 functions.ObterLote($(this).val().trim());
             } else {
-                alert("Etiqueta inválida!");
+                fGlobal.EmitirNotificacao('Validação', "Etiqueta inválida!", 'danger');
                 $(this).val('');
             }
         }

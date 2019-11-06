@@ -74,6 +74,7 @@
     <div class="card-footer">
         <a id="btnVisualizarRomaneio" target="_blank" class="btn btn-lg btn-primary btnTransferencias" style="display:none;">Visualizar Romaneio</a>
         @Html.ActionLink("Novo", "Novo", "Romaneio", null, new { @class = "btn btn-lg btn-warning btnTransferencias mt-1", @style = "display:none;", id = "btnNovoRomaneio" })
+        @Html.ActionLink("Voltar", "Index", "Romaneio", null, new { @class = "btn btn-lg btn-success btnTransferencias mt-1", @style = "display:none;", id = "btnVoltar" })
         <a class="btn btn-lg btn-success btnTransferencias" id="btnTransferir">Transferir</a>
     </div>
 </div>
@@ -112,6 +113,9 @@
                         <button id="btnPesquisa" class="btn btn-primary">Pesquisar</button>
                     </div>
                 </div>
+                <div style="text-align:center; display:none;" id="carregando">
+                    <img src="~/images/ajax-loader-200px.gif" style="display:inline-block;" />
+                </div>
                 <table class="table table-sm table-hover mt-3">
                     <thead class="bg-dark text-white">
                         <tr>
@@ -121,10 +125,9 @@
                         </tr>
                     </thead>
                     <tbody id="armazens">
-
                     </tbody>
                 </table>
-                
+
             </div>
             <div class="modal-footer">
                 <div class="d-flex justify-content-end">

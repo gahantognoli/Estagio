@@ -1,0 +1,116 @@
+﻿@model  IEnumerable<GrupoAOX.Estagio.Application.ViewModel.LembreteViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h3>Lembretes</h3>
+        <hr />
+    </div>
+
+    <div class="col-12">
+        <div class="card" style="margin-bottom:15px;margin-top: 15px;">
+            <div class="card-header">
+                <h5>Opções de Pesquisa</h5>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    <div class="form-row">
+                        <div class="col-2">
+                            <select name="parametro" id="parametro" class="form-control" onchange="$('#busca').val('')" value="@(ViewBag.Busca == "" ? "" : ViewBag.Busca)">
+                                <option value="" @(ViewBag.Parametro == "" ? "selected" : "")>Pesquisar por...</option>
+                                <option value="dataLancamento" @(ViewBag.Parametro == "dataLancamento" ? "selected" : "")>Data Lançamento</option>
+                            </select>
+                        </div>
+                        <div class="col-10">
+                            <div class="form-row">
+                                <div class="col-10">
+                                    <div class="input-group mb-2">
+                                        <input type="text" class="form-control" name="busca" id="busca" placeholder="Pesquisa..." value="@(ViewBag.Parametro == "" ? "" : @ViewBag.Busca)">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <button type="submit" class="btn btn-primary mb-2">Pesquisar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped table-sm table-hover tabela">
+    <tr class="thead-dark">
+        <th>
+            Id
+        </th>
+        <th>
+            Id Transferencia
+        </th>
+        <th>
+            Descrição
+        </th>
+        <th>
+            Data Lançamento
+        </th>
+        <th>
+            Concluído
+        </th>
+        <th></th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr><td class="text-center" colspan="5"><span class="lead">Não há dados</span></td></tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LembreteId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransferenciaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataLancamento)
+                </td>
+                <td>
+                    @if (item.Concluido == true)
+                    {
+                        <input type="checkbox" id="conluido" name="concluido" class="concluido" checked="checked" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="conluido" name="concluido" class="concluido" />
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Detalhes", "Detalhes", new { id = item.LembreteId }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Editar", "Atualizar", new { id = item.LembreteId }, new { @class = "btn btn-primary btn-sm" })
+                    @Html.ActionLink("Remover", "Remover", new { id = item.LembreteId }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery.mask.min.js");
+    @Scripts.Render("~/Scripts/Lembrete/script.js")
+    @if (TempData["Sucesso"] != null)
+    {
+        <script>fGlobal.EmitirNotificacao('Sucesso', '@TempData["Sucesso"]', 'info')</script>
+    }
+}
+

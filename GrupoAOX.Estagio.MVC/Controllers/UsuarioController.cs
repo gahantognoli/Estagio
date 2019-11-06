@@ -1,17 +1,21 @@
-﻿using GrupoAOX.Estagio.Application.Interfaces;
+﻿using DotNetOpenAuth.InfoCard;
+using GrupoAOX.Estagio.Application.Interfaces;
 using GrupoAOX.Estagio.Application.ViewModel;
+using GrupoAOX.Estagio.MVC.Filters;
 using GrupoAOX.Estagio.MVC.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
 namespace GrupoAOX.Estagio.MVC.Controllers
 {
     [Authorize]
+    [ClaimsAutorize(ClaimType = ClaimTypes.Role, ClaimValue = "ADM")]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioAppServices _usuarioAppServices;

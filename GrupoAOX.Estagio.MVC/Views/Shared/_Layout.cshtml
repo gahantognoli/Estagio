@@ -43,18 +43,36 @@
                         </div>
                     </a>
                     <ul class="collapse list-unstyled" id="transferenciasSubmenu">
-                        <li>
-                            <a href="@Url.Action("Descartar", "Lote")">Descartar Etiqueta</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index", "Romaneio")">Romaneio</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index", "OrdemExpedicao")">Ordem de Expedição</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index", "AcompanhamentoIntegracoes")">Acompanhamento Integrações</a>
-                        </li>
+                        @if (this.IfClaim("", "ADM") || this.IfClaim("", "DESET"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Descartar", "Lote")">Descartar Etiqueta</a>
+                            </li>
+                        }
+                        @if (this.IfClaim("", "ADM") || this.IfClaim("", "ROM"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "Romaneio")">Romaneio</a>
+                            </li>
+                        }
+                        @if (this.IfClaim("", "ADM") || this.IfClaim("", "OREXP"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "OrdemExpedicao")">Ordem de Expedição</a>
+                            </li>
+                        }
+                        @if (this.IfClaim("", "ADM") || this.IfClaim("", "ACINT"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "AcompanhamentoIntegracoes")">Acompanhamento Integrações</a>
+                            </li>
+                        }
+                        @if (this.IfClaim("", "ADM") || this.IfClaim("", "LEMBR"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "Lembrete")">Lembretes</a>
+                            </li>
+                        }
                     </ul>
                 </li>
 
@@ -63,18 +81,30 @@
                         <i class="fas fa-file-contract" style="margin-right: 21px;"></i>Relatórios
                     </a>
                     <ul class="collapse list-unstyled" id="relatoriosSubmenu">
-                        <li>
-                            <a href="@Url.Action("EtiquetasGeradas", "Relatorios")">Relatorio Etiquetas Geradas</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("MovimentosGerados", "Relatorios")">Movimentos Gerados</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Imprimir", "Romaneio")">Impressão de Romaneio</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Imprimir", "OrdemExpedicao")">Impressão de Ordem de Expedição</a>
-                        </li>
+                        @if (this.IfClaim("", "ADM") || this.IfClaim("", "RELEG"))
+                        {
+                            <li>
+                                <a href="@Url.Action("EtiquetasGeradas", "Relatorios")">Relatorio Etiquetas Geradas</a>
+                            </li>
+                        }
+                        @if (this.IfClaim("", "ADM") || this.IfClaim("", "MOVIG"))
+                        {
+                            <li>
+                                <a href="@Url.Action("MovimentosGerados", "Relatorios")">Movimentos Gerados</a>
+                            </li>
+                        }
+                        @if (this.IfClaim("", "ADM") || this.IfClaim("", "ROM"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Imprimir", "Romaneio")">Impressão de Romaneio</a>
+                            </li>
+                        }
+                        @if (this.IfClaim("", "ADM") || this.IfClaim("", "OREXP"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Imprimir", "OrdemExpedicao")">Impressão de Ordem de Expedição</a>
+                            </li>
+                        }
                     </ul>
                 </li>
 
@@ -83,18 +113,30 @@
                         <i class="fas fa-cogs icone-menu"></i> Configurações
                     </a>
                     <ul class="collapse list-unstyled" id="painelcontroleSubmenu">
-                        <li>
-                            <a href="@Url.Action("Index", "Usuario")">Usuários</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index", "Permissao")">Permissões</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index", "Status")">Status</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index", "Categoria")">Categorias</a>
-                        </li>
+                        @if (this.IfClaim("", "ADM"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "Usuario")">Usuários</a>
+                            </li>
+                        }
+                        @if (this.IfClaim("", "ADM"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "Permissao")">Permissões</a>
+                            </li>
+                        }
+                        @if (this.IfClaim("", "ADM"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "Status")">Status</a>
+                            </li>
+                        }
+                        @if (this.IfClaim("", "ADM"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "Categoria")">Categorias</a>
+                            </li>
+                        }
                     </ul>
                 </li>
             </ul>

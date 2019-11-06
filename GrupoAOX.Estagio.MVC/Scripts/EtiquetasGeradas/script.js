@@ -4,7 +4,7 @@
         if ($('#dataInicio').val().trim() !== "" && $('#dataFim').val().trim() !== "") {
             gerarRelatorio();
         } else {
-            alert("Informe as datas!");
+            fGlobal.EmitirNotificacao('Validação', "Informe as datas!", 'danger');
         }
 
     });
@@ -16,7 +16,7 @@
                 gerarRelatorio();
             }
             else {
-                alert("Informe as datas!");
+                fGlobal.EmitirNotificacao('Validação', "Informe as datas!", 'danger');
             }
         }
     });
@@ -28,7 +28,7 @@
                 gerarRelatorio();
             }
             else {
-                alert("Informe as datas!");
+                fGlobal.EmitirNotificacao('Validação', "Informe as datas!", 'danger');
             }
         }
     });

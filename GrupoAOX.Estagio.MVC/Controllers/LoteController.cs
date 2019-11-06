@@ -1,7 +1,9 @@
 ﻿using GrupoAox.Estagio.Domain.Interfaces.Servicos;
 using GrupoAOX.Estagio.Application.Interfaces;
 using GrupoAOX.Estagio.Application.ViewModel;
+using GrupoAOX.Estagio.MVC.Filters;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Web.Mvc;
 
 namespace GrupoAOX.Estagio.MVC.Controllers
@@ -19,6 +21,7 @@ namespace GrupoAOX.Estagio.MVC.Controllers
             _entitySerializationServices = entitySerializationServices;
         }
 
+        [ClaimsAutorize(ClaimType = ClaimTypes.Role, ClaimValue = "ADM,DESET")]
         public ActionResult Descartar()
         {
             return View();

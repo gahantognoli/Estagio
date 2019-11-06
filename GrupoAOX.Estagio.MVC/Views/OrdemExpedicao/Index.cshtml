@@ -112,7 +112,7 @@
                     @Html.ActionLink("Imprimir", "Imprimir", new { numDocumento = item.NumeroDocumento }, new { @class = "btn btn-block btn-warning btn-sm" })
                 </td>
                 <td>
-                    @Html.ActionLink("Lembrete", "Lembrete", new { id = item.TransferenciaId }, new { @class = "btn btn-block btn-primary btn-sm" })
+                    <a href="/Lembrete/Adicionar?transferenciaId=@item.TransferenciaId" class="btn btn-block btn-sm btn-primary">Lembrete</a>
                 </td>
             </tr>
         }
