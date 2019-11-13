@@ -229,10 +229,12 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AcompanhamentoIntegracoesController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\DashboardIntegracaoController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LembreteController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LogTransferenciasController.cs" />
     <Compile Include="Controllers\LoteController.cs" />
     <Compile Include="Controllers\OrdemExpedicaoController.cs" />
     <Compile Include="Controllers\PermissaoController.cs" />
@@ -266,6 +268,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatasetRelatorioEtiquetasGeradas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\DatasetTransferencias.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatasetTransferencias.xsd</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
   </ItemGroup>
@@ -347,6 +354,17 @@
     <Content Include="Relatorios\DatasetRelatorioEtiquetasGeradas.xss">
       <DependentUpon>DatasetRelatorioEtiquetasGeradas.xsd</DependentUpon>
     </Content>
+    <Content Include="Relatorios\DatasetTransferencias.xsc">
+      <DependentUpon>DatasetTransferencias.xsd</DependentUpon>
+    </Content>
+    <None Include="Relatorios\DatasetTransferencias.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatasetTransferencias.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Relatorios\DatasetTransferencias.xss">
+      <DependentUpon>DatasetTransferencias.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\ImpressaoOrdemExpedicao\script.js" />
     <Content Include="Scripts\ImpressaoRomaneio\script.js" />
@@ -370,6 +388,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\RelatorioTransferencia\script.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Romaneio\script.js" />
@@ -452,6 +471,9 @@
     <Content Include="Views\Lembrete\Detalhes.cshtml" />
     <Content Include="Views\Lembrete\Atualizar.cshtml" />
     <Content Include="Views\Lembrete\Remover.cshtml" />
+    <Content Include="Views\LogTransferencias\Index.cshtml" />
+    <Content Include="Views\DashboardIntegracao\Index.cshtml" />
+    <Content Include="Views\Relatorios\Transferencias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -492,6 +514,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\RelatorioRomaneioTransferencia.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\RelatorioTransferencias.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

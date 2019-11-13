@@ -36,6 +36,8 @@ namespace Estagio.Infra.Bootstrapper
             container.Register<IMovimentosGeradosRepositorio, MovimentosGeradosRepositorio>(Lifestyle.Scoped);
             container.Register<IAcompanhamentoIntegracoesRepositorio, AcompanhamentoIntegracoesRepositorio>(Lifestyle.Scoped);
             container.Register<ILembreteRepositorio, LembreteRepositorio>(Lifestyle.Scoped);
+            container.Register<IDashboardRepositorio, DashboardRepositorio>(Lifestyle.Scoped);
+            container.Register<IRelatorioTransferenciaRepositorio, RelatorioTransferenciaRepositorio>(Lifestyle.Scoped);
 
             //Services injections
             container.Register<IUsuarioServices, UsuarioServices>(Lifestyle.Scoped);
@@ -50,6 +52,8 @@ namespace Estagio.Infra.Bootstrapper
             container.Register<IMovimentosGeradosService, MovimentosGeradosService>(Lifestyle.Scoped);
             container.Register<IAcompanhamentoIntegracoesServices, AcompanhamentoIntegracoesServices>(Lifestyle.Scoped);
             container.Register<ILembreteService, LembreteService>(Lifestyle.Scoped);
+            container.Register<IDashboardServices, DashboardServices>(Lifestyle.Scoped);
+            container.Register<IRelatorioTransferenciaServices, RelatorioTransferenciaServices>(Lifestyle.Scoped);
 
             //App Services 
             container.Register<IUsuarioAppServices, UsuarioAppService>(Lifestyle.Scoped);
@@ -64,6 +68,8 @@ namespace Estagio.Infra.Bootstrapper
             container.Register<IMovimentosGeradosAppService, MovimentosGeradosAppService>(Lifestyle.Scoped);
             container.Register<IAcompanhamentoIntegracoesAppServices, AcompanhamentoIntegracoesAppServices>(Lifestyle.Scoped);
             container.Register<ILembreteAppService, LembreteAppService>(Lifestyle.Scoped);
+            container.Register<IDashboardAppServices, DashboardAppServices>(Lifestyle.Scoped);
+            container.Register<IRelatorioTransferenciaAppServices, RelatorioTransferenciaAppServices>(Lifestyle.Scoped);
 
             container.Register<IEntitySerializationServices<UsuarioViewModel>, 
                 JSONSerializationServices<UsuarioViewModel>>(Lifestyle.Scoped);

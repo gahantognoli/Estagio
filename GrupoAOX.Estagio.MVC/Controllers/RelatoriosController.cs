@@ -15,12 +15,15 @@ namespace GrupoAOX.Estagio.MVC.Controllers
     {
         private readonly IEtiquetasGeradasAppService _etiquetasGeradasAppService;
         private readonly IMovimentosGeradosAppService _movimentosGeradosAppService;
+        private readonly IRelatorioTransferenciaAppServices _relatorioTransferenciaAppServices;
 
         public RelatoriosController(IEtiquetasGeradasAppService etiquetasGeradasAppService,
-            IMovimentosGeradosAppService movimentosGeradosAppService)
+            IMovimentosGeradosAppService movimentosGeradosAppService,
+            IRelatorioTransferenciaAppServices relatorioTransferenciaAppServices)
         {
             _etiquetasGeradasAppService = etiquetasGeradasAppService;
             _movimentosGeradosAppService = movimentosGeradosAppService;
+            _relatorioTransferenciaAppServices = relatorioTransferenciaAppServices;
         }
 
         // GET: Relatorios
@@ -47,6 +50,33 @@ namespace GrupoAOX.Estagio.MVC.Controllers
             localReport.DataSources.Add(dataSource);
 
             localReport.DisplayName = "Etiquetas Geradas";
+            var bytes = localReport.Render("EXCELOPENXML");
+
+            return File(bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        }
+
+        public ActionResult Transferencias()
+        {
+            return View();
+        }
+
+        public ActionResult TransferenciasExcel(string dataInicio, string dataFim)
+        {
+            var dataInicoConvertida = Convert.ToDateTime(dataInicio + " 00:00:00");
+            var dataFimConvertida = Convert.ToDateTime(dataFim + " 23:59:59");
+
+            var dados = _relatorioTransferenciaAppServices.ObterTransferencias(dataInicoConvertida, dataFimConvertida);
+
+            var dataset = PopularDataset(dados);
+
+            var localReport = new LocalReport();
+            localReport.ReportPath = Request.MapPath(Request.ApplicationPath) + "bin\\Relatorios\\RelatorioTransferencias.rdlc";
+            localReport.EnableExternalImages = true; //habilita imagens externas
+
+            var dataSource = new ReportDataSource("DataSet1", (DataTable)dataset.Transferencias);
+            localReport.DataSources.Add(dataSource);
+
+            localReport.DisplayName = "Transferencias Geradas";
             var bytes = localReport.Render("EXCELOPENXML");
 
             return File(bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
@@ -128,6 +158,32 @@ namespace GrupoAOX.Estagio.MVC.Controllers
                 dataset.Movimentos.AddMovimentosRow(movimento);
             }
 
+            return dataset;
+        }
+
+        private DatasetTransferencias PopularDataset(IEnumerable<Transferencia> dados)
+        {
+            var dataset = new DatasetTransferencias();
+
+            foreach (var item in dados)
+            {
+                var transferencia = dataset.Transferencias.NewTransferenciasRow();
+                transferencia.TransferenciaId = item.TransferenciaId;
+                transferencia.NumeroDocumento = item.NumeroDocumento;
+                transferencia.DataMovimento = item.DataMovimento;
+                transferencia.Etiqueta = item.Etiqueta;
+                transferencia.DataLancamento = item.DataLancamento;
+                transferencia.OrderProducao = item.OrderProducao;
+                transferencia.ArmazemDestino = item.ArmazemDestino;
+                transferencia.Produto = item.Produto;
+                transferencia.QtdM2 = item.QtdM2;
+                transferencia.QtdMetroLinear = item.QtdMetroLinear;
+                transferencia.Categoria = item.Categoria;
+                transferencia.NumDocumento = item.NumDocumento;
+                transferencia.Status = item.Status;
+                transferencia.Usuario = item.Usuario;
+                dataset.Transferencias.AddTransferenciasRow(transferencia);
+            }
             return dataset;
         }
 

@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard Integrações";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h3>Dashboard Integrações</h3>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mt-1">
+            <div class="card-header">
+                <span class="h5">Integrados</span>
+            </div>
+            <div class="card-body">
+                <span class="h3 text-center d-block"">@ViewBag.LotesIntegrados</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mt-1"">
+            <div class="card-header">
+                <span class="h5">Aguardando integração</span>
+            </div>
+            <div class="card-body">
+                <span class="h3 text-center d-block">@ViewBag.LotesAguardandoIntegracao</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mt-1"">
+            <div class="card-header">
+                <span class="h5">Falha de Integração</span>
+            </div>
+            <div class="card-body">
+                <span class="h3 text-center d-block"">@ViewBag.LotesFalhaIntegracao</span>
+            </div>
+        </div>
+    </div>
+</div>
+

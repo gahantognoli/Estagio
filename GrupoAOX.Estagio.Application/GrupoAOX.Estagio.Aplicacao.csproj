@@ -56,6 +56,7 @@
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Interfaces\IAcompanhamentoIntegracoesAppServices.cs" />
     <Compile Include="Interfaces\ICategoriaAppServices.cs" />
+    <Compile Include="Interfaces\IDashboardAppServices.cs" />
     <Compile Include="Interfaces\ILembreteAppService.cs" />
     <Compile Include="Interfaces\ILogLotesAppServices.cs" />
     <Compile Include="Interfaces\ILoteAppServices.cs" />
@@ -67,10 +68,12 @@
     <Compile Include="Relatorios\Interfaces\IDocumentoTransferenciaAppService.cs" />
     <Compile Include="Relatorios\Interfaces\IEtiquetasGeradasAppService.cs" />
     <Compile Include="Relatorios\Interfaces\IMovimentosGeradosAppService.cs" />
+    <Compile Include="Relatorios\Interfaces\IRelatorioTransferenciaAppServices.cs" />
     <Compile Include="RetornoWS\RetornoArmazem.cs" />
     <Compile Include="Servicos\AcompanhamentoIntegracoesAppServices.cs" />
     <Compile Include="Servicos\AppService.cs" />
     <Compile Include="Servicos\CategoriaAppService.cs" />
+    <Compile Include="Servicos\DashboardAppServices.cs" />
     <Compile Include="Servicos\LembreteAppService.cs" />
     <Compile Include="Servicos\LogLotesAppService.cs" />
     <Compile Include="Servicos\LoteAppService.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="Servicos\Relatorios\DocumentoTransferenciaAppService.cs" />
     <Compile Include="Servicos\Relatorios\EtiquetasGeradasAppService.cs" />
     <Compile Include="Servicos\Relatorios\MovimentosGeradosAppService.cs" />
+    <Compile Include="Servicos\Relatorios\RelatorioTransferenciaAppServices.cs" />
     <Compile Include="Servicos\StatusAppService.cs" />
     <Compile Include="Servicos\TransferenciaAppService.cs" />
     <Compile Include="Servicos\UsuarioAppService.cs" />
@@ -87,6 +91,7 @@
     <Compile Include="ViewModel\LembreteViewModel.cs" />
     <Compile Include="ViewModel\LogLotesViewModel.cs" />
     <Compile Include="ViewModel\PermissaoViewModel.cs" />
+    <Compile Include="ViewModel\RelatorioTransferenciaViewModel.cs" />
     <Compile Include="ViewModel\StatusViewModel.cs" />
     <Compile Include="ViewModel\TransferenciaViewModel.cs" />
     <Compile Include="ViewModel\UsuarioPermissaoViewModel.cs" />

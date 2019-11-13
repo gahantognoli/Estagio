@@ -31,7 +31,6 @@ namespace GrupoAOX.Estagio.Data.Repositorios
             }
 
             AutoMapper.Configuration.AddIdentifier(typeof(LogLotes), "LogLoteId");
-            AutoMapper.Configuration.AddIdentifier(typeof(int_exp_Etiqueta_Producao), "ApontamentoProducaoId");
 
             IEnumerable<LogLotes> logLotes = (AutoMapper.MapDynamic<LogLotes>(query, false) as IEnumerable<LogLotes>);
 
@@ -40,38 +39,25 @@ namespace GrupoAOX.Estagio.Data.Repositorios
 
         public IEnumerable<LogLotes> ObterPorUsuario(string usuario)
         {
-            IEnumerable<dynamic> query = null;
+            IEnumerable<LogLotes> logs = null;
             using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
             {
-                query = dbConnection.Query<dynamic>(LogLotesProcedures.ObterPorUsuario.GetDescription(), new
-                {
-                    Usuario = usuario
-                }, commandType: System.Data.CommandType.StoredProcedure);
+                logs = dbConnection.Query<LogLotes>(LogLotesProcedures.ObterPorUsuario.GetDescription(),
+                    new { @usuario = usuario },
+                    commandType: System.Data.CommandType.StoredProcedure);
             }
-
-            AutoMapper.Configuration.AddIdentifier(typeof(LogLotes), "LogLoteId");
-            AutoMapper.Configuration.AddIdentifier(typeof(int_exp_Etiqueta_Producao), "ApontamentoProducaoId");
-
-            IEnumerable<LogLotes> logLotes = (AutoMapper.MapDynamic<LogLotes>(query, false) as IEnumerable<LogLotes>);
-
-            return logLotes;
+            return logs;
         }
 
-        //public IEnumerable<LogLotes> ObterTodos()
-        //{
-        //    IEnumerable<dynamic> query = null;
-        //    using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
-        //    {
-        //        query = dbConnection.Query<dynamic>(LogLotesProcedures.ObterTodos.GetDescription(), 
-        //            commandType: System.Data.CommandType.StoredProcedure);
-        //    }
-
-        //    AutoMapper.Configuration.AddIdentifier(typeof(LogLotes), "LogLoteId");
-        //    AutoMapper.Configuration.AddIdentifier(typeof(int_exp_Etiqueta_Producao), "ApontamentoProducaoId");
-
-        //    IEnumerable<LogLotes> logLotes = (AutoMapper.MapDynamic<LogLotes>(query, false) as IEnumerable<LogLotes>);
-
-        //    return logLotes;
-        //}
+        public override IEnumerable<LogLotes> ObterTodos()
+        {
+            IEnumerable<LogLotes> logs = null;
+            using (DbConnection dbConnection = new SqlConnection(ConexaoBancoDeDados.ObterStringConexao()))
+            {
+                logs = dbConnection.Query<LogLotes>(LogLotesProcedures.ObterTodos.GetDescription(),
+                    commandType: System.Data.CommandType.StoredProcedure);
+            }
+            return logs;
+        }
     }
 }

@@ -17,5 +17,4 @@
     function ExibeMensagemSucesso(data) {
         window.location = "/Lembrete/Index";
     }
-
 });
